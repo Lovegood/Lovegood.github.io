@@ -560,7 +560,7 @@ a {
   font-weight: 300;
   line-height: 31px;
   cursor: pointer;
-  text-transform: uppercase;
+  text-transform: lowercase;
   float: none;
   height: 150px;
   margin-left: -12px;
