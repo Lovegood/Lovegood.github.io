@@ -341,12 +341,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>未完待续</p>
-<p><a href="http://www.moctf.com/challenges" target="_blank" rel="external">http://www.moctf.com/challenges</a></p>
-<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p>加群获得flag</p>
+<p><a href="http://www.moctf.com/challenges" target="_blank" rel="external">做题平台</a></p>
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p>加群，flag在群公告里。</p>
 <h2 id="一道水题"><a href="#一道水题" class="headerlink" title="一道水题"></a>一道水题</h2><p>右键无菜单弹出，Ctrl+Shift+I，调出Chrome开发人员工具，发现flag藏在HTML注释中。</p>
 <h2 id="还是水题"><a href="#还是水题" class="headerlink" title="还是水题"></a>还是水题</h2><p>审查元素，看到：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;password&quot; value=&quot;&quot; disabled=&quot;disabled&quot; name=&quot;password&quot; maxlength=&quot;4&quot;&gt;</div></pre></td></tr></table></figure>
-<p>改为：</p>
+<p>左键双击对应属性值，将相应值改为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;password&quot; value=&quot;&quot; name=&quot;password&quot; maxlength=&quot;8&quot;&gt;</div></pre></td></tr></table></figure>
 <p>然后输入<code>moctf</code>，可得flag。</p>
 <h2 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h2><p>访问题目地址，看到“只允许使用NAIVE浏览器访问！”</p>
@@ -364,11 +364,11 @@
 <p>分析php代码，发现是常规的的php弱类型的md5判断，直接：<code>http://119.23.73.3:5001/web5/?a=240610708&amp;b=QNKCDZO</code>得到flag。</p>
 <h2 id="我想要钱"><a href="#我想要钱" class="headerlink" title="我想要钱"></a>我想要钱</h2><p>题目代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">    include &quot;flag.php&quot;;</div><div class="line">    highlight_file(__FILE__);</div><div class="line"></div><div class="line">    if (isset($_GET[&apos;money&apos;])) &#123;</div><div class="line">        $money=$_GET[&apos;money&apos;];</div><div class="line">        if(strlen($money)&lt;=4&amp;&amp;$money&gt;time()&amp;&amp;!is_array($money))</div><div class="line">        &#123;</div><div class="line">            echo $flag;</div><div class="line">            echo &quot;&lt;!--By:daoyuan--&gt;&quot;;</div><div class="line">        &#125;</div><div class="line">        else echo &quot;Wrong Answer!&quot;;</div><div class="line">    &#125;</div><div class="line">    else echo &quot;Wrong Answer!&quot;;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<p>php time()：返回自从 Unix 纪元（格林威治时间 1970 年 1 月 1 日 00:00:00）到当前时间的秒数。</p>
+<p>php <code>time()</code>：返回自从 Unix 纪元（格林威治时间 1970 年 1 月 1 日 00:00:00）到当前时间的秒数。</p>
 <p>不用想也知道是一个敲大的数字。</p>
 <p>分析代码，<code>money</code>需要小于等于4位，并且还要大于<code>time()</code>的返回值，还不能是个数组。</p>
 <p>so，科学计数法，<code>9e99</code>，得到flag。</p>
-<h2 id="登录就对了"><a href="#登录就对了" class="headerlink" title="登录就对了"></a>登录就对了</h2><p>网页标题SQLi，虽然不知道<code>i</code>什么意思，但是看到SQL就能想到SQL注入。</p>
+<h2 id="登录就对了（没做出来呢）"><a href="#登录就对了（没做出来呢）" class="headerlink" title="登录就对了（没做出来呢）"></a>登录就对了（没做出来呢）</h2><p>网页标题SQLi，虽然不知道<code>i</code>什么意思，但是看到SQL就能想到SQL注入。</p>
 <p>先sqlmap来一波~</p>
 <p>网页上登陆一下，发现不是get请求，抓个包，存为<code>request.txt</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python2.7 sqlmap.py -r &apos;request.txt&apos; --level 5</div></pre></td></tr></table></figure>
@@ -452,15 +452,13 @@
 <p>不过自己写了个脚本，返回总是错误，问了一下实验室大佬@咸鱼，加了PHOSESSID的cookie就好了。</p>
 <p>脚本如下(py3):</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">from bs4 import BeautifulSoup</div><div class="line">import requests</div><div class="line"></div><div class="line">r = requests.get(&apos;http://119.23.73.3:5001/web10/&apos;)</div><div class="line">cookie = r.cookies[&apos;PHPSESSID&apos;]</div><div class="line"></div><div class="line">bsOjb = BeautifulSoup(r.content, &apos;html.parser&apos;)</div><div class="line">txt = bsOjb.find(&apos;textarea&apos;).text</div><div class="line">cnt = txt.count(&apos;moctf&apos;)</div><div class="line"></div><div class="line">postData = &#123;&apos;answer&apos;:cnt&#125;</div><div class="line">postCookie = dict(PHPSESSID=cookie)</div><div class="line"></div><div class="line">r = requests.post(&apos;http://119.23.73.3:5001/web10/work.php&apos;,data=postData,cookies=postCookie)</div><div class="line"></div><div class="line">print(cnt)</div><div class="line">print(r)</div><div class="line">print(r.text)</div></pre></td></tr></table></figure>
-<h2 id="简单注入"><a href="#简单注入" class="headerlink" title="简单注入"></a>简单注入</h2><p>习惯性审查元素，发现提示 ?id=1 ,那就试一下吧喵</p>
+<h2 id="简单注入（没做出来）"><a href="#简单注入（没做出来）" class="headerlink" title="简单注入（没做出来）"></a>简单注入（没做出来）</h2><p>习惯性审查元素，发现提示 ?id=1 ,那就试一下吧喵</p>
 <ul>
-<li>?id=1 Welcome to MOCTF!</li>
-<li>?id=2 Flag is in the database!</li>
-<li>?id=3 The table name length is greater than 20!</li>
-<li>?id=4开始就什么都没有辣</li>
+<li><code>?id=1</code> Welcome to MOCTF!</li>
+<li><code>?id=2</code> Flag is in the database!</li>
+<li><code>?id=3</code> The table name length is greater than 20!<h2 id="从-id-4开始就什么都没有辣"><a href="#从-id-4开始就什么都没有辣" class="headerlink" title="* 从?id=4开始就什么都没有辣"></a>* 从<code>?id=4</code>开始就什么都没有辣</h2></li>
+<li><code>?id=4%20union%20database()</code> WHAT A FUCK!</li>
 </ul>
-<p>不管别的，先sqlma一波~</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python2.7 sqlmap.py -u &apos;http://119.23.73.3:5004/?id=1&apos; --level 5</div></pre></td></tr></table></figure>
 <h2 id="暴跳老板"><a href="#暴跳老板" class="headerlink" title="暴跳老板"></a>暴跳老板</h2><h2 id="没时间解释了"><a href="#没时间解释了" class="headerlink" title="没时间解释了"></a>没时间解释了</h2><h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="我可是黑客"><a href="#我可是黑客" class="headerlink" title="我可是黑客"></a>我可是黑客</h2><p>用记事本打开图片，拉到最下面，flag。</p>
 <h2 id="光阴似箭"><a href="#光阴似箭" class="headerlink" title="光阴似箭"></a>光阴似箭</h2><p>扩展名改成gif，ps打开，第四帧内容倒过来，flag。</p>
 <p>【不过没太想明白flash movie的意思】</p>
@@ -492,7 +490,7 @@
 <p>里面提到MP3隐写需要用到<a href="http://www.petitcolas.net/steganography/mp3stego/" target="_blank" rel="external">MP3Stego</a></p>
 <p>下载之后参考用法<code>./Decode.exe -X -P 9158753624 apple.mp3</code></p>
 <p>在<code>apple.mp3.txt</code>中得到：<code>Q1RGe3hpYW9fcGluZ19ndW99</code>，base64解码得flag</p>
-<h2 id="机密压缩包"><a href="#机密压缩包" class="headerlink" title="机密压缩包"></a>机密压缩包</h2><p><a href="https://ctf-wiki.github.io/ctf-wiki/misc/archive/rar.html" target="_blank" rel="external">CTFWiki - RAR</a></p>
+<h2 id="机密压缩包（没做出来）"><a href="#机密压缩包（没做出来）" class="headerlink" title="机密压缩包（没做出来）"></a>机密压缩包（没做出来）</h2><p><a href="https://ctf-wiki.github.io/ctf-wiki/misc/archive/rar.html" target="_blank" rel="external">CTFWiki - RAR</a></p>
 <p>看起来不像是伪加密，那就拿rarcrack爆破吧。</p>
 <p><a href="http://rarcrack.sourceforge.net/" target="_blank" rel="external">rarcrack官网</a></p>
 <p>tar -xjf rarcrack-0.2.tar.bz2<br>cd rarcrack-0.2<br>make &amp;&amp; make install</p>
@@ -684,7 +682,7 @@
   <div class="outer">
     <div id="footer-info">
       <div class="footer-left">
-        &copy; 2017 Cytosine
+        &copy; 2018 Cytosine
       </div>
         <div class="footer-right">
           <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
