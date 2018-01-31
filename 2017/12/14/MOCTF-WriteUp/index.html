@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="有被小窝~">
 <meta property="og:description" content="未完待续 做题平台 WEB签到加群，flag在群公告里。 一道水题右键无菜单弹出，Ctrl+Shift+I，调出Chrome开发人员工具，发现flag藏在HTML注释中。 还是水题审查元素，看到： 1&amp;lt;input type=&amp;quot;password&amp;quot; value=&amp;quot;&amp;quot; disabled=&amp;quot;disabled&amp;quot; name=&amp;quot;pass">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-11T08:53:05.201Z">
+<meta property="og:updated_time" content="2018-01-31T13:52:58.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MOCTF WriteUp(未完待续)">
 <meta name="twitter:description" content="未完待续 做题平台 WEB签到加群，flag在群公告里。 一道水题右键无菜单弹出，Ctrl+Shift+I，调出Chrome开发人员工具，发现flag藏在HTML注释中。 还是水题审查元素，看到： 1&amp;lt;input type=&amp;quot;password&amp;quot; value=&amp;quot;&amp;quot; disabled=&amp;quot;disabled&amp;quot; name=&amp;quot;pass">
@@ -391,18 +391,26 @@
 <h2 id="蒙娜丽萨的微笑"><a href="#蒙娜丽萨的微笑" class="headerlink" title="蒙娜丽萨的微笑"></a>蒙娜丽萨的微笑</h2><p>binwalk一下，出来四个文件。</p>
 <p><strong>注意图片名字</strong>没想到</p>
 <h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="就是这个feel"><a href="#就是这个feel" class="headerlink" title="就是这个feel!!"></a>就是这个feel!!</h2><p>题目<code>恰恰 恰恰恰 恰绑恰绑 恰 绑绑恰绑{恰恰绑 恰恰恰 恰恰恰 恰绑绑}</code></p>
-<p>大括号外面被空格分成了五个部分，猜测分别对应<code>moctf</code></p>
-<p>但是是怎么个映射关系呢？</p>
-<p>m 109<br>o 111<br>c 99<br>t 116<br>f 102</p>
-<p>moctf{xxoox}</p>
-<h2 id="数据库密码"><a href="#数据库密码" class="headerlink" title="数据库密码"></a>数据库密码</h2><p>题目密文：</p>
+<p>只有<code>恰</code>和<code>绑</code>两种，推测是摩斯密码，且大括号前面的字符解出来应该是<code>moctf</code>。</p>
+<p>moctf摩斯加密后，得：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--/---/-.-./-/..-.</div></pre></td></tr></table></figure>
+<p>所以，<code>恰</code>对应<code>-</code>，<code>绑</code>对应<code>.</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--/---/-.-./-/..-.&#123;--./---/---/-..&#125;</div></pre></td></tr></table></figure>
+<p>解摩斯密码得：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">moctf&#123;GOOD&#125;</div></pre></td></tr></table></figure>
+<p>然后，根据题目提示</p>
+<blockquote>
+<p>Hint1: 最新更新：flag没有空格，都是小写字母。</p>
+</blockquote>
+<p>So,flag:<code>moctf{good}</code></p>
+<h2 id="数据库密码"><a href="#数据库密码" class="headerlink" title="数据库密码"></a>数据库密码</h2><p>感谢@pcat</p>
+<p>题目密文：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">D8EA7326QE6EC5916ACCDX6E0VC9D264C63</div></pre></td></tr></table></figure>
-<p>Google搜没结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; len(&apos;D8EA7326QE6EC5916ACCDX6E0VC9D264C63&apos;)</div><div class="line">35</div><div class="line">&gt;&gt;&gt; import base64</div><div class="line">&gt;&gt;&gt; base64.b64decode(b&apos;D8EA7326QE6EC5916ACCDX6E0VC9D264C63=&apos;)</div><div class="line">b&apos;\x0f\xc1\x00\xef&#125;\xba@N\x84\x0b\x9fu\xe8\x00\x82\r~\x84\xd1P\xbd\x0fn\xb8\x0b\xad&apos;</div></pre></td></tr></table></figure>
-<p>长度是35，而且有<code>Q</code>，所以不可能是两两一组，解hex</p>
-<p>base64解的话，要加<code>=</code>，不然报错，而且解出来也不是可打印字符，不像base64。</p>
-<p>这特喵的是什么哦QAQ</p>
-<p>咨询@PeterZ，大佬表示窝思路完全不对，那推倒重想吧喵QAQ</p>
+<p>len()一下，发现35个字符</p>
+<p>emm 去掉其中不属于md5的字符，变为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">D8EA7326E6EC5916ACCD6E0C9D264C63</div></pre></td></tr></table></figure>
+<p><a href="http://www.chamd5.org/" target="_blank" rel="external">md5反查</a>，得：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">key123</div></pre></td></tr></table></figure>
 <h2 id="rot大法好"><a href="#rot大法好" class="headerlink" title="rot大法好"></a>rot大法好</h2><p>题目给了提示<code>rot</code>。</p>
 <p>回忆一下以前的知识，有个<code>rot13</code>：</p>
 <ul>
