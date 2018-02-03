@@ -479,7 +479,7 @@ a {
 .header-author {
   text-align: center;
   margin: 0.67em 0;
-  font-family: Roboto, "Roboto", serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 30px;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -560,7 +560,7 @@ a {
   font-weight: 300;
   line-height: 31px;
   cursor: pointer;
-  text-transform: uppercase;
+  text-transform: lowercase;
   float: none;
   height: 150px;
   margin-left: -12px;
