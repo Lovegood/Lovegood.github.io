@@ -252,7 +252,7 @@ a {
 }
 #container .left-col {
   background: url("../img/bg.jpg") #515457;
-  width: '' px;
+  width: 300px;
   position: fixed;
   opacity: 1;
   -webkit-transition: all 0.2s ease-in;
