@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>有被小窝~[没建完呢]</title>
+  
+  <subtitle>智能是人类未来之光，安全是人类基本需求。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://lovegood.github.io/"/>
+  <updated>2017-12-19T14:36:00.191Z</updated>
+  <id>https://lovegood.github.io/</id>
+  
+  <author>
+    <name>Cytosine</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>番剧推荐（常年更新）</title>
+    <link href="https://lovegood.github.io/2017/12/19/%E7%95%AA%E5%89%A7%E6%8E%A8%E8%8D%90/"/>
+    <id>https://lovegood.github.io/2017/12/19/番剧推荐/</id>
+    <published>2017-12-19T14:23:13.000Z</published>
+    <updated>2017-12-19T14:36:00.191Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;越靠前，越推荐观看&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;《Code Geass叛逆的鲁路修》 我的入宅之作&lt;/li&gt;
+&lt;li&gt;《徒然喜欢你》 狗粮管饱，温馨简单，想要这样的恋爱~&lt;/li&gt;
+&lt;li&gt;《罪恶王冠》 樱花满地集于我心，楪舞纷飞祈愿相随&lt;/li&gt;
+&lt;li&gt;《灼眼的夏娜》
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AboutMe" scheme="https://lovegood.github.io/tags/AboutMe/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>About Cytosine, About Lovegood</title>
+    <link href="https://lovegood.github.io/2017/12/19/About-Cytosine-About-Lovegood/"/>
+    <id>https://lovegood.github.io/2017/12/19/About-Cytosine-About-Lovegood/</id>
+    <published>2017-12-19T14:08:58.000Z</published>
+    <updated>2017-12-19T14:17:08.834Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Cytosine&quot;&gt;&lt;a href=&quot;#Cytosine&quot; class=&quot;headerlink&quot; title=&quot;Cytosine&quot;&gt;&lt;/a&gt;Cytosine&lt;/h1&gt;&lt;p&gt;Cytosine 取自&lt;strong&gt;胞嘧啶&lt;/strong&gt;的英文。&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AboutMe" scheme="https://lovegood.github.io/tags/AboutMe/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MOCTF WriteUp(未完待续)</title>
+    <link href="https://lovegood.github.io/2017/12/14/MOCTF-WriteUp/"/>
+    <id>https://lovegood.github.io/2017/12/14/MOCTF-WriteUp/</id>
+    <published>2017-12-14T04:50:53.000Z</published>
+    <updated>2018-01-31T13:52:58.120Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;未完待续&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.moctf.com/challenges&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;做题平台&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;WEB&quot;&gt;&lt;a href=&quot;#WEB&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
+    
+      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
+    
+      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无良小编想和泥玩捉迷藏！(基于图像的LSB隐写术科普)</title>
+    <link href="https://lovegood.github.io/2017/12/13/%E6%97%A0%E8%89%AF%E5%B0%8F%E7%BC%96%E6%83%B3%E5%92%8C%E6%B3%A5%E7%8E%A9%E6%8D%89%E8%BF%B7%E8%97%8F%EF%BC%81(%E5%9F%BA%E4%BA%8E%E5%9B%BE%E5%83%8F%E7%9A%84LSB%E9%9A%90%E5%86%99%E6%9C%AF%E7%A7%91%E6%99%AE)/"/>
+    <id>https://lovegood.github.io/2017/12/13/无良小编想和泥玩捉迷藏！(基于图像的LSB隐写术科普)/</id>
+    <published>2017-12-13T08:50:34.000Z</published>
+    <updated>2017-12-19T13:55:48.815Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;无良小编想和泥玩捉迷藏！（基于图像的LSB隐写术科普）&lt;/p&gt;
+&lt;p&gt;作者：&lt;a href=&quot;https://lovegood.github.io/&quot;&gt;@Cytosine&lt;/a&gt;&lt;br&gt;审校：&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+      <category term="Steg" scheme="https://lovegood.github.io/tags/Steg/"/>
+    
+  </entry>
+  
+</feed>
