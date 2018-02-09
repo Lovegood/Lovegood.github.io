@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-01-31T13:52:58.120Z</updated>
+  <updated>2018-02-09T07:16:45.508Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google Project Zero 成员教你如何入门搞安全</title>
+    <link href="https://lovegood.github.io/2018/02/08/%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BA%8B%E4%BB%B6%E8%AF%91-Google-Project-Zero-%E6%88%90%E5%91%98%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8%E6%90%9E%E5%AE%89%E5%85%A8/"/>
+    <id>https://lovegood.github.io/2018/02/08/安全大事件译-Google-Project-Zero-成员教你如何入门搞安全/</id>
+    <published>2018-02-08T06:10:46.000Z</published>
+    <updated>2018-02-09T07:16:45.508Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/33678187&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+  </entry>
   
   <entry>
     <title>MOCTF WriteUp(未完待续)</title>
@@ -40,13 +64,13 @@
     
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
     
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
       <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
   </entry>
   
