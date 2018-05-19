@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-02-24T11:08:11.000Z</updated>
+  <updated>2018-05-19T12:13:57.501Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[翻译] The Bug challenge2018 warm-up wp</title>
+    <link href="https://lovegood.github.io/2018/05/19/translate-Spot-The-Bug-challenge2018-warm-up-wp/"/>
+    <id>https://lovegood.github.io/2018/05/19/translate-Spot-The-Bug-challenge2018-warm-up-wp/</id>
+    <published>2018-05-19T12:09:38.000Z</published>
+    <updated>2018-05-19T12:13:57.501Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://www.securify.nl/blog/SFY20180101/spot-the-bug-challenge-2018-warm-up.html&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
+    
+      <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
+    
+  </entry>
   
   <entry>
     <title>hgame2018 Week2 WriteUp(部分)</title>
@@ -157,9 +183,9 @@
     
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
