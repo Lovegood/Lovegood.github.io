@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-05-21T06:39:44.593Z</updated>
+  <updated>2018-05-27T11:07:12.284Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ISCC2018部分WriteUp</title>
+    <link href="https://lovegood.github.io/2018/05/27/ISCC2018%E9%83%A8%E5%88%86WriteUp/"/>
+    <id>https://lovegood.github.io/2018/05/27/ISCC2018部分WriteUp/</id>
+    <published>2018-05-27T10:21:58.000Z</published>
+    <updated>2018-05-27T11:07:12.284Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;嗯，才发现ISCC比赛结束，平台也关掉了orz，附件也没下载，wp还没来得及整理，最近事情太多了orz，凑合看吧&lt;/p&gt;
+&lt;p&gt;比较坑的一点的flag格式很迷，flag{xxx}直接提交xx，不要带flag{}。划掉划掉，也有的时候提交&lt;code&gt;flag{xx}&lt;/cod
+        
+      
+    
+    </summary>
+    
+    
+      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
+    
+      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
+    
+      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
+    
+      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
+    
+      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSTC2018 AWD一点儿小总结，非WriteUp</title>
+    <link href="https://lovegood.github.io/2018/05/26/CSTC2018-AWD/"/>
+    <id>https://lovegood.github.io/2018/05/26/CSTC2018-AWD/</id>
+    <published>2018-05-26T05:04:17.000Z</published>
+    <updated>2018-05-27T11:10:05.910Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;43支队伍，13名，三等奖（安慰奖）。还是太菜了orz&lt;/p&gt;
+&lt;h1 id=&quot;被吊打的一天orz&quot;&gt;&lt;a href=&quot;#被吊打的一天orz&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
+    
+      <category term="AWD" scheme="https://lovegood.github.io/tags/AWD/"/>
+    
+      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>MiniLCTF 2018 WriteUp</title>
@@ -44,11 +108,11 @@
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
+    
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
     
       <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
-    
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
   </entry>
   
@@ -260,9 +324,9 @@
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
-    
       <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
+    
+      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
     
   </entry>
   
