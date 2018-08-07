@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-05-27T11:07:12.284Z</updated>
+  <updated>2018-08-07T03:25:36.587Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[翻译]如何从恶意PDF中提取payload?</title>
+    <link href="https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/"/>
+    <id>https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/</id>
+    <published>2018-07-30T03:12:47.000Z</published>
+    <updated>2018-08-07T03:25:36.587Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;原文地址：&lt;a href=&quot;https://www.adlice.com/infected-pdf-extract-payload/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
+    
+      <category term="PDF" scheme="https://lovegood.github.io/tags/PDF/"/>
+    
+  </entry>
   
   <entry>
     <title>ISCC2018部分WriteUp</title>
