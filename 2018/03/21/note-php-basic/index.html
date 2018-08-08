@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,Programming," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cytosineの有被小窝~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="isset()检测变量是否已经设置过了： 1isset($a) gettype()获取变量类型： 1gettype($a) is_int(), is_float() …判断变量是否是某种类型 12345678is_float($a)[is_double($a)]is_int($a)[is_integer($a)]is_string($a)is_object($a) 是否为对象is_array($a">
+<meta name="keywords" content="PHP,Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php学习随手记的笔记">
+<meta property="og:url" content="https://lovegood.github.io/2018/03/21/note-php-basic/index.html">
+<meta property="og:site_name" content="Cytosineの有被小窝~">
+<meta property="og:description" content="isset()检测变量是否已经设置过了： 1isset($a) gettype()获取变量类型： 1gettype($a) is_int(), is_float() …判断变量是否是某种类型 12345678is_float($a)[is_double($a)]is_int($a)[is_integer($a)]is_string($a)is_object($a) 是否为对象is_array($a">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-08T14:06:31.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php学习随手记的笔记">
+<meta name="twitter:description" content="isset()检测变量是否已经设置过了： 1isset($a) gettype()获取变量类型： 1gettype($a) is_int(), is_float() …判断变量是否是某种类型 12345678is_float($a)[is_double($a)]is_int($a)[is_integer($a)]is_string($a)is_object($a) 是否为对象is_array($a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lovegood.github.io/2018/03/21/note-php-basic/"/>
+
+
+
+
+
+  <title>php学习随手记的笔记 | Cytosineの有被小窝~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cytosineの有被小窝~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">智能是人类未来之光，安全是人类基本需求。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            cd ~
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            whoami
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            ls -al post
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2018/03/21/note-php-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">php学习随手记的笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T20:06:44+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="isset"><a href="#isset" class="headerlink" title="isset()"></a><code>isset()</code></h1><p>检测变量是否已经设置过了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isset($a)</div></pre></td></tr></table></figure>
+<h1 id="gettype"><a href="#gettype" class="headerlink" title="gettype()"></a><code>gettype()</code></h1><p>获取变量类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gettype($a)</div></pre></td></tr></table></figure>
+<h1 id="is-int-is-float-…"><a href="#is-int-is-float-…" class="headerlink" title="is_int(), is_float() …"></a><code>is_int()</code>, <code>is_float()</code> …</h1><p>判断变量是否是某种类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">is_float($a)[is_double($a)]</div><div class="line">is_int($a)[is_integer($a)]</div><div class="line">is_string($a)</div><div class="line">is_object($a) 是否为对象</div><div class="line">is_array($a)</div><div class="line">is_resource($a) 是否为资源类型</div><div class="line">is_bool($a)</div><div class="line">is_null($a) 是否为null</div></pre></td></tr></table></figure>
+<h1 id="调试打印变量"><a href="#调试打印变量" class="headerlink" title="调试打印变量"></a>调试打印变量</h1><ul>
+<li>echo 字符串，数字</li>
+<li>print_r 打印层次化数据，如数组、对象</li>
+<li>var_dump 打印变量的类型及其值</li>
+</ul>
+<p>不要用<code>echo</code>和<code>print_r</code>打印布尔值，用<code>var_dump</code>打印布尔值和<code>null</code><br><code>echo</code>打印数组、<code>false</code>和<code>null</code>都是空行，打印<code>true</code>为<code>1</code></p>
+<h1 id="字符串转换为数字"><a href="#字符串转换为数字" class="headerlink" title="字符串转换为数字"></a>字符串转换为数字</h1><p>从左至右截取，直到遇到不合法字符，取到的部分转换为数字</p>
+<h1 id="数字-字符串-数组转换为数组"><a href="#数字-字符串-数组转换为数组" class="headerlink" title="数字/字符串/数组转换为数组"></a>数字/字符串/数组转换为数组</h1><p>假：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&apos;&apos;</div><div class="line">&apos;0&apos;</div><div class="line">0</div><div class="line">0.0</div><div class="line">false</div><div class="line">NULL</div><div class="line">array()</div></pre></td></tr></table></figure>
+<p>其余全为真</p>
+<h1 id="empty-var-检查变量是否为空"><a href="#empty-var-检查变量是否为空" class="headerlink" title="empty(var) 检查变量是否为空"></a><code>empty(var)</code> 检查变量是否为空</h1><ul>
+<li>var为空，返回<code>TRUE</code>, 为空：<code>&#39;&#39;</code>, <code>0</code>, <code>0.0</code>, <code>&#39;0&#39;</code>, <code>NULL</code>, <code>FALSE</code>, <code>array()</code>, 没有任何属性的对象</li>
+<li>var非空非零，返回<code>FALSE</code></li>
+</ul>
+<h1 id="赋值：传值赋值，引用赋值"><a href="#赋值：传值赋值，引用赋值" class="headerlink" title="赋值：传值赋值，引用赋值"></a>赋值：传值赋值，引用赋值</h1><h2 id="传值赋值"><a href="#传值赋值" class="headerlink" title="传值赋值"></a>传值赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$a = 1;</div><div class="line">$b = $a;</div></pre></td></tr></table></figure>
+<h2 id="引用赋值"><a href="#引用赋值" class="headerlink" title="引用赋值"></a>引用赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$a = 1;</div><div class="line">$b = &amp;$a;</div></pre></td></tr></table></figure>
+<h1 id="unset-销毁变量"><a href="#unset-销毁变量" class="headerlink" title="unset() 销毁变量"></a>unset() 销毁变量</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$a = 1;</div><div class="line">unset($a);</div></pre></td></tr></table></figure>
+<p>引用赋值时，一个变量被销毁，另一个不会被销毁。</p>
+<h1 id="动态变量名"><a href="#动态变量名" class="headerlink" title="动态变量名"></a>动态变量名</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$a = &apos;b&apos;;</div><div class="line">$b = &apos;c&apos;;</div><div class="line">echo $$a;</div><div class="line"></div><div class="line">$c = &apos;d&apos;;</div><div class="line">echo $$$a</div></pre></td></tr></table></figure>
+<h1 id="动态函数名"><a href="#动态函数名" class="headerlink" title="动态函数名"></a>动态函数名</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function b()&#123;</div><div class="line">    echo &apos;b&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$a = &apos;b&apos;;</div><div class="line"></div><div class="line">$a();</div></pre></td></tr></table></figure>
+<h1 id="加法运算"><a href="#加法运算" class="headerlink" title="+ 加法运算"></a><code>+</code> 加法运算</h1><p>int有上限，数太大了，会自动转换为浮点型。</p>
+<h1 id="取模"><a href="#取模" class="headerlink" title="% 取模"></a><code>%</code> 取模</h1><p>结果正负仅取决于被除数。</p>
+<h1 id="一段有趣的代码"><a href="#一段有趣的代码" class="headerlink" title="一段有趣的代码"></a>一段有趣的代码</h1><ul>
+<li>strpos() 区分大小写，返回首次出现的位置或没找到false</li>
+<li>==：只验证值</li>
+<li>===：值和类型都要相等</li>
+</ul>
+<p>code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">$str = &apos;abc&apos;;</div><div class="line">$pos = strpos($str, &apos;a&apos;);</div><div class="line"></div><div class="line">if($pos == false)&#123;</div><div class="line">    echo &quot;not found\n&quot;;</div><div class="line">&#125;else&#123;</div><div class="line">    echo &quot;found\n&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if($pos === false)&#123;</div><div class="line">    echo &quot;not found\n&quot;;</div><div class="line">&#125;else&#123;</div><div class="line">    echo &quot;found\n&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">not found</div><div class="line">found</div></pre></td></tr></table></figure>
+<p>reason:</p>
+<p><code>==</code>时, <code>0</code>会被自动转换为<code>false</code></p>
+<h1 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title=". 字符串拼接"></a><code>.</code> 字符串拼接</h1><h1 id="switch-case"><a href="#switch-case" class="headerlink" title="switch case"></a>switch case</h1><p>case判断条件成立时，后面不会继续判断，所以每块代码结束后，要加<code>break;</code></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
+<li>函数不区分大小写，但仍建议声明时和调用时大小写保持一致</li>
+<li>函数参数如果有默认参数，应写在最后。</li>
+</ul>
+<h1 id="在函数内操作全局变量"><a href="#在函数内操作全局变量" class="headerlink" title="在函数内操作全局变量"></a>在函数内操作全局变量</h1><ol>
+<li><code>&amp;</code></li>
+<li><code>global $a;</code></li>
+<li><code>$GLOBALS[&#39;var_name&#39;]</code> <code>$GLOBALS</code>是系统给的九个超级全局变量之一。</li>
+</ol>
+<h1 id="时间戳函数"><a href="#时间戳函数" class="headerlink" title="时间戳函数"></a>时间戳函数</h1><p>Unix纪元：格林威治时间1970年1月1日00:00:00</p>
+<h2 id="time-返回自从Unix纪元到当前的秒数"><a href="#time-返回自从Unix纪元到当前的秒数" class="headerlink" title="time() 返回自从Unix纪元到当前的秒数"></a><code>time()</code> 返回自从Unix纪元到当前的秒数</h2><p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$next_week = time() + (7 * 24 * 60 * 60);</div><div class="line">echo &apos;now:&apos;.date(&apos;Y-m-d&apos;).”\n”;</div><div class="line">echo &apos;next week:&apos;.date(&apos;Y-m-d&apos;).”\n”;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h2 id="microtime-返回自从Unix时间戳和微秒数。"><a href="#microtime-返回自从Unix时间戳和微秒数。" class="headerlink" title="microtime() 返回自从Unix时间戳和微秒数。"></a><code>microtime()</code> 返回自从Unix时间戳和微秒数。</h2><p>函数原型<code>mixed microtime([bool $get_as_float])</code>，<code>mixed</code>表示返回类型不止一种。</p>
+<p>用于计算脚本的运行时间：在脚本执行处和结尾处都获取一个时间戳，两者相减。</p>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$start = time(true);</div><div class="line">….</div><div class="line">$end = time(true);</div><div class="line">echo $end - $start;</div></pre></td></tr></table></figure>
+<h1 id="date-时间戳格式化"><a href="#date-时间戳格式化" class="headerlink" title="date() 时间戳格式化"></a><code>date()</code> 时间戳格式化</h1><p>格式化后时间与当前时间有时差</p>
+<ol>
+<li>找到<code>php.ini</code></li>
+<li>将时区更改为<code>date.timezone = PRC</code></li>
+</ol>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$lastday = time() - 24 * 3600;</div><div class="line">echo date(&apos;Y年m月d日 H:i:s&apos;, $lastday), &apos;&lt;br&gt;&apos;;</div><div class="line"></div><div class="line">// 不写第二个参数，则默认为time()，当前时间戳</div><div class="line">echo date(&apos;Y-m-d H:i:s&apos;).&apos;&lt;br&gt;&apos;;</div></pre></td></tr></table></figure>
+<h1 id="日期解析函数-给定具体日期时间，转换为时间戳"><a href="#日期解析函数-给定具体日期时间，转换为时间戳" class="headerlink" title="日期解析函数 给定具体日期时间，转换为时间戳"></a>日期解析函数 给定具体日期时间，转换为时间戳</h1><ul>
+<li>mktime() 取得一个日期的Unix时间戳。eg<code>echo mktime(18, 30, 16, 8, 22, 1992);</code>.</li>
+<li>strtotime() 将任何英文文本的日期时间描述解析为Unix时间戳</li>
+<li>checkdate() 验证日期是否合法。eg<code>var_dump(checkdate(2, 30, 2001));</code>.</li>
+</ul>
+<p>strtotime() eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">echo strtotime(&apos;now&apos;);</div><div class="line">echo strtotime(&apos;-1 day&apos;);</div><div class="line">echo strtotime(&apos;+1 week&apos;);</div></pre></td></tr></table></figure>
+<h1 id="定义大段字符串-heredoc-nowdoc"><a href="#定义大段字符串-heredoc-nowdoc" class="headerlink" title="定义大段字符串 heredoc nowdoc"></a>定义大段字符串 heredoc nowdoc</h1><h2 id="heredoc-双引号””"><a href="#heredoc-双引号””" class="headerlink" title="heredoc 双引号””"></a>heredoc 双引号””</h2><p>要求严格：开头前后不能有空格，中间不能插注释，前后保持一致，大小写均可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$str = &lt;&lt;&lt;here</div><div class="line">something1</div><div class="line">something2</div><div class="line">something3</div><div class="line">here;</div><div class="line"></div><div class="line">echo $str;</div></pre></td></tr></table></figure>
+<h2 id="nowdoc-单引号’’"><a href="#nowdoc-单引号’’" class="headerlink" title="nowdoc 单引号’’"></a>nowdoc 单引号’’</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$str = &lt;&lt;&lt;&apos;NOW&apos;</div><div class="line">somethint1</div><div class="line">something2</div><div class="line">something3</div><div class="line">NOW;</div><div class="line"></div><div class="line">echo $str;</div></pre></td></tr></table></figure>
+<h1 id="单双引号"><a href="#单双引号" class="headerlink" title="单双引号"></a>单双引号</h1><ol>
+<li>双引号转义较多，单引号只能转义两个<code>\</code>和<code>&#39;</code></li>
+<li>双引号可以解析变量的值，单引号不解析。</li>
+<li>速度，单引号没有过多的转义和变量解析，速度上比双引号快。字符串、数组的键<code>$arr[&#39;name&#39;]</code>优先使用单引号。</li>
+</ol>
+<h1 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h1><h2 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h2><ul>
+<li>int strlen($str) 计算字符串长度，<code>$str</code>为中文字符时，计算字节数。</li>
+<li>int mb_strlen(sting $str [, string $encoding]) 计算字符串长度，尤其是字符串中包含中文字符的情况，计算的是中文字符数，非字节数。<code>胞嘧啶</code>，返回<code>3</code>。(</li>
+</ul>
+<p>Eg GB2312一个汉字2字节，UTF-8一个汉字3字节)。</p>
+<ul>
+<li><code>mb</code>宽字节，国际编码支持，英文、法文、中文等都支持。</li>
+<li><code>mb_strlen()</code>不是PHP核心函数，需要确保<code>php.ini</code>中<code>extension=php_mbstring.dll</code>一行没有被注释掉。</li>
+</ul>
+<h2 id="字符串位置"><a href="#字符串位置" class="headerlink" title="字符串位置"></a>字符串位置</h2><ul>
+<li>strpos($str, search, [int]) search在$str中从int处开始第一次出现的位置</li>
+<li>stripos($str, search, [int]) search在$str中从int处开始第一次出现的位置，不区分大小写</li>
+<li>strrpos($str, search, [int]) search在$str中从int处开始最后一次出现的位置</li>
+</ul>
+<p>可能返回布尔值FALSE，也可能返回等同于FALSE的非布尔值，因为字符串位置从<code>0</code>开始，而不是<code>1</code>。</p>
+<h2 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">str_replace() 子串替换</div><div class="line">str_ireplace()</div><div class="line">strtr() 批量替换字符串，第二个参数为数组，键为待替换，值为替换后。</div><div class="line">substr_replace()</div></pre></td></tr></table></figure>
+<h2 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">substr()</div><div class="line">strstr()</div><div class="line">stristr()</div><div class="line">strrchr()</div></pre></td></tr></table></figure>
+<h2 id="分割、连接、反转"><a href="#分割、连接、反转" class="headerlink" title="分割、连接、反转"></a>分割、连接、反转</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">str_split()</div><div class="line">explode()</div><div class="line">implode()</div></pre></td></tr></table></figure>
+<h2 id="空白处理"><a href="#空白处理" class="headerlink" title="空白处理"></a>空白处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">string trim()</div><div class="line">string ltrim()</div><div class="line">string rtrim()</div><div class="line">chunk_split()</div><div class="line">str_pad</div></pre></td></tr></table></figure>
+<h2 id="字符串转义函数"><a href="#字符串转义函数" class="headerlink" title="字符串转义函数"></a>字符串转义函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">addslashes(string $str)</div><div class="line">stripslashes(string $str)</div><div class="line">get_magic_quotes_gpc()</div><div class="line">htmlspecialchars()</div><div class="line">htmlspecialchars_decode()</div><div class="line">html_entity_decode()</div><div class="line">htmlentities()</div></pre></td></tr></table></figure>
+<h2 id="字符串比较函数"><a href="#字符串比较函数" class="headerlink" title="字符串比较函数"></a>字符串比较函数</h2><p>int strcmp($str1, $str2)</p>
+<p>strcasecmp() 不区分大小写</p>
+<h1 id="BOM头"><a href="#BOM头" class="headerlink" title="BOM头"></a>BOM头</h1><p>有些utf-8文档前面会加上三个人眼无法看到的字节。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/Programming/" rel="tag"># Programming</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/17/secctfwp-hgame2018-Week2-WriteUp-部分/" rel="next" title="hgame2018 Week2 WriteUp(部分)">
+                <i class="fa fa-chevron-left"></i> hgame2018 Week2 WriteUp(部分)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/SolveMe-WriteUp-Web/" rel="prev" title="SolveMe-WriteUp-Web">
+                SolveMe-WriteUp-Web <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.webp"
+                alt="Cytosine" />
+            
+              <p class="site-author-name" itemprop="name">Cytosine</p>
+              <p class="site-description motion-element" itemprop="description">智能是人类未来之光，安全是人类基本需求</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lovegoods" target="_blank" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/CytosineLovegood/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhuanlan.zhihu.com/dashijian" target="_blank" title="安全大事件">
+                    安全大事件</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                from dalao import
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.uaf.li/" title="Murasaki" target="_blank">Murasaki</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pcat.cnblogs.com/" title="pcat" target="_blank">pcat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flygon.net/" title="飞龙" target="_blank">飞龙</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ju5tw4nty0u.top/" title="ju5tw4nty0u" target="_blank">ju5tw4nty0u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://webdog.ml/" title="grt1st" target="_blank">grt1st</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.k0rz3n.com/" title="K0rz3n" target="_blank">K0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lovei.org/" title="腹黑" target="_blank">腹黑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sec2hack.com/" title="Wfox" target="_blank">Wfox</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codemonster.cn/" title="Xishir" target="_blank">Xishir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eternalsakura13.com/" title="Sakura" target="_blank">Sakura</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://math1as.com/" title="Math1as" target="_blank">Math1as</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.thecosmos.cn/" title="Cosmos" target="_blank">Cosmos</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/whklhhhh" title="奈沙夜影" target="_blank">奈沙夜影</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/PeterZ1997/" title="PeterZ" target="_blank">PeterZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://white.xmutsec.com" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cismon.net/" title="CismonX" target="_blank">CismonX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lsafe.org/" title="lixin" target="_blank">lixin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wzsite.cn/" title="Wz" target="_blank">Wz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.blogsir.com.cn/" title="江sir" target="_blank">江sir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greyd0g.github.io/" title="greyd0g" target="_blank">greyd0g</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://brucetg.github.io/" title="Brucetg" target="_blank">Brucetg</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.get1t.cn/" title="FraMeQ" target="_blank">FraMeQ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.smallflower.xin/" title="小花" target="_blank">小花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://iosmosis.github.io/" title="iosmosis" target="_blank">iosmosis</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://processor.pub/" title="Processor" target="_blank">Processor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.virzz.com/" title="Virink" target="_blank">Virink</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lmxspace.com/" title="l1nk3r" target="_blank">l1nk3r</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#isset"><span class="nav-number">1.</span> <span class="nav-text">isset()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gettype"><span class="nav-number">2.</span> <span class="nav-text">gettype()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#is-int-is-float-…"><span class="nav-number">3.</span> <span class="nav-text">is_int(), is_float() …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试打印变量"><span class="nav-number">4.</span> <span class="nav-text">调试打印变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串转换为数字"><span class="nav-number">5.</span> <span class="nav-text">字符串转换为数字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数字-字符串-数组转换为数组"><span class="nav-number">6.</span> <span class="nav-text">数字/字符串/数组转换为数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#empty-var-检查变量是否为空"><span class="nav-number">7.</span> <span class="nav-text">empty(var) 检查变量是否为空</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#赋值：传值赋值，引用赋值"><span class="nav-number">8.</span> <span class="nav-text">赋值：传值赋值，引用赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#传值赋值"><span class="nav-number">8.1.</span> <span class="nav-text">传值赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用赋值"><span class="nav-number">8.2.</span> <span class="nav-text">引用赋值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unset-销毁变量"><span class="nav-number">9.</span> <span class="nav-text">unset() 销毁变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态变量名"><span class="nav-number">10.</span> <span class="nav-text">动态变量名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态函数名"><span class="nav-number">11.</span> <span class="nav-text">动态函数名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加法运算"><span class="nav-number">12.</span> <span class="nav-text">+ 加法运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#取模"><span class="nav-number">13.</span> <span class="nav-text">% 取模</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一段有趣的代码"><span class="nav-number">14.</span> <span class="nav-text">一段有趣的代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串拼接"><span class="nav-number">15.</span> <span class="nav-text">. 字符串拼接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#switch-case"><span class="nav-number">16.</span> <span class="nav-text">switch case</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">17.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在函数内操作全局变量"><span class="nav-number">18.</span> <span class="nav-text">在函数内操作全局变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间戳函数"><span class="nav-number">19.</span> <span class="nav-text">时间戳函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#time-返回自从Unix纪元到当前的秒数"><span class="nav-number">19.1.</span> <span class="nav-text">time() 返回自从Unix纪元到当前的秒数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#microtime-返回自从Unix时间戳和微秒数。"><span class="nav-number">19.2.</span> <span class="nav-text">microtime() 返回自从Unix时间戳和微秒数。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#date-时间戳格式化"><span class="nav-number">20.</span> <span class="nav-text">date() 时间戳格式化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期解析函数-给定具体日期时间，转换为时间戳"><span class="nav-number">21.</span> <span class="nav-text">日期解析函数 给定具体日期时间，转换为时间戳</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义大段字符串-heredoc-nowdoc"><span class="nav-number">22.</span> <span class="nav-text">定义大段字符串 heredoc nowdoc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#heredoc-双引号””"><span class="nav-number">22.1.</span> <span class="nav-text">heredoc 双引号””</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nowdoc-单引号’’"><span class="nav-number">22.2.</span> <span class="nav-text">nowdoc 单引号’’</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单双引号"><span class="nav-number">23.</span> <span class="nav-text">单双引号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串函数"><span class="nav-number">24.</span> <span class="nav-text">字符串函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串长度"><span class="nav-number">24.1.</span> <span class="nav-text">字符串长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串位置"><span class="nav-number">24.2.</span> <span class="nav-text">字符串位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串替换"><span class="nav-number">24.3.</span> <span class="nav-text">字符串替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子串"><span class="nav-number">24.4.</span> <span class="nav-text">子串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割、连接、反转"><span class="nav-number">24.5.</span> <span class="nav-text">分割、连接、反转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空白处理"><span class="nav-number">24.6.</span> <span class="nav-text">空白处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串转义函数"><span class="nav-number">24.7.</span> <span class="nav-text">字符串转义函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串比较函数"><span class="nav-number">24.8.</span> <span class="nav-text">字符串比较函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM头"><span class="nav-number">25.</span> <span class="nav-text">BOM头</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cytosine</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
