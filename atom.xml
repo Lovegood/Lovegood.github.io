@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-08-08T14:16:26.335Z</updated>
+  <updated>2018-08-09T14:25:48.406Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac下快速切换php版本</title>
+    <link href="https://lovegood.github.io/2018/08/09/Installation-mac-php-switcher/"/>
+    <id>https://lovegood.github.io/2018/08/09/Installation-mac-php-switcher/</id>
+    <published>2018-08-09T14:24:51.000Z</published>
+    <updated>2018-08-09T14:25:48.406Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/philcook/brew-php-switcher&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Installation" scheme="https://lovegood.github.io/tags/Installation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac设置终端过代理</title>
+    <link href="https://lovegood.github.io/2018/08/09/Installation-mac-terminal-proxy/"/>
+    <id>https://lovegood.github.io/2018/08/09/Installation-mac-terminal-proxy/</id>
+    <published>2018-08-09T14:21:35.000Z</published>
+    <updated>2018-08-09T14:23:39.609Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;~/.zshrc&lt;/code&gt;或&lt;code&gt;~/.bashrc&lt;/code&gt;中加入：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Installation" scheme="https://lovegood.github.io/tags/Installation/"/>
+    
+  </entry>
   
   <entry>
     <title>文件上传简要笔记</title>
@@ -64,9 +113,9 @@
     </summary>
     
     
-      <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
-    
       <category term="PDF" scheme="https://lovegood.github.io/tags/PDF/"/>
+    
+      <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
     
   </entry>
   
@@ -99,9 +148,9 @@
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
   </entry>
   
@@ -162,9 +211,9 @@
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
       <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
     
@@ -405,9 +454,9 @@
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
   </entry>
   
