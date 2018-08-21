@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Web,PHP,Sec,Translation," />
+  <meta name="keywords" content="WriteUp,Misc,CTF,Reverse," />
 
 
 
@@ -81,18 +81,23 @@
 
 
 
-<meta name="description" content="原文 前言有幸参加西电的校内赛，从web第一题就不会，Google了一下题目源码，发现此文，看了一遍，还挺好的，故此翻译，与大家分享。 原文前言Securify会不时发布Spot The Bug challenge，以帮助人们提高漏洞挖掘技巧。 当然，这很有趣。 在这篇博文中，你可以找到为即将到来的挑战赛的热身题的writeup！ 该代码源于野外遇到的一个漏洞。(The code stems fr">
-<meta name="keywords" content="Web,PHP,Sec,Translation">
+<meta name="description" content="Misc 签到 flag{hello_wangdingbei} Misc clip010editor打开，搜IHDR有俩png文件，提取出来补好文件头 观察到最上面是明显的flag的样子，但是缺少下半部分 修改高度什么的貌似不好使，再仔细看，似乎是被拆分后重新拼的 于是画图打开（PS和美图秀秀都打不开），按着水平方向的边界拆成一个个单个的，然后再拼一起 拼完就能读出flag了 flag{0b008">
+<meta name="keywords" content="WriteUp,Misc,CTF,Reverse">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[翻译] The Bug challenge2018 warm-up wp">
-<meta property="og:url" content="https://lovegood.github.io/2018/05/19/translate-Spot-The-Bug-challenge2018-warm-up-wp/index.html">
+<meta property="og:title" content="2018网鼎杯部分WriteUp">
+<meta property="og:url" content="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/index.html">
 <meta property="og:site_name" content="Cytosineの有被小窝~">
-<meta property="og:description" content="原文 前言有幸参加西电的校内赛，从web第一题就不会，Google了一下题目源码，发现此文，看了一遍，还挺好的，故此翻译，与大家分享。 原文前言Securify会不时发布Spot The Bug challenge，以帮助人们提高漏洞挖掘技巧。 当然，这很有趣。 在这篇博文中，你可以找到为即将到来的挑战赛的热身题的writeup！ 该代码源于野外遇到的一个漏洞。(The code stems fr">
+<meta property="og:description" content="Misc 签到 flag{hello_wangdingbei} Misc clip010editor打开，搜IHDR有俩png文件，提取出来补好文件头 观察到最上面是明显的flag的样子，但是缺少下半部分 修改高度什么的貌似不好使，再仔细看，似乎是被拆分后重新拼的 于是画图打开（PS和美图秀秀都打不开），按着水平方向的边界拆成一个个单个的，然后再拼一起 拼完就能读出flag了 flag{0b008">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T06:42:47.962Z">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/Misc-checkin.jpg">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/Misc-minified.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/Reverse-advance.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/Reverse-blend.png">
+<meta property="og:updated_time" content="2018-08-21T06:10:00.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[翻译] The Bug challenge2018 warm-up wp">
-<meta name="twitter:description" content="原文 前言有幸参加西电的校内赛，从web第一题就不会，Google了一下题目源码，发现此文，看了一遍，还挺好的，故此翻译，与大家分享。 原文前言Securify会不时发布Spot The Bug challenge，以帮助人们提高漏洞挖掘技巧。 当然，这很有趣。 在这篇博文中，你可以找到为即将到来的挑战赛的热身题的writeup！ 该代码源于野外遇到的一个漏洞。(The code stems fr">
+<meta name="twitter:title" content="2018网鼎杯部分WriteUp">
+<meta name="twitter:description" content="Misc 签到 flag{hello_wangdingbei} Misc clip010editor打开，搜IHDR有俩png文件，提取出来补好文件头 观察到最上面是明显的flag的样子，但是缺少下半部分 修改高度什么的貌似不好使，再仔细看，似乎是被拆分后重新拼的 于是画图打开（PS和美图秀秀都打不开），按着水平方向的边界拆成一个个单个的，然后再拼一起 拼完就能读出flag了 flag{0b008">
+<meta name="twitter:image" content="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/Misc-checkin.jpg">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://lovegood.github.io/2018/05/19/translate-Spot-The-Bug-challenge2018-warm-up-wp/"/>
+  <link rel="canonical" href="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/"/>
 
 
 
 
 
-  <title>[翻译] The Bug challenge2018 warm-up wp | Cytosineの有被小窝~</title>
+  <title>2018网鼎杯部分WriteUp | Cytosineの有被小窝~</title>
   
 
 
@@ -239,7 +244,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2018/05/19/translate-Spot-The-Bug-challenge2018-warm-up-wp/">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2018/08/19/writeup-2018wangdingbei/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cytosine">
@@ -256,7 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[翻译] The Bug challenge2018 warm-up wp</h1>
+          <h1 class="post-title" itemprop="name headline">2018网鼎杯部分WriteUp</h1>
         
 
         <div class="post-meta">
@@ -268,8 +273,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T20:09:38+08:00">
-                2018-05-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T14:45:35+08:00">
+                2018-08-19
               </time>
             
 
@@ -306,37 +311,46 @@
       
 
       
-        <p><a href="https://www.securify.nl/blog/SFY20180101/spot-the-bug-challenge-2018-warm-up.html" target="_blank" rel="external">原文</a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有幸参加西电的校内赛，从web第一题就不会，Google了一下题目源码，发现此文，看了一遍，还挺好的，故此翻译，与大家分享。</p>
-<h1 id="原文前言"><a href="#原文前言" class="headerlink" title="原文前言"></a>原文前言</h1><p>Securify会不时发布Spot The Bug challenge，以帮助人们提高漏洞挖掘技巧。 当然，这很有趣。 在这篇博文中，你可以找到为即将到来的挑战赛的热身题的writeup！ 该代码源于野外遇到的一个漏洞。(The code stems from a vulnerability that was encountered in the wild. 不太会翻orz)</p>
-<p>该代码包含绕过HMAC检查的漏洞。请注意，这是一个热身挑战，不会给解决者提供奖金（之后的题目都会给予奖金）。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>此脚本为用户提供的主机执行DNS查找。它使用HMAC来确保从可信来源请求它。很好的实现，真的吗？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">highlight_file(__FILE__);</div><div class="line">if(empty($_POST[&apos;hmac&apos;]) || empty($_POST[&apos;host&apos;]))&#123;</div><div class="line">    header(&apos;HTTP/1.0 400 Bad Request&apos;);</div><div class="line">    exit;</div><div class="line">&#125;</div><div class="line">$secret = getenv(&quot;SECRET&quot;);</div><div class="line">if(isset($_POST[&apos;nonce&apos;]))</div><div class="line">    $secret = hash_hmac(&apos;sha256&apos;,$_POST[&apos;nonce&apos;],$secret);</div><div class="line">$hmac = hash_hmac(&apos;sha256&apos;,$_POST[&apos;host&apos;],$secret);</div><div class="line">if($hmac !== $_POST[&apos;hmac&apos;])&#123;</div><div class="line">    header(&apos;HTTP/1.0 403 Forbidden&apos;);</div><div class="line">    exit;</div><div class="line">&#125;</div><div class="line">echo exec(&quot;host &quot;.$_POST[&apos;host&apos;]);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<h1 id="漏洞细节"><a href="#漏洞细节" class="headerlink" title="漏洞细节"></a>漏洞细节</h1><p>让我们来看看代码。</p>
-<ul>
-<li>第三到第六行，要求用户提交一个HMAC和主机名<code>host</code>。</li>
-<li>一个密钥从环境变量中取得。</li>
-<li>如果用户设置了<code>noce</code>，密钥被更新为<code>secret = HMAC(SHA256, nonce, secret)</code>。</li>
-<li>用<code>HMAC = HMAC(SHA256, hostname, secret)</code>生成一个HMAC。</li>
-<li>生成的HMAC与提供的HMAC比较。</li>
-</ul>
-<p>让我们花点时间记住来自加密世界的两句名言：“复杂性是安全性的最大敌人”和“永远不要推出自己的密码”。有了这个，我们可以很快看到在这个设置中出了什么问题。</p>
-<p>如果程序员跳过步骤三，仅仅使用提供的主机名和密钥生成一个HMAC，这不会有问题。在密码学中，一个<code>nonce</code>通常被用于避免消息重复或生成唯一密钥。然而，我们看这个自定义实现，密钥用<code>nonce</code>的HMAC更新了。理论上这不会被直接攻击利用。但在复杂的PHP世界中，这导致了一个严重的安全漏洞。</p>
-<p>为了正确认识漏洞，我们可以看一下，当传入一个数组作为message被提供时，<code>hash_hmac</code>函数的的行为。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$hmac = hash_hmac(&apos;sha256&apos;, Array(), &quot;SecretKey&quot;);</div><div class="line">echo $hmac == false;</div></pre></td></tr></table></figure>
+        <h1 id="Misc-签到"><a href="#Misc-签到" class="headerlink" title="Misc 签到"></a>Misc 签到</h1><p><img src="Misc-checkin.jpg" alt=""></p>
+<p><code>flag{hello_wangdingbei}</code></p>
+<h1 id="Misc-clip"><a href="#Misc-clip" class="headerlink" title="Misc clip"></a>Misc clip</h1><p>010editor打开，搜<code>IHDR</code>有俩png文件，提取出来补好文件头</p>
+<p>观察到最上面是明显的flag的样子，但是缺少下半部分</p>
+<p>修改高度什么的貌似不好使，再仔细看，似乎是被拆分后重新拼的</p>
+<p>于是画图打开（PS和美图秀秀都打不开），按着水平方向的边界拆成一个个单个的，然后再拼一起</p>
+<p>拼完就能读出flag了</p>
+<p><code>flag{0b008070-eb72-4b99-abed-092075d72a40}</code></p>
+<h1 id="Misc-minified"><a href="#Misc-minified" class="headerlink" title="Misc minified"></a>Misc minified</h1><p>图片隐写，stego打开</p>
+<p>red0通道全0，所以所有0通道都试一下吧</p>
+<p>最后发现：</p>
+<p>alpha0另存为一张图片，green0另存为一张图片</p>
+<p>然后stego的combiner:</p>
+<p><img src="Misc-minified.png" alt=""></p>
+<p><code>flag{7bb6db9f-d2eb-4e69-8dee-0002ce1e07f9}</code></p>
+<h1 id="Reverse-Beijing"><a href="#Reverse-Beijing" class="headerlink" title="Reverse Beijing"></a>Reverse Beijing</h1><p>file一下，32位ELF，运行一下，输出一堆乱码</p>
+<p>IDA打开，找到main函数，F5</p>
+<p>发现21次重复过程：</p>
+<p>每次传进去一个值到函数里，然后%c打印出来</p>
+<p>点进函数，一堆case然后异或<code>^</code></p>
+<p>然后就琢磨呗</p>
+<p>最后发现，是取每次case的、a^b的、b地址处的值，十六进制解ASCII码，得到flag（部分的case还要动态调orz</p>
+<p>最后 <code>flag{amazing_beijing}</code></p>
+<h1 id="Reverse-advance"><a href="#Reverse-advance" class="headerlink" title="Reverse advance"></a>Reverse advance</h1><p>原题</p>
+<p>wp</p>
+<p><a href="https://github.com/ctfs/write-ups-2016/tree/master/csaw-ctf-2016-quals/reverse/deedeedee-150" target="_blank" rel="external">https://github.com/ctfs/write-ups-2016/tree/master/csaw-ctf-2016-quals/reverse/deedeedee-150</a></p>
+<p>改个文件名就能直接跑= =</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">from itertools import cycle</div><div class="line">import subprocess</div><div class="line"></div><div class="line">def xor(s1, s2, enc_add):</div><div class="line">    return &apos;&apos;.join(chr(ord(a) ^ ord(b) ^ enc_add) for a,b in zip(cycle(s1), s2))</div><div class="line"></div><div class="line">keys = [str(x)*3 for x in range(1, 500)]</div><div class="line"></div><div class="line"># pull the encoded stuff out of the program&apos;s output</div><div class="line">out, _ = subprocess.Popen([&apos;./src&apos;], stdout=subprocess.PIPE).communicate()</div><div class="line">hex_enc = out.split(&apos;\n&apos;)[0].split()[-1]</div><div class="line">enc = hex_enc.decode(&apos;hex&apos;)</div><div class="line"></div><div class="line">for key in keys:</div><div class="line">    enc_add = len(enc) &amp; 0xFF;</div><div class="line">    enc = xor(key, enc, enc_add)</div><div class="line"></div><div class="line">print enc</div></pre></td></tr></table></figure>
+<p><img src="Reverse-advance.png" alt=""></p>
+<p><code>flag{d_with_a_template_phew}</code></p>
+<h1 id="Reverse-blend"><a href="#Reverse-blend" class="headerlink" title="Reverse blend"></a>Reverse blend</h1><p>原题= =</p>
+<p>照着wp怼</p>
+<p><a href="https://github.com/TechSecCTF/writeups/blob/master/CSAWQuals2017/realism/README.md" target="_blank" rel="external">https://github.com/TechSecCTF/writeups/blob/master/CSAWQuals2017/realism/README.md</a></p>
+<p>script:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">import binascii</div><div class="line">import struct</div><div class="line"></div><div class="line"># Initial value of xmm5</div><div class="line">xmm5_start = binascii.unhexlify(&apos;220f02c883fbe083c0200f10cd0013b8&apos;)</div><div class="line"></div><div class="line"># The data stored at 0x7DA8 and compared against esi</div><div class="line">esi_consts = [</div><div class="line">                &apos;04031103&apos;,</div><div class="line">                &apos;cd02d902&apos;,</div><div class="line">                &apos;db02d402&apos;,</div><div class="line">                &apos;e202c402&apos;,</div><div class="line">                &apos;e202ce02&apos;,</div><div class="line">                &apos;ed02d802&apos;,</div><div class="line">                &apos;e802dc02&apos;,</div><div class="line">                &apos;f602dd02&apos;,</div><div class="line">              ]</div><div class="line">esi_consts = [struct.unpack(&apos;&lt;I&apos;, binascii.unhexlify(c))[0] for c in esi_consts]</div><div class="line">esi_consts = esi_consts[::-1]</div><div class="line"></div><div class="line"># Our 16 variables (&apos;a&apos; through &apos;p&apos;)</div><div class="line">variables = [chr(ord(&apos;a&apos;) + i) for i in range(16)]</div><div class="line"></div><div class="line">def esi_to_xmm5(esi):</div><div class="line">  s1 = esi % (1 &lt;&lt; 0x10)</div><div class="line">  s2 = (esi - s1) &gt;&gt; (0x10)</div><div class="line">  w = struct.pack(&apos;&gt;Q&apos;, s1) + struct.pack(&apos;&gt;Q&apos;, s2)</div><div class="line">  return w</div><div class="line"></div><div class="line">def print_constraints():</div><div class="line">  for i in range(8):</div><div class="line">    prev_esi = esi_consts[i-1]</div><div class="line">    xmm5 = esi_to_xmm5(prev_esi)</div><div class="line">    if i == 0:</div><div class="line">      xmm5 = xmm5_start</div><div class="line"></div><div class="line">    esi = esi_consts[i]</div><div class="line">    s1 = esi % (1 &lt;&lt; 0x10)</div><div class="line">    s2 = (esi - s1) &gt;&gt; (0x10)</div><div class="line"></div><div class="line">    # sum of absolute differences between xmm5 and our flag</div><div class="line">    s = &apos;&apos;</div><div class="line">    for j in range(8):</div><div class="line">      if j == 7-i:</div><div class="line">        # This is the masking step</div><div class="line">        s += &apos;abs(0-&apos; + str(ord(xmm5[j])) + &apos;) + &apos;</div><div class="line">        continue</div><div class="line">      s += &apos;abs(&apos; + variables[j] + &apos;-&apos; + str(ord(xmm5[j])) + &apos;) + &apos;</div><div class="line">    s += &apos;0 == &#123;&#125;, &apos;.format(s1)</div><div class="line">    print(s)</div><div class="line"></div><div class="line">    s = &apos;&apos;</div><div class="line">    for j in range(8,16):</div><div class="line">      if j-8 == 7-i:</div><div class="line">        # This is the masking step</div><div class="line">        s += &apos;abs(0-&apos; + str(ord(xmm5[j])) + &apos;) + &apos;</div><div class="line">        continue</div><div class="line">      s += &apos;abs(&apos; + variables[j] + &apos;-&apos; + str(ord(xmm5[j])) + &apos;) + &apos;</div><div class="line">    s += &apos;0 == &#123;&#125;, &apos;.format(s2)</div><div class="line">    print(s)</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">  print_constraints()</div></pre></td></tr></table></figure>
 <p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ php foo.php</div><div class="line">Warning: hash_hmac() expects parameter 2 to be string, array given in /Users/stb/stb-test.php on line 3</div><div class="line">1</div></pre></td></tr></table></figure>
-<p>我们可以看到，<code>hash_hmac</code>仅仅触发了一个警告并返回<code>false</code>。这可以通过提供一个数组作为主机名在原始代码中触发。但是，这不会绕过HMAC检查，因为使用了强比较（!==）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if ($hmac !== $_POST[&apos;hmac&apos;]) &#123;</div></pre></td></tr></table></figure>
-<p>因为强比较会比较数据类型，布尔值<code>false</code>不能和字符串<code>&quot;false&quot;</code>相等（但在弱比较中两者会被判定为相等）。并且，由于<code>$_POST[&#39;hmac&#39;]</code>不能为布尔值<code>false</code>，所以这条路行不通。</p>
-<p>（好在，）我们的程序员决定增加额外的复杂性，无论出于何种原因，他在代码中添加了一个<code>nonce</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if (isset($_POST[&apos;nonce&apos;]))</div><div class="line">   $secret = hash_hmac(&apos;sha256&apos;, $_POST[&apos;nonce&apos;], $secret);</div></pre></td></tr></table></figure>
-<p>当我们为<code>nonce</code>传入一个数组时会发生什么？对的，<code>hash_hmac</code>会返回一个布尔值<code>false</code>。然后，新的HMAC就会以<code>HMAC = hash_hmac(SHA256, $_POST[&#39;host&#39;], false)</code>的形式生成！攻击者可以为任何信息生成一个合法的HMAC。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hash_hmac(&apos;sha256&apos;, &quot;securify.nl&quot;, false) = c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5</div></pre></td></tr></table></figure>
-<p>这个漏洞的exp url看起来类似：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">?nonce[]=&amp;hostname=securify.nl&amp;hmac=c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5</div></pre></td></tr></table></figure>
-<p>当然，主机名参数可以执行代码，所以从这里开始游戏就结束了。</p>
-<h1 id="Spot-The-Bug-2018"><a href="#Spot-The-Bug-2018" class="headerlink" title="Spot The Bug 2018"></a>Spot The Bug 2018</h1><p>我们预计今年第二季度开始时会发布Spot the Bug挑战。如果你喜欢这个挑战，你可以通过发送邮件到stb@securify.nl来订阅，我们会让你保持最新状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">abs(a-34) + abs(b-15) + abs(c-2) + abs(d-200) + abs(e-131) + abs(f-251) + abs(g-224) + abs(0-131) + 0 == 758,</div><div class="line">abs(i-192) + abs(j-32) + abs(k-15) + abs(l-16) + abs(m-205) + abs(n-0) + abs(o-19) + abs(0-184) + 0 == 733,</div><div class="line">abs(a-0) + abs(b-0) + abs(c-0) + abs(d-0) + abs(e-0) + abs(f-0) + abs(0-2) + abs(h-246) + 0 == 744,</div><div class="line">abs(i-0) + abs(j-0) + abs(k-0) + abs(l-0) + abs(m-0) + abs(n-0) + abs(0-2) + abs(p-221) + 0 == 732,</div><div class="line">abs(a-0) + abs(b-0) + abs(c-0) + abs(d-0) + abs(e-0) + abs(0-0) + abs(g-2) + abs(h-232) + 0 == 749,</div><div class="line">abs(i-0) + abs(j-0) + abs(k-0) + abs(l-0) + abs(m-0) + abs(0-0) + abs(o-2) + abs(p-220) + 0 == 728,</div><div class="line">abs(a-0) + abs(b-0) + abs(c-0) + abs(d-0) + abs(0-0) + abs(f-0) + abs(g-2) + abs(h-237) + 0 == 738,</div><div class="line">abs(i-0) + abs(j-0) + abs(k-0) + abs(l-0) + abs(0-0) + abs(n-0) + abs(o-2) + abs(p-216) + 0 == 718,</div><div class="line">abs(a-0) + abs(b-0) + abs(c-0) + abs(0-0) + abs(e-0) + abs(f-0) + abs(g-2) + abs(h-226) + 0 == 738,</div><div class="line">abs(i-0) + abs(j-0) + abs(k-0) + abs(0-0) + abs(m-0) + abs(n-0) + abs(o-2) + abs(p-206) + 0 == 708,</div><div class="line">abs(a-0) + abs(b-0) + abs(0-0) + abs(d-0) + abs(e-0) + abs(f-0) + abs(g-2) + abs(h-226) + 0 == 731,</div><div class="line">abs(i-0) + abs(j-0) + abs(0-0) + abs(l-0) + abs(m-0) + abs(n-0) + abs(o-2) + abs(p-196) + 0 == 724,</div><div class="line">abs(a-0) + abs(0-0) + abs(c-0) + abs(d-0) + abs(e-0) + abs(f-0) + abs(g-2) + abs(h-219) + 0 == 717,</div><div class="line">abs(i-0) + abs(0-0) + abs(k-0) + abs(l-0) + abs(m-0) + abs(n-0) + abs(o-2) + abs(p-212) + 0 == 729,</div><div class="line">abs(0-0) + abs(b-0) + abs(c-0) + abs(d-0) + abs(e-0) + abs(f-0) + abs(g-2) + abs(h-205) + 0 == 772,</div><div class="line">abs(0-0) + abs(j-0) + abs(k-0) + abs(l-0) + abs(m-0) + abs(n-0) + abs(o-2) + abs(p-217) + 0 == 785,</div></pre></td></tr></table></figure>
+<p>然后输出的部分代入到下面s.add()的部分，就解出来了，然后拼一下，代入到qemu中，正确</p>
+<p><img src="Reverse-blend.png" alt=""></p>
+<p>最终flag <code>flag{mbr_is_funny__eh}</code></p>
 
       
     </div>
@@ -383,13 +397,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Web/" rel="tag"># Web</a>
+            <a href="/tags/WriteUp/" rel="tag"># WriteUp</a>
           
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
+            <a href="/tags/Misc/" rel="tag"># Misc</a>
           
-            <a href="/tags/Sec/" rel="tag"># Sec</a>
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
           
-            <a href="/tags/Translation/" rel="tag"># Translation</a>
+            <a href="/tags/Reverse/" rel="tag"># Reverse</a>
           
         </div>
       
@@ -402,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/22/SolveMe-WriteUp-Web/" rel="next" title="SolveMe-WriteUp-Web">
-                <i class="fa fa-chevron-left"></i> SolveMe-WriteUp-Web
+              <a href="/2018/08/19/writeup-ichunqiu-baidubei-201702-web/" rel="next" title="i春秋CTF大本营 百度杯2017年2月 Web WriteUp">
+                <i class="fa fa-chevron-left"></i> i春秋CTF大本营 百度杯2017年2月 Web WriteUp
               </a>
             
           </div>
@@ -411,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/21/MiniLCTF-2018-WriteUp/" rel="prev" title="MiniLCTF 2018 WriteUp">
-                MiniLCTF 2018 WriteUp <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -689,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原文前言"><span class="nav-number">2.</span> <span class="nav-text">原文前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#漏洞细节"><span class="nav-number">4.</span> <span class="nav-text">漏洞细节</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spot-The-Bug-2018"><span class="nav-number">5.</span> <span class="nav-text">Spot The Bug 2018</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Misc-签到"><span class="nav-number">1.</span> <span class="nav-text">Misc 签到</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Misc-clip"><span class="nav-number">2.</span> <span class="nav-text">Misc clip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Misc-minified"><span class="nav-number">3.</span> <span class="nav-text">Misc minified</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reverse-Beijing"><span class="nav-number">4.</span> <span class="nav-text">Reverse Beijing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reverse-advance"><span class="nav-number">5.</span> <span class="nav-text">Reverse advance</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reverse-blend"><span class="nav-number">6.</span> <span class="nav-text">Reverse blend</span></a></li></ol></div>
             
 
           </div>
