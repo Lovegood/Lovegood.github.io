@@ -155,9 +155,9 @@
     </summary>
     
     
-      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
-    
       <category term="Pwn" scheme="https://lovegood.github.io/tags/Pwn/"/>
+    
+      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
     
       <category term="Stackoverflow" scheme="https://lovegood.github.io/tags/Stackoverflow/"/>
     
@@ -234,9 +234,9 @@
     
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
-      <category term="Upload" scheme="https://lovegood.github.io/tags/Upload/"/>
-    
       <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
+    
+      <category term="Upload" scheme="https://lovegood.github.io/tags/Upload/"/>
     
   </entry>
   
@@ -324,9 +324,9 @@
     
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
-      <category term="AWD" scheme="https://lovegood.github.io/tags/AWD/"/>
-    
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
+    
+      <category term="AWD" scheme="https://lovegood.github.io/tags/AWD/"/>
     
   </entry>
   
