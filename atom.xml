@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-08-21T14:28:29.233Z</updated>
+  <updated>2018-12-11T04:11:34.176Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Ubuntu 18.04，WiFi没有适配器的解决方法</title>
+    <link href="https://lovegood.github.io/2018/12/11/installation-ubuntu18-04-no-wifi-Adapter/"/>
+    <id>https://lovegood.github.io/2018/12/11/installation-ubuntu18-04-no-wifi-Adapter/</id>
+    <published>2018-12-11T02:52:15.000Z</published>
+    <updated>2018-12-11T04:11:34.176Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;网上搜的解决方案都不能完全解决问题，参考了好几篇文章，然后自己琢磨了下，写出来的，如果有问题，欢迎联系窝。&lt;/p&gt;
+&lt;p&gt;直接安装驱动会提示缺少依赖，想要apt-get
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Installation" scheme="https://lovegood.github.io/tags/Installation/"/>
+    
+      <category term="Ubuntu18.04" scheme="https://lovegood.github.io/tags/Ubuntu18-04/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>writeup-2018Hackergame</title>
+    <link href="https://lovegood.github.io/2018/10/09/writeup-2018Hackergame/"/>
+    <id>https://lovegood.github.io/2018/10/09/writeup-2018Hackergame/</id>
+    <published>2018-10-09T04:20:58.000Z</published>
+    <updated>2018-10-09T05:23:16.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;签到题&quot;&gt;&lt;a href=&quot;#签到题&quot; class=&quot;headerlink&quot; title=&quot;签到题&quot;&gt;&lt;/a&gt;签到题&lt;/h1&gt;&lt;p&gt;审查元素，修改长度限制，输入’hackergame2018’，得到flag&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;0.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>2018网鼎杯部分WriteUp</title>
     <link href="https://lovegood.github.io/2018/08/21/writeup-2018wangdingbei/"/>
     <id>https://lovegood.github.io/2018/08/21/writeup-2018wangdingbei/</id>
     <published>2018-08-21T06:45:35.000Z</published>
-    <updated>2018-08-21T14:28:29.233Z</updated>
+    <updated>2018-08-21T14:28:29.000Z</updated>
     
     <summary type="html">
     
@@ -51,7 +101,7 @@
     <link href="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/"/>
     <id>https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/</id>
     <published>2018-08-19T06:45:35.000Z</published>
-    <updated>2018-08-19T15:53:10.344Z</updated>
+    <updated>2018-08-19T15:53:10.000Z</updated>
     
     <summary type="html">
     
@@ -82,10 +132,10 @@
   
   <entry>
     <title>Python-NumPy-Usage</title>
-    <link href="https://lovegood.github.io/2018/08/16/python-numpy-usage/"/>
-    <id>https://lovegood.github.io/2018/08/16/python-numpy-usage/</id>
+    <link href="https://lovegood.github.io/2018/08/16/note-python-numpy-usage/"/>
+    <id>https://lovegood.github.io/2018/08/16/note-python-numpy-usage/</id>
     <published>2018-08-16T09:54:00.000Z</published>
-    <updated>2018-08-16T09:58:20.452Z</updated>
+    <updated>2018-08-16T09:58:20.000Z</updated>
     
     <summary type="html">
     
@@ -107,11 +157,11 @@
   </entry>
   
   <entry>
-    <title>2$——printf中的骚操作</title>
+    <title>2$——printf中的语法糖</title>
     <link href="https://lovegood.github.io/2018/08/16/c-printf-syntactic-sugar/"/>
     <id>https://lovegood.github.io/2018/08/16/c-printf-syntactic-sugar/</id>
     <published>2018-08-16T02:00:11.000Z</published>
-    <updated>2018-08-16T10:05:17.334Z</updated>
+    <updated>2018-10-06T13:29:57.000Z</updated>
     
     <summary type="html">
     
@@ -140,7 +190,7 @@
     <link href="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/"/>
     <id>https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/</id>
     <published>2018-08-14T04:48:03.000Z</published>
-    <updated>2018-08-14T09:20:52.187Z</updated>
+    <updated>2018-08-14T09:20:52.000Z</updated>
     
     <summary type="html">
     
@@ -168,7 +218,7 @@
     <link href="https://lovegood.github.io/2018/08/09/Installation-mac-php-switcher/"/>
     <id>https://lovegood.github.io/2018/08/09/Installation-mac-php-switcher/</id>
     <published>2018-08-09T14:24:51.000Z</published>
-    <updated>2018-08-09T14:25:48.406Z</updated>
+    <updated>2018-08-09T14:25:48.000Z</updated>
     
     <summary type="html">
     
@@ -192,7 +242,7 @@
     <link href="https://lovegood.github.io/2018/08/09/Installation-mac-terminal-proxy/"/>
     <id>https://lovegood.github.io/2018/08/09/Installation-mac-terminal-proxy/</id>
     <published>2018-08-09T14:21:35.000Z</published>
-    <updated>2018-08-09T14:23:39.609Z</updated>
+    <updated>2018-08-09T14:23:39.000Z</updated>
     
     <summary type="html">
     
@@ -217,7 +267,7 @@
     <link href="https://lovegood.github.io/2018/08/08/note-upload-ichunqiu/"/>
     <id>https://lovegood.github.io/2018/08/08/note-upload-ichunqiu/</id>
     <published>2018-08-08T11:51:22.000Z</published>
-    <updated>2018-08-08T14:16:26.335Z</updated>
+    <updated>2018-10-22T07:38:49.000Z</updated>
     
     <summary type="html">
     
@@ -245,7 +295,7 @@
     <link href="https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/"/>
     <id>https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/</id>
     <published>2018-07-30T03:12:47.000Z</published>
-    <updated>2018-08-07T03:25:36.587Z</updated>
+    <updated>2018-08-07T03:25:36.000Z</updated>
     
     <summary type="html">
     
@@ -268,10 +318,10 @@
   
   <entry>
     <title>ISCC2018部分WriteUp</title>
-    <link href="https://lovegood.github.io/2018/05/27/ISCC2018%E9%83%A8%E5%88%86WriteUp/"/>
-    <id>https://lovegood.github.io/2018/05/27/ISCC2018部分WriteUp/</id>
+    <link href="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/"/>
+    <id>https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/</id>
     <published>2018-05-27T10:21:58.000Z</published>
-    <updated>2018-05-27T11:07:12.284Z</updated>
+    <updated>2018-05-27T11:07:12.000Z</updated>
     
     <summary type="html">
     
@@ -293,20 +343,20 @@
     
       <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
     
+      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
       <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
     
   </entry>
   
   <entry>
     <title>CSTC2018 AWD一点儿小总结，非WriteUp</title>
-    <link href="https://lovegood.github.io/2018/05/26/CSTC2018-AWD/"/>
-    <id>https://lovegood.github.io/2018/05/26/CSTC2018-AWD/</id>
+    <link href="https://lovegood.github.io/2018/05/26/writeup-2018CSTC-AWD/"/>
+    <id>https://lovegood.github.io/2018/05/26/writeup-2018CSTC-AWD/</id>
     <published>2018-05-26T05:04:17.000Z</published>
-    <updated>2018-05-27T11:10:05.910Z</updated>
+    <updated>2018-05-27T11:10:05.000Z</updated>
     
     <summary type="html">
     
@@ -324,18 +374,18 @@
     
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
       <category term="AWD" scheme="https://lovegood.github.io/tags/AWD/"/>
+    
+      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
   </entry>
   
   <entry>
     <title>MiniLCTF 2018 WriteUp</title>
-    <link href="https://lovegood.github.io/2018/05/21/MiniLCTF-2018-WriteUp/"/>
-    <id>https://lovegood.github.io/2018/05/21/MiniLCTF-2018-WriteUp/</id>
+    <link href="https://lovegood.github.io/2018/05/21/writeup-2018MiniLCTF/"/>
+    <id>https://lovegood.github.io/2018/05/21/writeup-2018MiniLCTF/</id>
     <published>2018-05-21T05:47:32.000Z</published>
-    <updated>2018-05-21T06:39:44.593Z</updated>
+    <updated>2018-05-21T06:39:44.000Z</updated>
     
     <summary type="html">
     
@@ -356,22 +406,22 @@
     
       <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
     
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
     
       <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
+    
+      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
+    
+      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
   </entry>
   
   <entry>
     <title>[翻译] The Bug challenge2018 warm-up wp</title>
-    <link href="https://lovegood.github.io/2018/05/19/translate-Spot-The-Bug-challenge2018-warm-up-wp/"/>
-    <id>https://lovegood.github.io/2018/05/19/translate-Spot-The-Bug-challenge2018-warm-up-wp/</id>
+    <link href="https://lovegood.github.io/2018/05/19/translation-Spot-The-Bug-challenge2018-warm-up-wp/"/>
+    <id>https://lovegood.github.io/2018/05/19/translation-Spot-The-Bug-challenge2018-warm-up-wp/</id>
     <published>2018-05-19T12:09:38.000Z</published>
-    <updated>2018-05-21T06:42:47.962Z</updated>
+    <updated>2018-05-21T06:42:47.000Z</updated>
     
     <summary type="html">
     
@@ -398,10 +448,10 @@
   
   <entry>
     <title>SolveMe-WriteUp-Web</title>
-    <link href="https://lovegood.github.io/2018/04/22/SolveMe-WriteUp-Web/"/>
-    <id>https://lovegood.github.io/2018/04/22/SolveMe-WriteUp-Web/</id>
+    <link href="https://lovegood.github.io/2018/04/22/writeup-SolveMe-Web/"/>
+    <id>https://lovegood.github.io/2018/04/22/writeup-SolveMe-Web/</id>
     <published>2018-04-22T09:17:35.000Z</published>
-    <updated>2018-05-21T08:04:27.623Z</updated>
+    <updated>2018-05-21T08:04:27.000Z</updated>
     
     <summary type="html">
     
@@ -421,11 +471,11 @@
     
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
       <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
     
       <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
+    
+      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
     
       <category term="code-audit" scheme="https://lovegood.github.io/tags/code-audit/"/>
     
@@ -436,7 +486,7 @@
     <link href="https://lovegood.github.io/2018/03/21/note-php-basic/"/>
     <id>https://lovegood.github.io/2018/03/21/note-php-basic/</id>
     <published>2018-03-21T12:06:44.000Z</published>
-    <updated>2018-08-08T14:06:31.693Z</updated>
+    <updated>2018-08-08T14:06:31.000Z</updated>
     
     <summary type="html">
     
@@ -452,16 +502,16 @@
     </summary>
     
     
-      <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
-    
       <category term="Programming" scheme="https://lovegood.github.io/tags/Programming/"/>
+    
+      <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
     
   </entry>
   
   <entry>
     <title>hgame2018 Week2 WriteUp(部分)</title>
-    <link href="https://lovegood.github.io/2018/02/17/secctfwp-hgame2018-Week2-WriteUp-%E9%83%A8%E5%88%86/"/>
-    <id>https://lovegood.github.io/2018/02/17/secctfwp-hgame2018-Week2-WriteUp-部分/</id>
+    <link href="https://lovegood.github.io/2018/02/17/writeup-2018hgame-Week2-WriteUp-%E9%83%A8%E5%88%86/"/>
+    <id>https://lovegood.github.io/2018/02/17/writeup-2018hgame-Week2-WriteUp-部分/</id>
     <published>2018-02-17T15:36:02.000Z</published>
     <updated>2018-02-24T11:08:11.000Z</updated>
     
@@ -488,8 +538,8 @@
   
   <entry>
     <title>2018MOCTF新春欢乐赛WriteUp(部分)</title>
-    <link href="https://lovegood.github.io/2018/02/14/2018MOCTF%E6%96%B0%E6%98%A5%E6%AC%A2%E4%B9%90%E8%B5%9BWriteUp-%E9%83%A8%E5%88%86/"/>
-    <id>https://lovegood.github.io/2018/02/14/2018MOCTF新春欢乐赛WriteUp-部分/</id>
+    <link href="https://lovegood.github.io/2018/02/14/writeup-2018MOCTF%E6%96%B0%E6%98%A5%E6%AC%A2%E4%B9%90%E8%B5%9BWriteUp-%E9%83%A8%E5%88%86/"/>
+    <id>https://lovegood.github.io/2018/02/14/writeup-2018MOCTF新春欢乐赛WriteUp-部分/</id>
     <published>2018-02-14T00:13:02.000Z</published>
     <updated>2018-02-17T15:11:11.000Z</updated>
     
@@ -520,8 +570,8 @@
   
   <entry>
     <title>hgame2018 Week1 WriteUp(部分)</title>
-    <link href="https://lovegood.github.io/2018/02/11/hgame2018-Week1-WriteUp-%E9%83%A8%E5%88%86/"/>
-    <id>https://lovegood.github.io/2018/02/11/hgame2018-Week1-WriteUp-部分/</id>
+    <link href="https://lovegood.github.io/2018/02/11/writeup-2018hgame-Week1-WriteUp-%E9%83%A8%E5%88%86/"/>
+    <id>https://lovegood.github.io/2018/02/11/writeup-2018hgame-Week1-WriteUp-部分/</id>
     <published>2018-02-11T11:10:34.000Z</published>
     <updated>2018-02-18T11:09:20.000Z</updated>
     
@@ -544,66 +594,6 @@
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
       <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Google Project Zero 成员教你如何入门搞安全</title>
-    <link href="https://lovegood.github.io/2018/02/08/%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BA%8B%E4%BB%B6%E8%AF%91-Google-Project-Zero-%E6%88%90%E5%91%98%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8%E6%90%9E%E5%AE%89%E5%85%A8/"/>
-    <id>https://lovegood.github.io/2018/02/08/安全大事件译-Google-Project-Zero-成员教你如何入门搞安全/</id>
-    <published>2018-02-08T06:10:46.000Z</published>
-    <updated>2018-02-24T11:08:56.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/33678187&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
-    
-      <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MOCTF WriteUp(未完待续)</title>
-    <link href="https://lovegood.github.io/2017/12/14/MOCTF-WriteUp/"/>
-    <id>https://lovegood.github.io/2017/12/14/MOCTF-WriteUp/</id>
-    <published>2017-12-14T04:50:53.000Z</published>
-    <updated>2018-01-31T13:52:58.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;未完待续&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.moctf.com/challenges&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;做题平台&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;WEB&quot;&gt;&lt;a href=&quot;#WEB&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
     
   </entry>
   

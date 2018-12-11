@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,MachineLearning," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cytosineの有被小窝~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="NumPy基本使用12345678910111213141516171819202122232425262728293031323334353637&amp;gt;&amp;gt;&amp;gt; a = np.arange(10)&amp;gt;&amp;gt;&amp;gt; aarray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])&amp;gt;&amp;gt;&amp;gt; a.shape(10,)&amp;gt;&amp;gt;&amp;gt; a.dtype">
+<meta name="keywords" content="Python,MachineLearning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-NumPy-Usage">
+<meta property="og:url" content="https://lovegood.github.io/2018/08/16/note-python-numpy-usage/index.html">
+<meta property="og:site_name" content="Cytosineの有被小窝~">
+<meta property="og:description" content="NumPy基本使用12345678910111213141516171819202122232425262728293031323334353637&amp;gt;&amp;gt;&amp;gt; a = np.arange(10)&amp;gt;&amp;gt;&amp;gt; aarray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])&amp;gt;&amp;gt;&amp;gt; a.shape(10,)&amp;gt;&amp;gt;&amp;gt; a.dtype">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-16T09:58:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-NumPy-Usage">
+<meta name="twitter:description" content="NumPy基本使用12345678910111213141516171819202122232425262728293031323334353637&amp;gt;&amp;gt;&amp;gt; a = np.arange(10)&amp;gt;&amp;gt;&amp;gt; aarray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])&amp;gt;&amp;gt;&amp;gt; a.shape(10,)&amp;gt;&amp;gt;&amp;gt; a.dtype">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lovegood.github.io/2018/08/16/note-python-numpy-usage/"/>
+
+
+
+
+
+  <title>Python-NumPy-Usage | Cytosineの有被小窝~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cytosineの有被小窝~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">智能是人类未来之光，安全是人类基本需求。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            cd ~
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            uname -a
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            ls -al post
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2018/08/16/note-python-numpy-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python-NumPy-Usage</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T17:54:00+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="NumPy基本使用"><a href="#NumPy基本使用" class="headerlink" title="NumPy基本使用"></a>NumPy基本使用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.arange(10)</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a.shape</div><div class="line">(10,)</div><div class="line"></div><div class="line">&gt;&gt;&gt; a.dtype</div><div class="line">dtype(&apos;int64&apos;)</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[5]</div><div class="line">5</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[3:5]</div><div class="line">array([3, 4])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[:5]</div><div class="line">array([0, 1, 2, 3, 4])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[:-1]</div><div class="line">array([0, 1, 2, 3, 4, 5, 6, 7, 8])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[1::2]</div><div class="line">array([1, 3, 5, 7, 9])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[5:0:-2] # 步长为负，开始下标 &gt; 结束下标</div><div class="line">array([5, 3, 1])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[::2]</div><div class="line">array([0, 2, 4, 6, 8])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[::-2]</div><div class="line">array([9, 7, 5, 3, 1])</div><div class="line"></div><div class="line">&gt;&gt;&gt; a[2:4] = 100, 101</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([  0,   1, 100, 101,   4,   5,   6,   7,   8,   9])</div></pre></td></tr></table></figure>
+<h1 id="与Python列表不同，NumPy通过下标产生的数组，与原数组共享数据空间"><a href="#与Python列表不同，NumPy通过下标产生的数组，与原数组共享数据空间" class="headerlink" title="与Python列表不同，NumPy通过下标产生的数组，与原数组共享数据空间"></a>与Python列表不同，NumPy通过下标产生的数组，与原数组共享数据空间</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a</div><div class="line">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</div><div class="line">&gt;&gt;&gt; b = a[:5]</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([0, 1, 2, 3, 4])</div><div class="line">&gt;&gt;&gt; b[0] = 100</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([100,   1,   2,   3,   4])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([100,   1,   2,   3,   4,   5,   6,   7,   8,   9])</div></pre></td></tr></table></figure>
+<h1 id="NumPy的matrix类"><a href="#NumPy的matrix类" class="headerlink" title="NumPy的matrix类"></a>NumPy的matrix类</h1><ul>
+<li>多维数组的运算，NumPy缺省情况下不使用矩阵运算</li>
+<li>使用NumPy的matrix类创建的是矩阵对象，加减乘除运算缺省采用矩阵方式计算。</li>
+<li>由于NumPy中同时存在ndarray和matrix对象，容易弄混，有违Python显式优于隐式的原则，因此并不推荐在较复杂的程序中使用matrix。</li>
+</ul>
+<h1 id="需要将一维数组当做行向量或列向量进行矩阵运算时，推荐先使用reshape函数将一维数组转换为二维数组"><a href="#需要将一维数组当做行向量或列向量进行矩阵运算时，推荐先使用reshape函数将一维数组转换为二维数组" class="headerlink" title="需要将一维数组当做行向量或列向量进行矩阵运算时，推荐先使用reshape函数将一维数组转换为二维数组"></a>需要将一维数组当做行向量或列向量进行矩阵运算时，推荐先使用reshape函数将一维数组转换为二维数组</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = np.array([1, 2, 3])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([1, 2, 3])</div><div class="line">&gt;&gt;&gt; a.reshape((-1, 1))</div><div class="line">array([[1],</div><div class="line">       [2],</div><div class="line">       [3]])</div><div class="line">&gt;&gt;&gt; a.reshape((1, -1))</div><div class="line">array([[1, 2, 3]])</div></pre></td></tr></table></figure>
+<h1 id="np-dot"><a href="#np-dot" class="headerlink" title="np.dot()"></a>np.dot()</h1><ul>
+<li>对于一维数组：内积（两数组元素对应下标元素的乘积和）</li>
+<li>对于二维数组：两数组的矩阵乘积</li>
+<li>对于多维数组：dot(a, b)[i, j, k, m] = sum(a[i, j, :] * b[k, :, m])，即结果数组中的每个元素都是数组a的最后一维上的所有元素与数组b的倒数第二位上的所有元素的乘积和。</li>
+</ul>
+<h1 id="np-inner"><a href="#np-inner" class="headerlink" title="np.inner()"></a>np.inner()</h1><ul>
+<li>对于一维数组：内积（两数组元素对应下标元素的乘积和）</li>
+<li>对于多维数组：inner(a, b)[i, j, k, m] = sum(a[i, j, :] * b[k, :, m])，即结果数组中的每个元素都是数组a的最后一维上的所有元素与数组b的倒数第二位上的所有元素的乘积和。</li>
+</ul>
+<h1 id="np-outer"><a href="#np-outer" class="headerlink" title="np.outer()"></a>np.outer()</h1><p>只按照一维数组进行计算，若传入多维数组，则将此多维数组展平为一维数组之后进行计算。</p>
+<h1 id="线性代数子库linalg"><a href="#线性代数子库linalg" class="headerlink" title="线性代数子库linalg"></a>线性代数子库linalg</h1><ul>
+<li>inv()函数计算逆矩阵</li>
+<li>solve()函数求解多元一次方程组。solve()函数有两个参数a和b。a是一个NxN的二维数组，b是长度为N的一维数组，solve函数找到一个长度为N的一维数组x，使得a和x的矩阵乘积等于b，数组x就是多元一次方程组的解。</li>
+</ul>
+<h1 id="其他Python模块"><a href="#其他Python模块" class="headerlink" title="其他Python模块"></a>其他Python模块</h1><h2 id="SciPy"><a href="#SciPy" class="headerlink" title="SciPy"></a>SciPy</h2><p>包括 统计、优化、整合线代模块、傅里叶变换、信号和图像处理、常微分方程求解器等。</p>
+<h2 id="NLTK"><a href="#NLTK" class="headerlink" title="NLTK"></a>NLTK</h2><p>NLP中常用</p>
+<h2 id="Scikit-Learn"><a href="#Scikit-Learn" class="headerlink" title="Scikit-Learn"></a>Scikit-Learn</h2><h3 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h3><p>分类，回归，聚类，数据降维，模型选择，数据预处理</p>
+<h3 id="Scikit-learn-requires"><a href="#Scikit-learn-requires" class="headerlink" title="Scikit-learn requires:"></a>Scikit-learn requires:</h3><ul>
+<li>Python (&gt;= 2.7 or &gt;= 3.3),</li>
+<li>NumPy (&gt;= 1.8.2),</li>
+<li>SciPy (&gt;= 0.13.3).</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/MachineLearning/" rel="tag"># MachineLearning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/c-printf-syntactic-sugar/" rel="next" title="2$——printf中的语法糖">
+                <i class="fa fa-chevron-left"></i> 2$——printf中的语法糖
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/19/writeup-ichunqiu-baidubei-201702-web/" rel="prev" title="i春秋CTF大本营 百度杯2017年2月 Web WriteUp">
+                i春秋CTF大本营 百度杯2017年2月 Web WriteUp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.webp"
+                alt="Cytosine" />
+            
+              <p class="site-author-name" itemprop="name">Cytosine</p>
+              <p class="site-description motion-element" itemprop="description">智能是人类未来之光，安全是人类基本需求</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lovegood" target="_blank" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/CytosineLovegood/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhuanlan.zhihu.com/dashijian" target="_blank" title="安全大事件">
+                    安全大事件</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://xuptsec.github.io/" target="_blank" title="XUPTSEC-blog">
+                    XUPTSEC-blog</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                from dalao import
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.uaf.li/" title="Murasaki" target="_blank">Murasaki</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pcat.cnblogs.com/" title="pcat" target="_blank">pcat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flygon.net/" title="飞龙" target="_blank">飞龙</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ju5tw4nty0u.top/" title="ju5tw4nty0u" target="_blank">ju5tw4nty0u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://webdog.ml/" title="grt1st" target="_blank">grt1st</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.k0rz3n.com/" title="K0rz3n" target="_blank">K0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lovei.org/" title="腹黑" target="_blank">腹黑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sec2hack.com/" title="Wfox" target="_blank">Wfox</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codemonster.cn/" title="Xishir" target="_blank">Xishir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eternalsakura13.com/" title="Sakura" target="_blank">Sakura</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://math1as.com/" title="Math1as" target="_blank">Math1as</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.thecosmos.cn/" title="Cosmos" target="_blank">Cosmos</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/whklhhhh" title="奈沙夜影" target="_blank">奈沙夜影</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/PeterZ1997/" title="PeterZ" target="_blank">PeterZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://white.xmutsec.com" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cismon.net/" title="CismonX" target="_blank">CismonX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lsafe.org/" title="lixin" target="_blank">lixin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wzsite.cn/" title="Wz" target="_blank">Wz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.blogsir.com.cn/" title="江sir" target="_blank">江sir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greyd0g.github.io/" title="greyd0g" target="_blank">greyd0g</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://brucetg.github.io/" title="Brucetg" target="_blank">Brucetg</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.get1t.cn/" title="FraMeQ" target="_blank">FraMeQ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.smallflower.xin/" title="小花" target="_blank">小花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://iosmosis.github.io/" title="iosmosis" target="_blank">iosmosis</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://processor.pub/" title="Processor" target="_blank">Processor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.virzz.com/" title="Virink" target="_blank">Virink</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lmxspace.com/" title="l1nk3r" target="_blank">l1nk3r</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.evi1s.com/index.php/links.html" title="Map1e" target="_blank">Map1e</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NumPy基本使用"><span class="nav-number">1.</span> <span class="nav-text">NumPy基本使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与Python列表不同，NumPy通过下标产生的数组，与原数组共享数据空间"><span class="nav-number">2.</span> <span class="nav-text">与Python列表不同，NumPy通过下标产生的数组，与原数组共享数据空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NumPy的matrix类"><span class="nav-number">3.</span> <span class="nav-text">NumPy的matrix类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要将一维数组当做行向量或列向量进行矩阵运算时，推荐先使用reshape函数将一维数组转换为二维数组"><span class="nav-number">4.</span> <span class="nav-text">需要将一维数组当做行向量或列向量进行矩阵运算时，推荐先使用reshape函数将一维数组转换为二维数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#np-dot"><span class="nav-number">5.</span> <span class="nav-text">np.dot()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#np-inner"><span class="nav-number">6.</span> <span class="nav-text">np.inner()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#np-outer"><span class="nav-number">7.</span> <span class="nav-text">np.outer()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性代数子库linalg"><span class="nav-number">8.</span> <span class="nav-text">线性代数子库linalg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他Python模块"><span class="nav-number">9.</span> <span class="nav-text">其他Python模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SciPy"><span class="nav-number">9.1.</span> <span class="nav-text">SciPy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NLTK"><span class="nav-number">9.2.</span> <span class="nav-text">NLTK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scikit-Learn"><span class="nav-number">9.3.</span> <span class="nav-text">Scikit-Learn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能"><span class="nav-number">9.3.1.</span> <span class="nav-text">基本功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scikit-learn-requires"><span class="nav-number">9.3.2.</span> <span class="nav-text">Scikit-learn requires:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cytosine</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
