@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-12-11T04:11:34.176Z</updated>
+  <updated>2018-12-23T09:43:08.795Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo报错：can not read a block mapping entry</title>
+    <link href="https://lovegood.github.io/2018/12/23/solution-hexo-can-not-read-a-block-mapping-entry/"/>
+    <id>https://lovegood.github.io/2018/12/23/solution-hexo-can-not-read-a-block-mapping-entry/</id>
+    <published>2018-12-23T09:30:18.000Z</published>
+    <updated>2018-12-23T09:43:08.795Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;hexo生成时出现错误：&lt;/p&gt;
+&lt;p&gt;YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 2, column
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://lovegood.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>flask遇到unicodeencodeerror</title>
+    <link href="https://lovegood.github.io/2018/12/23/solution-flask-unicodeencodeerror/"/>
+    <id>https://lovegood.github.io/2018/12/23/solution-flask-unicodeencodeerror/</id>
+    <published>2018-12-23T09:00:11.000Z</published>
+    <updated>2018-12-23T09:28:27.727Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;错误&quot;&gt;&lt;a href=&quot;#错误&quot; class=&quot;headerlink&quot; title=&quot;错误&quot;&gt;&lt;/a&gt;错误&lt;/h1&gt;&lt;p&gt;unicodeencodeerror ‘ascii’ codec can’t encode characters in position
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://lovegood.github.io/tags/Python/"/>
+    
+      <category term="Flask" scheme="https://lovegood.github.io/tags/Flask/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 18.04，WiFi没有适配器的解决方法</title>
@@ -533,67 +584,6 @@
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
       <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2018MOCTF新春欢乐赛WriteUp(部分)</title>
-    <link href="https://lovegood.github.io/2018/02/14/writeup-2018MOCTF%E6%96%B0%E6%98%A5%E6%AC%A2%E4%B9%90%E8%B5%9BWriteUp-%E9%83%A8%E5%88%86/"/>
-    <id>https://lovegood.github.io/2018/02/14/writeup-2018MOCTF新春欢乐赛WriteUp-部分/</id>
-    <published>2018-02-14T00:13:02.000Z</published>
-    <updated>2018-02-17T15:11:11.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Web&quot;&gt;&lt;a href=&quot;#Web&quot; class=&quot;headerlink&quot; title=&quot;Web&quot;&gt;&lt;/a&gt;Web&lt;/h1&gt;&lt;h2 id=&quot;Web50&quot;&gt;&lt;a href=&quot;#Web50&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
-    
-      <category term="Re" scheme="https://lovegood.github.io/tags/Re/"/>
-    
-      <category term="Android" scheme="https://lovegood.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hgame2018 Week1 WriteUp(部分)</title>
-    <link href="https://lovegood.github.io/2018/02/11/writeup-2018hgame-Week1-WriteUp-%E9%83%A8%E5%88%86/"/>
-    <id>https://lovegood.github.io/2018/02/11/writeup-2018hgame-Week1-WriteUp-部分/</id>
-    <published>2018-02-11T11:10:34.000Z</published>
-    <updated>2018-02-18T11:09:20.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;水平有限，只做出了一部分QAQ&lt;/p&gt;
-&lt;h1 id=&quot;WEB&quot;&gt;&lt;a href=&quot;#WEB&quot; class=&quot;headerlink&quot; title=&quot;WEB&quot;&gt;&lt;/a&gt;WEB&lt;/h1&gt;&lt;h2 id=&quot;Are-you-from-Europe&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
     
   </entry>
   
