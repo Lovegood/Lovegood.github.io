@@ -117,7 +117,6 @@
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/25.png">
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/26.png">
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/27.png">
-<meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/28.png">
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/29.png">
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/30.png">
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/31.png">
@@ -131,7 +130,7 @@
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/42.png">
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/43.png">
 <meta property="og:image" content="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/44.png">
-<meta property="og:updated_time" content="2018-08-14T09:20:52.000Z">
+<meta property="og:updated_time" content="2019-03-30T06:13:05.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《缓冲区溢出分析》课程笔记">
 <meta name="twitter:description" content="https://www.ichunqiu.com/course/147 的一个笔记 （视频播放的时候，右下角速度x2，主要看实验，OD动手调，看指令执行前后，右下角的栈空间的变化） 10、11号学的，纠结好了好久，要不要发出来，挺low的，窝自己也知道，不过也算是迈出第一步了，所以也不嫌丢人了，还是发出来吧QVQ 缓冲区溢出的原理一句话总结一下，就是输入的数据超过了缓冲区的长度，覆盖了缓冲区下面的">
@@ -542,8 +541,7 @@
 <p><img src="27.png" alt=""></p>
 <ol>
 <li><p>通过段选择字FS，在内存中找到当前的现成环境块TEB。线程环境块偏移位置为0x30的地方，存放着指向进程环境块的PEB的指针。</p>
-<p> <code>!ted</code>:</p>
-<p> <img src="28.png" alt=""></p>
+<p> <code>!ted</code></p>
 </li>
 <li><p>进程环境块中偏移位置为0x0c的地方存放着指向<code>PEB_LDR_DATA</code>结构体的指针，其中，存放着已经被进程装载的动态链接库的信息。</p>
 <p> 由上一步的<code>PEB Address</code>可知PEB地址为<code>0x7ffde000</code></p>
@@ -749,7 +747,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -762,7 +760,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

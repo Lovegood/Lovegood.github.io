@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2018-12-23T09:43:08.795Z</updated>
+  <updated>2019-03-30T05:47:53.715Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>[翻译]DOM-XSS/第三种XSS——看一下被忽视的XSS</title>
+    <link href="https://lovegood.github.io/2019/03/22/translation-DOM-Based-Cross-Site-Scripting-or-XSS-of-the-Third-Kind/"/>
+    <id>https://lovegood.github.io/2019/03/22/translation-DOM-Based-Cross-Site-Scripting-or-XSS-of-the-Third-Kind/</id>
+    <published>2019-03-22T11:55:48.000Z</published>
+    <updated>2019-03-30T05:47:53.715Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;原文地址：&lt;a href=&quot;http://www.webappsec.org/projects/articles/071105.html&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>hexo报错：can not read a block mapping entry</title>
     <link href="https://lovegood.github.io/2018/12/23/solution-hexo-can-not-read-a-block-mapping-entry/"/>
     <id>https://lovegood.github.io/2018/12/23/solution-hexo-can-not-read-a-block-mapping-entry/</id>
     <published>2018-12-23T09:30:18.000Z</published>
-    <updated>2018-12-23T09:43:08.795Z</updated>
+    <updated>2018-12-23T09:43:08.000Z</updated>
     
     <summary type="html">
     
@@ -46,7 +68,7 @@
     <link href="https://lovegood.github.io/2018/12/23/solution-flask-unicodeencodeerror/"/>
     <id>https://lovegood.github.io/2018/12/23/solution-flask-unicodeencodeerror/</id>
     <published>2018-12-23T09:00:11.000Z</published>
-    <updated>2019-01-04T08:00:47.442Z</updated>
+    <updated>2019-01-04T08:00:47.000Z</updated>
     
     <summary type="html">
     
@@ -72,7 +94,7 @@
     <link href="https://lovegood.github.io/2018/12/11/installation-ubuntu18-04-no-wifi-Adapter/"/>
     <id>https://lovegood.github.io/2018/12/11/installation-ubuntu18-04-no-wifi-Adapter/</id>
     <published>2018-12-11T02:52:15.000Z</published>
-    <updated>2018-12-11T04:11:34.176Z</updated>
+    <updated>2018-12-11T04:11:34.000Z</updated>
     
     <summary type="html">
     
@@ -269,7 +291,7 @@
     <link href="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/"/>
     <id>https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/</id>
     <published>2018-08-14T04:48:03.000Z</published>
-    <updated>2018-08-14T09:20:52.000Z</updated>
+    <updated>2019-03-30T06:13:05.655Z</updated>
     
     <summary type="html">
     
@@ -424,9 +446,9 @@
     
       <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
     
-      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
-    
       <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
+    
+      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
     
   </entry>
   
@@ -489,9 +511,9 @@
     
       <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
     
-      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
-    
       <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
+    
+      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
     
   </entry>
   
@@ -557,33 +579,6 @@
       <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
     
       <category term="code-audit" scheme="https://lovegood.github.io/tags/code-audit/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php学习随手记的笔记</title>
-    <link href="https://lovegood.github.io/2018/03/21/note-php-basic/"/>
-    <id>https://lovegood.github.io/2018/03/21/note-php-basic/</id>
-    <published>2018-03-21T12:06:44.000Z</published>
-    <updated>2018-08-08T14:06:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;isset&quot;&gt;&lt;a href=&quot;#isset&quot; class=&quot;headerlink&quot; title=&quot;isset()&quot;&gt;&lt;/a&gt;&lt;code&gt;isset()&lt;/code&gt;&lt;/h1&gt;&lt;p&gt;检测变量是否已经设置过了：&lt;/p&gt;
-&lt;figure
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Programming" scheme="https://lovegood.github.io/tags/Programming/"/>
-    
-      <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
     
   </entry>
   
