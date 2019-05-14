@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Cytosineの有被小窝~</title>
   
-  <subtitle>智能是人类未来之光，安全是人类基本需求。</subtitle>
+  <subtitle>悟已往之不谏，知来者之可追。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2019-04-09T05:40:48.828Z</updated>
+  <updated>2019-04-16T06:00:52.314Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>translation-js-prototype-pollution-attack-in-nodejs</title>
+    <link href="https://lovegood.github.io/2019/04/16/translation-js-prototype-pollution-attack-in-nodejs/"/>
+    <id>https://lovegood.github.io/2019/04/16/translation-js-prototype-pollution-attack-in-nodejs/</id>
+    <published>2019-04-16T05:25:38.000Z</published>
+    <updated>2019-04-16T06:00:52.314Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[翻译+笔记]nsec2018-JS原型链污染攻击</title>
+    <link href="https://lovegood.github.io/2019/04/16/translation-js-prototype-pollution-attack-nsec2018/"/>
+    <id>https://lovegood.github.io/2019/04/16/translation-js-prototype-pollution-attack-nsec2018/</id>
+    <published>2019-04-16T00:49:06.000Z</published>
+    <updated>2019-04-16T05:19:12.959Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;读完p牛的 &lt;a href=&quot;https://www.leavesongs.com/PENETRATION/javascript-prototype-pollution-attack.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入理解
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://lovegood.github.io/tags/JavaScript/"/>
+    
+      <category term="Prototype-Pollution" scheme="https://lovegood.github.io/tags/Prototype-Pollution/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推荐插件，octotree，树形展示Github仓库代码</title>
+    <link href="https://lovegood.github.io/2019/04/13/tools-browser-extension-octotree/"/>
+    <id>https://lovegood.github.io/2019/04/13/tools-browser-extension-octotree/</id>
+    <published>2019-04-13T12:48:37.000Z</published>
+    <updated>2019-04-13T12:52:46.800Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;00.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;GitHub仓库&amp;amp;安装方法：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ovity/octotree&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="https://lovegood.github.io/tags/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title>[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例</title>
@@ -468,106 +543,6 @@
       <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
     
       <category term="PDF" scheme="https://lovegood.github.io/tags/PDF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ISCC2018部分WriteUp</title>
-    <link href="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/"/>
-    <id>https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/</id>
-    <published>2018-05-27T10:21:58.000Z</published>
-    <updated>2018-05-27T11:07:12.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;嗯，才发现ISCC比赛结束，平台也关掉了orz，附件也没下载，wp还没来得及整理，最近事情太多了orz，凑合看吧&lt;/p&gt;
-&lt;p&gt;比较坑的一点的flag格式很迷，flag{xxx}直接提交xx，不要带flag{}。划掉划掉，也有的时候提交&lt;code&gt;flag{xx}&lt;/cod
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
-      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
-    
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
-      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSTC2018 AWD一点儿小总结，非WriteUp</title>
-    <link href="https://lovegood.github.io/2018/05/26/writeup-2018CSTC-AWD/"/>
-    <id>https://lovegood.github.io/2018/05/26/writeup-2018CSTC-AWD/</id>
-    <published>2018-05-26T05:04:17.000Z</published>
-    <updated>2018-05-27T11:10:05.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;43支队伍，13名，三等奖（安慰奖）。还是太菜了orz&lt;/p&gt;
-&lt;h1 id=&quot;被吊打的一天orz&quot;&gt;&lt;a href=&quot;#被吊打的一天orz&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="AWD" scheme="https://lovegood.github.io/tags/AWD/"/>
-    
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MiniLCTF 2018 WriteUp</title>
-    <link href="https://lovegood.github.io/2018/05/21/writeup-2018MiniLCTF/"/>
-    <id>https://lovegood.github.io/2018/05/21/writeup-2018MiniLCTF/</id>
-    <published>2018-05-21T05:47:32.000Z</published>
-    <updated>2018-05-21T06:39:44.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Web&quot;&gt;&lt;a href=&quot;#Web&quot; class=&quot;headerlink&quot; title=&quot;Web&quot;&gt;&lt;/a&gt;Web&lt;/h1&gt;&lt;h2 id=&quot;Web-easy-bypass&quot;&gt;&lt;a href=&quot;#Web-easy-bypass&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
-    
-      <category term="PHP" scheme="https://lovegood.github.io/tags/PHP/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
-      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
-    
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
-      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
     
   </entry>
   
