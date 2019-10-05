@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2019-04-16T05:19:12.959Z</updated>
+  <updated>2019-10-05T14:44:46.938Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac下如何设置Time Machine时间机器自动备份频率</title>
+    <link href="https://lovegood.github.io/2019/10/05/mac-tips-time-machine/"/>
+    <id>https://lovegood.github.io/2019/10/05/mac-tips-time-machine/</id>
+    <published>2019-10-05T14:38:37.000Z</published>
+    <updated>2019-10-05T14:44:46.938Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我的OSX版本号是10.14.6，其他版本应该也类似&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Mac Tips" scheme="https://lovegood.github.io/tags/Mac-Tips/"/>
+    
+  </entry>
   
   <entry>
     <title>[翻译+笔记]nsec2018-JS原型链污染攻击</title>
@@ -73,6 +98,34 @@
     <title>[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例</title>
     <link href="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/"/>
     <id>https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/</id>
+    <published>2019-04-08T12:20:58.000Z</published>
+    <updated>2019-04-09T05:40:48.828Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;@心伤的瘦子 的21个鹅厂XSS案例，从反射型XSS到DOM XSS再到Flash
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
+    
+      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
+    
+      <category term="XSS" scheme="https://lovegood.github.io/tags/XSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例</title>
+    <link href="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/"/>
+    <id>https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/</id>
     <published>2019-04-08T12:20:58.000Z</published>
     <updated>2019-04-09T05:40:48.828Z</updated>
     
@@ -495,67 +548,6 @@
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
       <category term="Upload" scheme="https://lovegood.github.io/tags/Upload/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[翻译]如何从恶意PDF中提取payload?</title>
-    <link href="https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/"/>
-    <id>https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/</id>
-    <published>2018-07-30T03:12:47.000Z</published>
-    <updated>2018-08-07T03:25:36.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;原文地址：&lt;a href=&quot;https://www.adlice.com/infected-pdf-extract-payload/&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
-    
-      <category term="PDF" scheme="https://lovegood.github.io/tags/PDF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ISCC2018部分WriteUp</title>
-    <link href="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/"/>
-    <id>https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/</id>
-    <published>2018-05-27T10:21:58.000Z</published>
-    <updated>2018-05-27T11:07:12.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;嗯，才发现ISCC比赛结束，平台也关掉了orz，附件也没下载，wp还没来得及整理，最近事情太多了orz，凑合看吧&lt;/p&gt;
-&lt;p&gt;比较坑的一点的flag格式很迷，flag{xxx}直接提交xx，不要带flag{}。划掉划掉，也有的时候提交&lt;code&gt;flag{xx}&lt;/cod
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="CTF" scheme="https://lovegood.github.io/tags/CTF/"/>
-    
-      <category term="WriteUp" scheme="https://lovegood.github.io/tags/WriteUp/"/>
-    
-      <category term="Crypto" scheme="https://lovegood.github.io/tags/Crypto/"/>
-    
-      <category term="Misc" scheme="https://lovegood.github.io/tags/Misc/"/>
     
   </entry>
   

