@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2019-04-16T05:19:12.959Z</updated>
+  <updated>2020-01-08T17:26:12.989Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何写一个基本兼容python2和python3的程序？</title>
+    <link href="https://lovegood.github.io/2020/01/09/how-to-write-a-program-compatible-with-python2-and-python3/"/>
+    <id>https://lovegood.github.io/2020/01/09/how-to-write-a-program-compatible-with-python2-and-python3/</id>
+    <published>2020-01-08T17:16:17.000Z</published>
+    <updated>2020-01-08T17:26:12.989Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;先从四个函数开始&quot;&gt;&lt;a href=&quot;#先从四个函数开始&quot; class=&quot;headerlink&quot; title=&quot;先从四个函数开始&quot;&gt;&lt;/a&gt;先从四个函数开始&lt;/h1&gt;&lt;p&gt;看 &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://lovegood.github.io/tags/Python/"/>
+    
+      <category term="Development" scheme="https://lovegood.github.io/tags/Development/"/>
+    
+  </entry>
   
   <entry>
     <title>[翻译+笔记]nsec2018-JS原型链污染攻击</title>
@@ -73,34 +99,6 @@
     <title>[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例</title>
     <link href="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/"/>
     <id>https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/</id>
-    <published>2019-04-08T12:20:58.000Z</published>
-    <updated>2019-04-09T05:40:48.828Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;@心伤的瘦子 的21个鹅厂XSS案例，从反射型XSS到DOM XSS再到Flash
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Sec" scheme="https://lovegood.github.io/tags/Sec/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="XSS" scheme="https://lovegood.github.io/tags/XSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[XSS笔记]乌云白帽子心伤的瘦子-21个鹅厂XSS案例</title>
-    <link href="https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/"/>
-    <id>https://lovegood.github.io/2019/04/08/note-xss-0-xinshangdeshouzi-cases/note-xss-0-xinshangdeshouzi-cases/</id>
     <published>2019-04-08T12:20:58.000Z</published>
     <updated>2019-04-09T05:40:48.828Z</updated>
     
@@ -256,7 +254,7 @@
     <link href="https://lovegood.github.io/2018/12/08/writeup-ctf-qq-group-challenge-web-and-misc/"/>
     <id>https://lovegood.github.io/2018/12/08/writeup-ctf-qq-group-challenge-web-and-misc/</id>
     <published>2018-12-08T03:20:46.000Z</published>
-    <updated>2018-12-08T08:27:03.000Z</updated>
+    <updated>2019-10-24T18:27:37.922Z</updated>
     
     <summary type="html">
     
