@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2020-07-03T15:06:55.312Z</updated>
+  <updated>2020-07-03T15:30:07.547Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Mac下配置phpstorm+xdebug+docker(vmware虚拟机)进行断点调试</title>
-    <link href="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/"/>
-    <id>https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/</id>
+    <link href="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/"/>
+    <id>https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/</id>
     <published>2020-07-02T12:58:27.000Z</published>
-    <updated>2020-07-03T15:06:55.312Z</updated>
+    <updated>2020-07-03T15:30:07.547Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;0x00-环境说明&quot;&gt;&lt;a href=&quot;#0x00-环境说明&quot; class=&quot;headerlink&quot; title=&quot;0x00 环境说明&quot;&gt;&lt;/a&gt;0x00
+          &lt;h1 id=&quot;环境说明&quot;&gt;&lt;a href=&quot;#环境说明&quot; class=&quot;headerlink&quot; title=&quot;环境说明&quot;&gt;&lt;/a&gt;环境说明&lt;/h1&gt;&lt;p&gt;本机Mac，安装PHPstorm，借助xdebug，远程调试位于VMware虚拟机(Ubuntu
         
       
     
@@ -471,9 +471,9 @@
     </summary>
     
     
-      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
-    
       <category term="Pwn" scheme="https://lovegood.github.io/tags/Pwn/"/>
+    
+      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
     
       <category term="Stackoverflow" scheme="https://lovegood.github.io/tags/Stackoverflow/"/>
     
@@ -548,11 +548,11 @@
     </summary>
     
     
+      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
+    
       <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
     
       <category term="Upload" scheme="https://lovegood.github.io/tags/Upload/"/>
-    
-      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
     
   </entry>
   
