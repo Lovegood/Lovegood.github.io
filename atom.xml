@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2020-07-03T15:30:07.547Z</updated>
+  <updated>2020-08-24T10:52:54.816Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac下配置JAVA_HOME(Java自动更新的目录)</title>
+    <link href="https://lovegood.github.io/2020/08/24/mac-java-home-update/"/>
+    <id>https://lovegood.github.io/2020/08/24/mac-java-home-update/</id>
+    <published>2020-08-24T10:39:56.000Z</published>
+    <updated>2020-08-24T10:52:54.816Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天想调一个JAVA程序，报错，搜了一下是由于Mac
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Mac使用" scheme="https://lovegood.github.io/tags/Mac%E4%BD%BF%E7%94%A8/"/>
+    
+      <category term="Java" scheme="https://lovegood.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac下配置phpstorm+xdebug+docker(vmware虚拟机)进行断点调试</title>
@@ -286,7 +312,7 @@
     <link href="https://lovegood.github.io/2018/12/08/writeup-ctf-qq-group-challenge-web-and-misc/"/>
     <id>https://lovegood.github.io/2018/12/08/writeup-ctf-qq-group-challenge-web-and-misc/</id>
     <published>2018-12-08T03:20:46.000Z</published>
-    <updated>2019-10-24T18:27:37.000Z</updated>
+    <updated>2020-07-25T07:13:13.450Z</updated>
     
     <summary type="html">
     
@@ -471,9 +497,9 @@
     </summary>
     
     
-      <category term="Pwn" scheme="https://lovegood.github.io/tags/Pwn/"/>
-    
       <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
+    
+      <category term="Pwn" scheme="https://lovegood.github.io/tags/Pwn/"/>
     
       <category term="Stackoverflow" scheme="https://lovegood.github.io/tags/Stackoverflow/"/>
     
@@ -525,34 +551,6 @@
     
     
       <category term="Installation" scheme="https://lovegood.github.io/tags/Installation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>文件上传简要笔记</title>
-    <link href="https://lovegood.github.io/2018/08/08/note-upload-ichunqiu/"/>
-    <id>https://lovegood.github.io/2018/08/08/note-upload-ichunqiu/</id>
-    <published>2018-08-08T11:51:22.000Z</published>
-    <updated>2018-10-22T07:38:49.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;i春秋上一个课程的笔记，课程地址：&lt;a href=&quot;https://www.ichunqiu.com/course/78&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
-    
-      <category term="Web" scheme="https://lovegood.github.io/tags/Web/"/>
-    
-      <category term="Upload" scheme="https://lovegood.github.io/tags/Upload/"/>
     
   </entry>
   
