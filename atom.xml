@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2020-08-24T10:52:54.816Z</updated>
+  <updated>2020-11-12T10:29:51.321Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[翻译]不再随机：使用LD_PRELOAD来劫持rand()函数</title>
+    <link href="https://lovegood.github.io/2020/11/12/translation-NOT-SO-RANDOM/"/>
+    <id>https://lovegood.github.io/2020/11/12/translation-NOT-SO-RANDOM/</id>
+    <published>2020-11-12T10:21:37.000Z</published>
+    <updated>2020-11-12T10:29:51.321Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~&lt;/p&gt;
+&lt;p&gt;原文地址：&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
+    
+      <category term="LD_PRELOAD" scheme="https://lovegood.github.io/tags/LD-PRELOAD/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac下配置JAVA_HOME(Java自动更新的目录)</title>
@@ -497,9 +524,9 @@
     </summary>
     
     
-      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
-    
       <category term="Pwn" scheme="https://lovegood.github.io/tags/Pwn/"/>
+    
+      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
     
       <category term="Stackoverflow" scheme="https://lovegood.github.io/tags/Stackoverflow/"/>
     
@@ -519,31 +546,6 @@
         
         
           &lt;p&gt;&lt;a href=&quot;https://github.com/philcook/brew-php-switcher&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Installation" scheme="https://lovegood.github.io/tags/Installation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac设置终端过代理</title>
-    <link href="https://lovegood.github.io/2018/08/09/Installation-mac-terminal-proxy/"/>
-    <id>https://lovegood.github.io/2018/08/09/Installation-mac-terminal-proxy/</id>
-    <published>2018-08-09T14:21:35.000Z</published>
-    <updated>2018-08-09T14:23:39.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;~/.zshrc&lt;/code&gt;或&lt;code&gt;~/.bashrc&lt;/code&gt;中加入：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div
         
       
     
