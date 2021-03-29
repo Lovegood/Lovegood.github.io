@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Translation,LD_PRELOAD," />
+  <meta name="keywords" content="LD_PRELOAD,Translation," />
 
 
 
@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~ 原文地址：https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/ 首发于ChaMD5安全团队公众号。 正文今天，我想要继续LD_PRELOAD使用系列。在今天的文章">
-<meta name="keywords" content="Translation,LD_PRELOAD">
+<meta name="description" content="文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~ 原文地址：https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/ 首发于ChaMD5安全团队公众号。 正文开始今天，我想要继续LD_PRELOAD使用系列。在今天的">
+<meta name="keywords" content="LD_PRELOAD,Translation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[翻译]不再随机：使用LD_PRELOAD来劫持rand()函数">
 <meta property="og:url" content="https://lovegood.github.io/2020/11/12/translation-NOT-SO-RANDOM/index.html">
 <meta property="og:site_name" content="Cytosineの有被小窝~">
-<meta property="og:description" content="文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~ 原文地址：https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/ 首发于ChaMD5安全团队公众号。 正文今天，我想要继续LD_PRELOAD使用系列。在今天的文章">
+<meta property="og:description" content="文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~ 原文地址：https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/ 首发于ChaMD5安全团队公众号。 正文开始今天，我想要继续LD_PRELOAD使用系列。在今天的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lh3.googleusercontent.com/F3qP9N0sz45zV8L4GXLeYr4NvXDa-eRQfWYqmNk1GNTcbI78u2WjqKGUFP4Egu_V1n9-EZ2cdVrBVbRPa7vw-QSLbjEdKpWIhNh8pjOl4ODQ7-BVZjEQgZfu2YA1SWFos8BSZHUC">
 <meta property="og:image" content="https://lh5.googleusercontent.com/A9-iPsIbUmdzpOCOD7XP9YCBE6Dg7xPbKoA3BUZqSq17O6eV8eHckJ4tVC2WDUtrrJsyrd8Fm-6OdawKWhtrvHxlSMgre4gmOB8VihkIpBL0Ox2r0CU6_FyXS6zN2C2wWUJyf6uX">
@@ -102,10 +102,10 @@
 <meta property="og:image" content="https://lh3.googleusercontent.com/FZRBfH1fVopSGFAVDtqKUBSlJzjTjVynGJ13r7riMBHyNAwG5mB85_ZAMFZ0C9s59bStdXHZBKS5tp0ip80IAanEtzGr0-Amf3yXtd5w9Z7hJ7NCYbv3UF9ikx-lW_MtezNRUPD_">
 <meta property="og:image" content="https://lh6.googleusercontent.com/JK370o8zG6LExX_6b9nB70L3Z9yjFxSkr4uGWKpKHeqe_izU4mjJ250g1mxLzANRBx9IDepiXCqB7UsMpPaQzvDGKcdf50TKrncmXZ5-RgywElX4FzQokeUNGP8RI8oA9KNybT8s">
 <meta property="og:image" content="https://lh3.googleusercontent.com/tF5KMFxey10fXH85uefv_FFtf29AYMbheLizjDv3daCURMYXX4gHL1RRJT6VoajAyIgXUZEKWAdjf4KK3o3-vZIeK4dqFTRGCglD6qRsssbbBWDjJQU0UwP4eXKlWOCH8uY6XafD">
-<meta property="og:updated_time" content="2020-11-12T10:29:51.321Z">
+<meta property="og:updated_time" content="2020-11-12T12:45:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[翻译]不再随机：使用LD_PRELOAD来劫持rand()函数">
-<meta name="twitter:description" content="文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~ 原文地址：https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/ 首发于ChaMD5安全团队公众号。 正文今天，我想要继续LD_PRELOAD使用系列。在今天的文章">
+<meta name="twitter:description" content="文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~ 原文地址：https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/ 首发于ChaMD5安全团队公众号。 正文开始今天，我想要继续LD_PRELOAD使用系列。在今天的">
 <meta name="twitter:image" content="https://lh3.googleusercontent.com/F3qP9N0sz45zV8L4GXLeYr4NvXDa-eRQfWYqmNk1GNTcbI78u2WjqKGUFP4Egu_V1n9-EZ2cdVrBVbRPa7vw-QSLbjEdKpWIhNh8pjOl4ODQ7-BVZjEQgZfu2YA1SWFos8BSZHUC">
 
 
@@ -323,7 +323,7 @@
         <p>文章比较基础，但是一步一步讲得很详细，适合第一次接触使用LD_PRELOAD来劫持函数的朋友~</p>
 <p>原文地址：<a href="https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/" target="_blank" rel="external">https://securityboulevard.com/2020/10/not-so-random-using-ld_preload-to-hijack-the-rand-function/</a></p>
 <p>首发于<a href="https://mp.weixin.qq.com/s/hLZfxmBtTDGuM0dxUNKzXg" target="_blank" rel="external">ChaMD5安全团队公众号</a>。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>今天，我想要继续LD_PRELOAD使用系列。在今天的文章中，我们将要在一个简单的随机数猜测游戏中使用LD_PRELOAD来劫持rand()函数，以控制随机数的生成，并通过让随机数具有极高的可预测性来有效地欺骗这个简单的游戏。该游戏的代码以及用于劫持该游戏的LD_PRELOAD共享库均已上传到<a href="https://github.com/ProfessionallyEvil/LD_PRELOAD-rand-Hijack-Example" target="_blank" rel="external">ProfessionallyEvil GitHub页面</a>。如果您想跟着文章一起动手实践，可以将例子在Kali虚拟机中构建。</p>
+<h1 id="正文开始"><a href="#正文开始" class="headerlink" title="正文开始"></a>正文开始</h1><p>今天，我想要继续LD_PRELOAD使用系列。在今天的文章中，我们将要在一个简单的随机数猜测游戏中使用LD_PRELOAD来劫持rand()函数，以控制随机数的生成，并通过让随机数具有极高的可预测性来有效地欺骗这个简单的游戏。该游戏的代码以及用于劫持该游戏的LD_PRELOAD共享库均已上传到<a href="https://github.com/ProfessionallyEvil/LD_PRELOAD-rand-Hijack-Example" target="_blank" rel="external">ProfessionallyEvil GitHub页面</a>。如果您想跟着文章一起动手实践，可以将例子在Kali虚拟机中构建。</p>
 <h1 id="克隆GitHub资源库"><a href="#克隆GitHub资源库" class="headerlink" title="克隆GitHub资源库"></a>克隆GitHub资源库</h1><p>在Kail虚拟机中，打开一个终端然后运行下面的命令来下载示例代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/ProfessionallyEvil/LD_PRELOAD-rand-Hijack-Example.git &amp;&amp; \cd LD_PRELOAD-rand-Hijack-Example &amp;&amp; \ls -l</div></pre></td></tr></table></figure>
 <p>这会将GitHub的仓库(资源库)下载到您当前所在的目录，然后进入创建的目录并列出其中内容。如果一切顺利，您将会看到类似下面的输出：</p>
@@ -448,9 +448,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Translation/" rel="tag"># Translation</a>
-          
             <a href="/tags/LD-PRELOAD/" rel="tag"># LD_PRELOAD</a>
+          
+            <a href="/tags/Translation/" rel="tag"># Translation</a>
           
         </div>
       
@@ -472,6 +472,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/12/LD-PRELOAD-bypass-disable-function-in-ctf/" rel="prev" title="利用LD_PRELOAD bypass disable_function">
+                利用LD_PRELOAD bypass disable_function <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -552,7 +556,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -565,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -787,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">1.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#克隆GitHub资源库"><span class="nav-number">2.</span> <span class="nav-text">克隆GitHub资源库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概览：下载的文件"><span class="nav-number">3.</span> <span class="nav-text">概览：下载的文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#审计猜测随机数游戏的代码"><span class="nav-number">4.</span> <span class="nav-text">审计猜测随机数游戏的代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在附带的Makefile中使用Make"><span class="nav-number">5.</span> <span class="nav-text">在附带的Makefile中使用Make</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建并运行这个游戏"><span class="nav-number">6.</span> <span class="nav-text">构建并运行这个游戏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建并使用debug模式运行这个游戏"><span class="nav-number">7.</span> <span class="nav-text">构建并使用debug模式运行这个游戏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#审计用于劫持的共享库的源代码"><span class="nav-number">8.</span> <span class="nav-text">审计用于劫持的共享库的源代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建用于劫持的共享库"><span class="nav-number">9.</span> <span class="nav-text">构建用于劫持的共享库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-LD-PRELOAD-劫持来让猜测随机数游戏不再随机"><span class="nav-number">10.</span> <span class="nav-text">使用 LD_PRELOAD 劫持来让猜测随机数游戏不再随机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使游戏恢复正常"><span class="nav-number">11.</span> <span class="nav-text">使游戏恢复正常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">12.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正文开始"><span class="nav-number">1.</span> <span class="nav-text">正文开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#克隆GitHub资源库"><span class="nav-number">2.</span> <span class="nav-text">克隆GitHub资源库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概览：下载的文件"><span class="nav-number">3.</span> <span class="nav-text">概览：下载的文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#审计猜测随机数游戏的代码"><span class="nav-number">4.</span> <span class="nav-text">审计猜测随机数游戏的代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在附带的Makefile中使用Make"><span class="nav-number">5.</span> <span class="nav-text">在附带的Makefile中使用Make</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建并运行这个游戏"><span class="nav-number">6.</span> <span class="nav-text">构建并运行这个游戏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建并使用debug模式运行这个游戏"><span class="nav-number">7.</span> <span class="nav-text">构建并使用debug模式运行这个游戏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#审计用于劫持的共享库的源代码"><span class="nav-number">8.</span> <span class="nav-text">审计用于劫持的共享库的源代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建用于劫持的共享库"><span class="nav-number">9.</span> <span class="nav-text">构建用于劫持的共享库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-LD-PRELOAD-劫持来让猜测随机数游戏不再随机"><span class="nav-number">10.</span> <span class="nav-text">使用 LD_PRELOAD 劫持来让猜测随机数游戏不再随机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使游戏恢复正常"><span class="nav-number">11.</span> <span class="nav-text">使游戏恢复正常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">12.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -807,7 +811,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
