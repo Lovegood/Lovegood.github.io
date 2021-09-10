@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,Sec,Web,WriteUp,Misc,Crypto," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cytosineの有被小窝~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="嗯，才发现ISCC比赛结束，平台也关掉了orz，附件也没下载，wp还没来得及整理，最近事情太多了orz，凑合看吧 比较坑的一点的flag格式很迷，flag{xxx}直接提交xx，不要带flag{}。划掉划掉，也有的时候提交flag{xx}。 MiscMisc1 What is that？预览图：  很明显了，改图片高度 010Editor打开，Templates选PNG（没有的话，点此下载后导入）">
+<meta name="keywords" content="CTF,Sec,Web,WriteUp,Misc,Crypto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ISCC2018部分WriteUp">
+<meta property="og:url" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/index.html">
+<meta property="og:site_name" content="Cytosineの有被小窝~">
+<meta property="og:description" content="嗯，才发现ISCC比赛结束，平台也关掉了orz，附件也没下载，wp还没来得及整理，最近事情太多了orz，凑合看吧 比较坑的一点的flag格式很迷，flag{xxx}直接提交xx，不要带flag{}。划掉划掉，也有的时候提交flag{xx}。 MiscMisc1 What is that？预览图：  很明显了，改图片高度 010Editor打开，Templates选PNG（没有的话，点此下载后导入）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Misc1-0.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Misc1-1.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Misc1-2.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-misc3-0.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Misc-c1.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Misc-c2.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Web-hash-0.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Web-hash-1.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Web-hash-2.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Web-hash-3.png">
+<meta property="og:updated_time" content="2018-05-27T11:07:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ISCC2018部分WriteUp">
+<meta name="twitter:description" content="嗯，才发现ISCC比赛结束，平台也关掉了orz，附件也没下载，wp还没来得及整理，最近事情太多了orz，凑合看吧 比较坑的一点的flag格式很迷，flag{xxx}直接提交xx，不要带flag{}。划掉划掉，也有的时候提交flag{xx}。 MiscMisc1 What is that？预览图：  很明显了，改图片高度 010Editor打开，Templates选PNG（没有的话，点此下载后导入）">
+<meta name="twitter:image" content="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/ISCC-Misc1-0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/"/>
+
+
+
+
+
+  <title>ISCC2018部分WriteUp | Cytosineの有被小窝~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cytosineの有被小窝~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            cd ~
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            uname -a
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            ls -al post
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2018/05/27/writeup-2018ISCC2018/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ISCC2018部分WriteUp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T18:21:58+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>嗯，才发现ISCC比赛结束，平台也关掉了orz，附件也没下载，wp还没来得及整理，最近事情太多了orz，凑合看吧</p>
+<p>比较坑的一点的flag格式很迷，flag{xxx}直接提交xx，不要带flag{}。划掉划掉，也有的时候提交<code>flag{xx}</code>。</p>
+<h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="Misc1-What-is-that？"><a href="#Misc1-What-is-that？" class="headerlink" title="Misc1 What is that？"></a>Misc1 What is that？</h2><p>预览图：</p>
+<p><img src="ISCC-Misc1-0.png" alt=""></p>
+<p>很明显了，改图片高度</p>
+<p>010Editor打开，Templates选PNG（没有的话，<a href="http://www.sweetscape.com/010editor/templates/" target="_blank" rel="external">点此下载</a>后导入）</p>
+<p><img src="ISCC-Misc1-1.png" alt=""></p>
+<p>保存，看到flag：</p>
+<p><img src="ISCC-Misc1-2.png" alt=""></p>
+<p><code>flag{_Welcome_To_ISCC_2018_}</code></p>
+<h2 id="Misc2-秘密电报"><a href="#Misc2-秘密电报" class="headerlink" title="Misc2 秘密电报"></a>Misc2 秘密电报</h2><p>Mac解压显示出的是一堆乱码，我还以为题目就这样，琢磨了半天= =</p>
+<blockquote>
+<p>秘密电报：<br>知识就是力量 ABAAAABABBABAAAABABAAABAAABAAABAABAAAABAAAABA</p>
+</blockquote>
+<p>两种元素，可能是 <strong>摩斯电码</strong> 也可能是 <strong>培根密码</strong>。</p>
+<p>看了一下密文长度为45，培根密码的可能性更大。</p>
+<p>培根密码有两种方式，详见<a href="https://baike.baidu.com/item/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81" target="_blank" rel="external">培根密码_百度百科</a></p>
+<p>先用第二种解一下试试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python2</div><div class="line"># -*- coding:utf8 -*-</div><div class="line">__author__ = &apos;Cytosine&apos;</div><div class="line"></div><div class="line">def foo():</div><div class="line">    dic=&#123;&#125;</div><div class="line">    s_dic=&quot;&quot;&quot;</div><div class="line">a   AAAAA   g     AABBA   n    ABBAA   t     BAABA</div><div class="line">b   AAAAB   h     AABBB   o    ABBAB   u-v   BAABB</div><div class="line">c   AAABA   i-j   ABAAA   p    ABBBA   w     BABAA</div><div class="line">d   AAABB   k     ABAAB   q    ABBBB   x     BABAB</div><div class="line">e   AABAA   l     ABABA   r    BAAAA   y     BABBA</div><div class="line">f   AABAB   m     ABABB   s    BAAAB   z     BABBB</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    l_dic=s_dic.split()</div><div class="line">    for idx in range(0,len(l_dic),2):</div><div class="line">        dic[l_dic[idx+1]]=l_dic[idx]</div><div class="line">    print dic</div><div class="line"></div><div class="line">    cipher=&apos;ABAAAABABBABAAAABABAAABAAABAAABAABAAAABAAAABA&apos;</div><div class="line">    l_cipher=[cipher[i:i+5] for i in range(0,len(cipher),5)]</div><div class="line">    print len(l_cipher),l_cipher</div><div class="line"></div><div class="line">    rst=[dic[i] for i in l_cipher]</div><div class="line">    print rst</div><div class="line"></div><div class="line">    pass</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    foo()</div><div class="line">    print &apos;ok&apos;</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;ABBAB&apos;: &apos;o&apos;, &apos;ABBAA&apos;: &apos;n&apos;, &apos;BABAA&apos;: &apos;w&apos;, &apos;BABAB&apos;: &apos;x&apos;, &apos;ABAAA&apos;: &apos;i-j&apos;, &apos;ABAAB&apos;: &apos;k&apos;, &apos;AABBB&apos;: &apos;h&apos;, &apos;AABBA&apos;: &apos;g&apos;, &apos;BAABB&apos;: &apos;u-v&apos;, &apos;BAABA&apos;: &apos;t&apos;, &apos;AAABA&apos;: &apos;c&apos;, &apos;AAABB&apos;: &apos;d&apos;, &apos;ABBBB&apos;: &apos;q&apos;, &apos;ABBBA&apos;: &apos;p&apos;, &apos;ABABA&apos;: &apos;l&apos;, &apos;ABABB&apos;: &apos;m&apos;, &apos;BABBA&apos;: &apos;y&apos;, &apos;BABBB&apos;: &apos;z&apos;, &apos;AABAB&apos;: &apos;f&apos;, &apos;AABAA&apos;: &apos;e&apos;, &apos;BAAAB&apos;: &apos;s&apos;, &apos;BAAAA&apos;: &apos;r&apos;, &apos;AAAAA&apos;: &apos;a&apos;, &apos;AAAAB&apos;: &apos;b&apos;&#125;</div><div class="line">9 [&apos;ABAAA&apos;, &apos;ABABB&apos;, &apos;ABAAA&apos;, &apos;ABABA&apos;, &apos;AABAA&apos;, &apos;ABAAA&apos;, &apos;BAABA&apos;, &apos;AAABA&apos;, &apos;AAABA&apos;]</div><div class="line">[&apos;i-j&apos;, &apos;m&apos;, &apos;i-j&apos;, &apos;l&apos;, &apos;e&apos;, &apos;i-j&apos;, &apos;t&apos;, &apos;c&apos;, &apos;c&apos;]</div><div class="line">ok</div></pre></td></tr></table></figure>
+<p>似乎不太对。</p>
+<p>第一种方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python2</div><div class="line"># -*- coding:utf8 -*-</div><div class="line">__author__ = &apos;Cytosine&apos;</div><div class="line"></div><div class="line">def foo1():</div><div class="line">    dic=&#123;&#125;</div><div class="line">    s_dic=&quot;&quot;&quot;</div><div class="line">a   AAAAA   g     AABBA   n    ABBAA   t     BAABA</div><div class="line">b   AAAAB   h     AABBB   o    ABBAB   u-v   BAABB</div><div class="line">c   AAABA   i-j   ABAAA   p    ABBBA   w     BABAA</div><div class="line">d   AAABB   k     ABAAB   q    ABBBB   x     BABAB</div><div class="line">e   AABAA   l     ABABA   r    BAAAA   y     BABBA</div><div class="line">f   AABAB   m     ABABB   s    BAAAB   z     BABBB</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    l_dic=s_dic.split()</div><div class="line">    for idx in range(0,len(l_dic),2):</div><div class="line">        dic[l_dic[idx+1]]=l_dic[idx]</div><div class="line">    print dic</div><div class="line"></div><div class="line">    cipher=&apos;ABAAAABABBABAAAABABAAABAAABAAABAABAAAABAAAABA&apos;</div><div class="line">    l_cipher=[cipher[i:i+5] for i in range(0,len(cipher),5)]</div><div class="line">    print len(l_cipher),l_cipher</div><div class="line"></div><div class="line">    rst=[dic[i] for i in l_cipher]</div><div class="line">    print rst</div><div class="line"></div><div class="line">    pass</div><div class="line"></div><div class="line">def foo():</div><div class="line">    dic=&#123;&#125;</div><div class="line">    s_dic=&quot;&quot;&quot;</div><div class="line">A aaaaa</div><div class="line">B aaaab</div><div class="line">C aaaba</div><div class="line">D aaabb</div><div class="line">E aabaa</div><div class="line">F aabab</div><div class="line">G aabba</div><div class="line">H aabbb</div><div class="line">I abaaa</div><div class="line">J abaab</div><div class="line">K ababa</div><div class="line">L ababb</div><div class="line">M abbaa</div><div class="line">N abbab</div><div class="line">O abbba</div><div class="line">P abbbb</div><div class="line">Q baaaa</div><div class="line">R baaab</div><div class="line">S baaba</div><div class="line">T baabb</div><div class="line">U babaa</div><div class="line">V babab</div><div class="line">W babba</div><div class="line">X babbb</div><div class="line">Y bbaaa</div><div class="line">Z bbaab</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    l_dic=s_dic.strip().split()</div><div class="line">    for idx in range(0,len(l_dic),2):</div><div class="line">        dic[l_dic[idx+1]]=l_dic[idx]</div><div class="line">    print dic</div><div class="line"></div><div class="line">    cipher=&apos;ABAAAABABBABAAAABABAAABAAABAAABAABAAAABAAAABA&apos;.lower()</div><div class="line">    l_cipher=[cipher[i:i+5] for i in range(0,len(cipher),5)]</div><div class="line">    print len(l_cipher),l_cipher</div><div class="line"></div><div class="line">    rst=[dic[i] for i in l_cipher]</div><div class="line">    print rst</div><div class="line">    print &apos;&apos;.join(rst)</div><div class="line"></div><div class="line">    pass</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    foo()</div><div class="line">    print &apos;ok&apos;</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;aabbb&apos;: &apos;H&apos;, &apos;aabba&apos;: &apos;G&apos;, &apos;baaab&apos;: &apos;R&apos;, &apos;baaaa&apos;: &apos;Q&apos;, &apos;bbaab&apos;: &apos;Z&apos;, &apos;bbaaa&apos;: &apos;Y&apos;, &apos;abbab&apos;: &apos;N&apos;, &apos;abbaa&apos;: &apos;M&apos;, &apos;babaa&apos;: &apos;U&apos;, &apos;babab&apos;: &apos;V&apos;, &apos;abaaa&apos;: &apos;I&apos;, &apos;abaab&apos;: &apos;J&apos;, &apos;aabab&apos;: &apos;F&apos;, &apos;aabaa&apos;: &apos;E&apos;, &apos;aaaaa&apos;: &apos;A&apos;, &apos;aaaab&apos;: &apos;B&apos;, &apos;baabb&apos;: &apos;T&apos;, &apos;baaba&apos;: &apos;S&apos;, &apos;aaaba&apos;: &apos;C&apos;, &apos;aaabb&apos;: &apos;D&apos;, &apos;abbbb&apos;: &apos;P&apos;, &apos;abbba&apos;: &apos;O&apos;, &apos;ababa&apos;: &apos;K&apos;, &apos;ababb&apos;: &apos;L&apos;, &apos;babba&apos;: &apos;W&apos;, &apos;babbb&apos;: &apos;X&apos;&#125;</div><div class="line">9 [&apos;abaaa&apos;, &apos;ababb&apos;, &apos;abaaa&apos;, &apos;ababa&apos;, &apos;aabaa&apos;, &apos;abaaa&apos;, &apos;baaba&apos;, &apos;aaaba&apos;, &apos;aaaba&apos;]</div><div class="line">[&apos;I&apos;, &apos;L&apos;, &apos;I&apos;, &apos;K&apos;, &apos;E&apos;, &apos;I&apos;, &apos;S&apos;, &apos;C&apos;, &apos;C&apos;]</div><div class="line">ILIKEISCC</div><div class="line">ok</div></pre></td></tr></table></figure>
+<p>get flag：<code>ILIKEISCC</code></p>
+<h2 id="Misc3-Where-is-the-FLAG？"><a href="#Misc3-Where-is-the-FLAG？" class="headerlink" title="Misc3 Where is the FLAG？"></a>Misc3 Where is the FLAG？</h2><p>010Editor打开，看到<code>Adobe Fireworks CS5</code></p>
+<p>下一个Adobe Fireworks CS5，安装，打开文件：</p>
+<p><img src="ISCC-misc3-0.png" alt=""></p>
+<p>把位图前面的小眼睛去掉，就看到二维码啦，剩下的就是拼拼图辣，拼好之后，扫二维码得到<code>flag{a332b700-3621-11e7-a53b-6807154a58cf}</code></p>
+<p>提交<code>a332b700-3621-11e7-a53b-6807154a58cf</code></p>
+<h2 id="Misc4-一只猫的心思"><a href="#Misc4-一只猫的心思" class="headerlink" title="Misc4 一只猫的心思"></a>Misc4 一只猫的心思</h2><p>手抠一个doc出来，doc文件头<code>D0 CF 11 E0</code></p>
+<p>文件内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">名西三陵帝焰数诵诸山众參哈瑟倒陰捨劫奉惜逝定雙月奉倒放足即闍重号貧老诵夷經友利普过孕北至花令藐灯害蒙能羅福羅夢开雙禮琉德护慈積寫阿璃度戏便通故西故敬于瑟行雙知宇信在礙哈数及息闍殺陵游盧槃药諦慈灯究幽灯豆急彌貧豆親诵梭量树琉敬精者楞来西陰根五消夢众羅持造彌六师彌怖精僧璃夫薩竟祖方夢訶橋經文路困如牟憐急尼念忧戏輸教乾楞能敬告树来楞殊倒哈在紛除亿茶涅根輸持麼阿空瑟稳住濟号他方牟月息盡即来通貧竟怖如槃精老盡恤及游薩戏师毒兄宝下行普鄉释下告劫惜进施盡豆告心蒙紛信胜东蒙求帝金量礙故弟帝普劫夜利除積众老陀告沙師尊尼捨惜三依老蒙守精于排族祖在师利寫首念凉梭妙經栗穆愛憐孝粟尊醯造解住時刚槃宗解牟息在量下恐教众智焰便醯除寂想虚中顛老弥诸持山諦月真羅陵普槃下遠涅能开息灯和楞族根羅宝戒药印困求及想月涅能进至贤金難殊毘瑟六毘捨薩槃族施帝遠念众胜夜夢各万息尊薩山哈多皂诵盡药北及雙栗师幽持牟尼隸姪遠住孕寂以舍精花羅界去住勒排困多閦呼皂難于焰以栗婦愛闍多安逝告槃藐矜竟孕彌弟多者精师寡寫故璃舍各亦方特路茶豆積梭求号栗怖夷凉在顛豆胜住虚解鄉姪利琉三槃以舍劫鄉陀室普焰于鄉依朋故能劫通</div></pre></td></tr></table></figure>
+<p>感谢实验室学长，<strong>与佛论禅解密</strong>：<a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx" target="_blank" rel="external">http://www.keyfc.net/bbs/tools/tudoucode.aspx</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">523156615245644E536C564856544E565130354B553064524D6C524E546B4A56535655795645644F5530524857544A4553553943566B644A4D6C524E546C7052523155795645744F536C5248515670555330354452456456576B524854554A585231457956554E4F51305A4855544E4553303153566B64424D6C524A546B7058527A525A5245744F576C5A4854544A5554553554513063304E46524C54564A5652316B795255744F51305A4856544E5554564661566B6C464D6B5252546B70595231557A5245394E516C5A4856544A555355354B566B644E5756524E5455705752316B7A5255564F55305248566B465553564A4356306C4E4D6C524E546B4A565231557952453152556C564A56544A455555354B5530644E5756525054554A56523030795645314F516C5A4857544A4553303143566B64464D305648546B744352314A425645744F576C5A4855544A4651303543566B64564D6B524854554A555230557A52454E4F536C644855544A5554553543566B645A4D6B564A546C4E445231566152456C52576C5A4855544A5553303544516B64564D6C524C54564A55523045795245314F556C4A4856544E455355354B56556C564D6B564E546B70535230315A52457452536C564951544A555455354B565564535156524A54564A575230457956456C4E576C46485454525553303143566B6446576C564A54544A46</div></pre></td></tr></table></figure>
+<p>hex2str:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">R1VaREdNSlVHVTNVQ05KU0dRMlRNTkJVSVUyVEdOU0RHWTJESU9CVkdJMlRNTlpRR1UyVEtOSlRHQVpUS05DREdVWkRHTUJXR1EyVUNOQ0ZHUTNES01SVkdBMlRJTkpXRzRZREtOWlZHTTJUTU5TQ0c0NFRLTVJVR1kyRUtOQ0ZHVTNUTVFaVklFMkRRTkpYR1UzRE9NQlZHVTJUSU5KVkdNWVRNTUpWR1kzRUVOU0RHVkFUSVJCV0lNMlRNTkJVR1UyRE1RUlVJVTJEUU5KU0dNWVRPTUJVR00yVE1OQlZHWTJES01CVkdFM0VHTktCR1JBVEtOWlZHUTJFQ05CVkdVMkRHTUJUR0UzRENOSldHUTJUTU5CVkdZMkVJTlNDR1VaRElRWlZHUTJUS05DQkdVMlRLTVJUR0EyRE1OUlJHVTNESU5KVUlVMkVNTkpSR01ZREtRSlVIQTJUTU5KVUdSQVRJTVJWR0EyVElNWlFHTTRUS01CVkdFWlVJTTJF</div></pre></td></tr></table></figure>
+<p>base64:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GUZDGMJUGU3UCNJSGQ2TMNBUIU2TGNSDGY2DIOBVGI2TMNZQGU2TKNJTGAZTKNCDGUZDGMBWGQ2UCNCFGQ3DKMRVGA2TINJWG4YDKNZVGM2TMNSCG44TKMRUGY2EKNCFGU3TMQZVIE2DQNJXGU3DOMBVGU2TINJVGMYTMMJVGY3EENSDGVATIRBWIM2TMNBUGU2DMQRUIU2DQNJSGMYTOMBUGM2TMNBVGY2DKMBVGE3EGNKBGRATKNZVGQ2ECNBVGU2DGMBTGE3DCNJWGQ2TMNBVGY2EINSCGUZDIQZVGQ2TKNCBGU2TKMRTGA2DMNRRGU3DINJUIU2EMNJRGMYDKQJUHA2TMNJUGRATIMRVGA2TIMZQGM4TKMBVGEZUIM2E</div></pre></td></tr></table></figure>
+<p>b32:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">5231457A5245644E536C6448525670555530354C5230645A4E4652505456705753566B7952464E4E576C5A485756705554553161566B6C5A4D6C5644546B4E485231704356456450516C5A4A57544A4554303161564564564D6B524C54554A555230466156454E4F51305A4856544A425054303950513D3D</div></pre></td></tr></table></figure>
+<p>hex2str:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">R1EzREdNSldHRVpUU05LR0dZNFRPTVpWSVkyRFNNWlZHWVpUTU1aVklZMlVDTkNHR1pCVEdPQlZJWTJET01aVEdVMkRLTUJUR0FaVENOQ0ZHVTJBPT09PQ==</div></pre></td></tr></table></figure>
+<p>base64:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GQ3DGMJWGEZTSNKGGY4TOMZVIY2DSMZVGYZTMMZVIY2UCNCGGZBTGOBVIY2DOMZTGU2DKMBTGAZTCNCFGU2A====</div></pre></td></tr></table></figure>
+<p>base32:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">463161395F69735F493563635F5A4F6C385F4733545030314E54</div></pre></td></tr></table></figure>
+<p>hex2str:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">F1a9_is_I5cc_ZOl8_G3TP01NT</div></pre></td></tr></table></figure>
+<p>提交<code>I5cc_ZOl8_G3TP01NT</code></p>
+<h2 id="Misc5-暴力XX不可取"><a href="#Misc5-暴力XX不可取" class="headerlink" title="Misc5 暴力XX不可取"></a>Misc5 暴力XX不可取</h2><p>题目: <code>vfppjrnerpbzvat</code></p>
+<p><a href="http://planetcalc.com/1434/" target="_blank" rel="external">凯撒解密</a>，rot13时得:<code>isccwearecoming</code></p>
+<h2 id="Misc-重重谍影"><a href="#Misc-重重谍影" class="headerlink" title="Misc 重重谍影"></a>Misc 重重谍影</h2><blockquote>
+<p>这是一道脑洞题，简单的要命。层层迷雾之后就是答案，刹那便是永恒。南无阿弥陀佛。</p>
+</blockquote>
+<p>题目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">重重谍影</div><div class="line">这是一道脑洞题，简单的要命。层层迷雾之后就是答案，刹那便是永恒。南无阿弥陀佛。</div><div class="line"></div><div class="line">Vm0wd2QyVkZOVWRXV0doVlYwZG9WVll3WkRSV2JGbDNXa1JTVjAxWGVGWlZNakExVjBaS2RHVkljRnBXVm5CUVZqQmtTMUl4VG5OaFJtUlhaV3RHTkZkWGRHdFRNVXB6V2toV2FsSnNjRmhhVjNoaFYxWmFjMWt6YUZSTlZtdzBWVEo0YzJGR1NuTlhiR2hYWVd0d2RsUnRlR3RqYkdSMFVteFdUbFp0ZHpCV2EyTXhVekZSZUZkc1ZsZGhlbXhoVm01d1IyTldjRVZTYlVacVZtdHdlbGRyVlRWVk1ERldZMFZ3VjJKR2NIWlpWRXBIVWpGT1dXSkhhRlJTVlhCWFZtMDFkMUl3TlhOVmJGcFlZbGhTV1ZWcVFURlRWbEY0VjIxR2FGWnNjSGxaYWs1clZqSkdjbUo2UWxwV1JWcDZWbXBHVDJNeGNFaGpSazVZVWxWd1dWWnRNVEJXTVUxNFdrVmtWbUpHV2xSWlZFNVRWVVpzYzFadVpGUmlSbHBaVkZaU1ExWlhSalpTYTJSWFlsaENVRll3V21Gak1XUnpZVWRHVTFKV2NGRldha0poV1ZkU1YxWnVTbEJXYldoVVZGUktiMDB4V25OYVJFSm9UVlpXTlZaSE5VOVdiVXB5WTBaYVdtRXhjRE5aTW5oVFZqRmFkRkpzWkU1V2JGa3dWbXhrTUdFeVJraFRiRnBYWVd4d1dGWnFUbE5YUmxsNVRWVmFiRkp0VW5wWlZWcFhZVlpLZFZGdWJGZGlXRUpJV1ZSS1QxWXhTblZWYlhoVFlYcFdWVmRYZUZOamF6RkhWMjVTYWxKWVVrOVZiVEUwVjBaYVNFNVZPVmRXYlZKS1ZWZDRhMWRzV2taWGEzaFhUVlp3V0ZwR1pFOVRSVFZZWlVkc1UyRXpRbHBXYWtvd1lURkplRmR1U2s1V1ZscHdWVzB4VTFac1duUk5WazVPVFZkU1dGZHJWbXRoYXpGeVRsVndWbFl6YUZoV2FrWmhZekpPUjJKR1pGTmxhMVYzVjJ0U1IyRXhUa2RWYmtwb1VtdEtXRmxzWkc5a2JHUllaRVprYTJKV1ducFhhMXB2Vkd4T1NHRklRbFZXTTJoTVZqQmFZVk5GTlZaa1JscFRZbFpLU0ZaSGVGWmxSbHBYVjJ0YVQxWldTbFpaYTFwM1dWWndWMXBHWkZSU2EzQXdXVEJWTVZZeVNuSlRWRUpYWWtad2NsUnJXbHBsUmxweVdrWm9hVkpzY0ZsWFYzUnJWVEZaZUZkdVVtcGxhMHB5VkZaYVMxZEdXbk5oUnpsWVVteHNNMWxyVWxkWlZscFhWbGhvVjFaRldtaFdha3BQVWxaU2MxcEhhRTVpUlc4eVZtdGFWMkV4VVhoYVJXUlVZa2Q0Y1ZWdGRIZGpSbHB4VkcwNVZsWnRVbGhXVjNSclYyeGFjMk5GYUZkaVIyaHlWbTB4UzFaV1duSlBWbkJwVW14d2IxZHNWbUZoTWs1elZtNUtWV0pHV2s5V2JHaERVMVphY1ZKdE9XcE5WbkJaVld4b2IxWXlSbk5UYldoV1lURmFhRlJVUm1GamJIQkhWR3hTVjJFelFqVldSM2hoWVRGU2RGTnJXbXBTVjFKWVZGWmFTMUpHYkhGU2JrNVlVbXR3ZVZkcldtdGhWa2w1WVVjNVYxWkZTbWhhUkVaaFZqRldjMWRzWkZoU01taFFWa1phWVdReFNuTldXR3hyVWpOU2IxVnRkSGRXYkZwMFpVaE9XbFpyY0ZsV1YzQlBWbTFXY2xkdGFGWmlXRTE0Vm0xNGExWkdXbGxqUms1U1ZURldObFZyVGxabGJFcENTbFJPUlVwVVRrVSUzRA==</div></pre></td></tr></table></figure>
+<p>base64 * n (<strong>注意url decode</strong>):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">U2FsdGVkX183BPnBd50ynIRM3o8YLmwHaoi8b8QvfVdFHCEwG9iwp4hJHznrl7d4%0AB5rKClEyYVtx6uZFIKtCXo71fR9Mcf6b0EzejhZ4pnhnJOl+zrZVlV0T9NUA+u1z%0AiN+jkpb6ERH86j7t45v4Mpe+j1gCpvaQgoKC0Oaa5kc%3D</div></pre></td></tr></table></figure>
+<p>urldecode(<code>+</code>不要de)</p>
+<p><a href="http://tool.oschina.net/encrypt/" target="_blank" rel="external">AES解密</a></p>
+<p><img src="ISCC-Misc-c1.png" alt=""></p>
+<p><strong>与佛论禅解密</strong>：<a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx" target="_blank" rel="external">http://www.keyfc.net/bbs/tools/tudoucode.aspx</a></p>
+<p><img src="ISCC-Misc-c2.png" alt=""></p>
+<h2 id="Misc-凯撒十三世"><a href="#Misc-凯撒十三世" class="headerlink" title="Misc 凯撒十三世"></a>Misc 凯撒十三世</h2><blockquote>
+<p>凯撒十三世在学会使用键盘后，向你扔了一串字符：“ebdgc697g95w3”，猜猜它吧。</p>
+</blockquote>
+<p>凯撒十三世 -&gt; rot13 -&gt; <code>roqtp697t95j3</code></p>
+<p>键盘密码，向下替换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1 2 3 4 5 6 7 8 9 0</div><div class="line">Q W E R T Y U I O P</div><div class="line">A S D F G H J K L</div><div class="line">Z X C V B N M</div></pre></td></tr></table></figure>
+<p>getflag<code>flagyougotme</code></p>
+<p>提交<code>yougotme</code></p>
+<h2 id="Misc-有趣的ISCC"><a href="#Misc-有趣的ISCC" class="headerlink" title="Misc 有趣的ISCC"></a>Misc 有趣的ISCC</h2><p>010Editor打开，拉到最后，复制，py脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python2</div><div class="line"># -*- coding:utf8 -*-</div><div class="line">__author__ = &apos;Cytosine&apos;</div><div class="line"></div><div class="line">import requests</div><div class="line">import urllib</div><div class="line">import base64</div><div class="line">import hashlib</div><div class="line">import sys</div><div class="line">import string</div><div class="line">import re</div><div class="line"></div><div class="line"></div><div class="line">def foo():</div><div class="line">    s=&quot;&quot;&quot;</div><div class="line">26 00 23 00 39 00 32 00 3B 00 26 00 23 00 31 00</div><div class="line">31 00 37 00 3B 00 26 00 23 00 34 00 38 00 3B 00</div><div class="line">26 00 23 00 34 00 38 00 3B 00 26 00 23 00 35 00</div><div class="line">34 00 3B 00 26 00 23 00 35 00 34 00 3B 00 26 00</div><div class="line">23 00 39 00 32 00 3B 00 26 00 23 00 31 00 31 00</div><div class="line">37 00 3B 00 26 00 23 00 34 00 38 00 3B 00 26 00</div><div class="line">23 00 34 00 38 00 3B 00 26 00 23 00 35 00 34 00</div><div class="line">3B 00 26 00 23 00 39 00 39 00 3B 00 26 00 23 00</div><div class="line">39 00 32 00 3B 00 26 00 23 00 31 00 31 00 37 00</div><div class="line">3B 00 26 00 23 00 34 00 38 00 3B 00 26 00 23 00</div><div class="line">34 00 38 00 3B 00 26 00 23 00 35 00 34 00 3B 00</div><div class="line">26 00 23 00 34 00 39 00 3B 00 26 00 23 00 39 00</div><div class="line">32 00 3B 00 26 00 23 00 31 00 31 00 37 00 3B 00</div><div class="line">26 00 23 00 34 00 38 00 3B 00 26 00 23 00 34 00</div><div class="line">38 00 3B 00 26 00 23 00 35 00 34 00 3B 00 26 00</div><div class="line">23 00 35 00 35 00 3B 00 26 00 23 00 39 00 32 00</div><div class="line">3B 00 26 00 23 00 31 00 31 00 37 00 3B 00 26 00</div><div class="line">23 00 34 00 38 00 3B 00 26 00 23 00 34 00 38 00</div><div class="line">3B 00 26 00 23 00 35 00 35 00 3B 00 26 00 23 00</div><div class="line">39 00 38 00 3B 00 26 00 23 00 39 00 32 00 3B 00</div><div class="line">26 00 23 00 31 00 31 00 37 00 3B 00 26 00 23 00</div><div class="line">34 00 38 00 3B 00 26 00 23 00 34 00 38 00 3B 00</div><div class="line">26 00 23 00 35 00 34 00 3B 00 26 00 23 00 35 00</div><div class="line">37 00 3B 00 26 00 23 00 39 00 32 00 3B 00 26 00</div><div class="line">23 00 31 00 31 00 37 00 3B 00 26 00 23 00 34 00</div><div class="line">38 00 3B 00 26 00 23 00 34 00 38 00 3B 00 26 00</div><div class="line">23 00 35 00 35 00 3B 00 26 00 23 00 35 00 31 00</div><div class="line">3B 00 26 00 23 00 39 00 32 00 3B 00 26 00 23 00</div><div class="line">31 00 31 00 37 00 3B 00 26 00 23 00 34 00 38 00</div><div class="line">3B 00 26 00 23 00 34 00 38 00 3B 00 26 00 23 00</div><div class="line">35 00 34 00 3B 00 26 00 23 00 35 00 31 00 3B 00</div><div class="line">26 00 23 00 39 00 32 00 3B 00 26 00 23 00 31 00</div><div class="line">31 00 37 00 3B 00 26 00 23 00 34 00 38 00 3B 00</div><div class="line">26 00 23 00 34 00 38 00 3B 00 26 00 23 00 35 00</div><div class="line">34 00 3B 00 26 00 23 00 35 00 31 00 3B 00 26 00</div><div class="line">23 00 39 00 32 00 3B 00 26 00 23 00 31 00 31 00</div><div class="line">37 00 3B 00 26 00 23 00 34 00 38 00 3B 00 26 00</div><div class="line">23 00 34 00 38 00 3B 00 26 00 23 00 35 00 30 00</div><div class="line">3B 00 26 00 23 00 34 00 38 00 3B 00 26 00 23 00</div><div class="line">39 00 32 00 3B 00 26 00 23 00 31 00 31 00 37 00</div><div class="line">3B 00 26 00 23 00 34 00 38 00 3B 00 26 00 23 00</div><div class="line">34 00 38 00 3B 00 26 00 23 00 35 00 34 00 3B 00</div><div class="line">26 00 23 00 35 00 37 00 3B 00 26 00 23 00 39 00</div><div class="line">32 00 3B 00 26 00 23 00 31 00 31 00 37 00 3B 00</div><div class="line">26 00 23 00 34 00 38 00 3B 00 26 00 23 00 34 00</div><div class="line">38 00 3B 00 26 00 23 00 35 00 35 00 3B 00 26 00</div><div class="line">23 00 35 00 31 00 3B 00 26 00 23 00 39 00 32 00</div><div class="line">3B 00 26 00 23 00 31 00 31 00 37 00 3B 00 26 00</div><div class="line">23 00 34 00 38 00 3B 00 26 00 23 00 34 00 38 00</div><div class="line">3B 00 26 00 23 00 35 00 30 00 3B 00 26 00 23 00</div><div class="line">34 00 38 00 3B 00 26 00 23 00 39 00 32 00 3B 00</div><div class="line">26 00 23 00 31 00 31 00 37 00 3B 00 26 00 23 00</div><div class="line">34 00 38 00 3B 00 26 00 23 00 34 00 38 00 3B 00</div><div class="line">26 00 23 00 35 00 34 00 3B 00 26 00 23 00 35 00</div><div class="line">34 00 3B 00 26 00 23 00 39 00 32 00 3B 00 26 00</div><div class="line">23 00 31 00 31 00 37 00 3B 00 26 00 23 00 34 00</div><div class="line">38 00 3B 00 26 00 23 00 34 00 38 00 3B 00 26 00</div><div class="line">23 00 35 00 35 00 3B 00 26 00 23 00 35 00 33 00</div><div class="line">3B 00 26 00 23 00 39 00 32 00 3B 00 26 00 23 00</div><div class="line">31 00 31 00 37 00 3B 00 26 00 23 00 34 00 38 00</div><div class="line">3B 00 26 00 23 00 34 00 38 00 3B 00 26 00 23 00</div><div class="line">35 00 34 00 3B 00 26 00 23 00 31 00 30 00 31 00</div><div class="line">3B 00 26 00 23 00 39 00 32 00 3B 00 26 00 23 00</div><div class="line">31 00 31 00 37 00 3B 00 26 00 23 00 34 00 38 00</div><div class="line">3B 00 26 00 23 00 34 00 38 00 3B 00 26 00 23 00</div><div class="line">35 00 35 00 3B 00 26 00 23 00 31 00 30 00 30 00</div><div class="line">3B</div><div class="line">&quot;&quot;&quot;</div><div class="line">    l=s.strip().split()</div><div class="line">    l=[i for i in l if i!=&apos;00&apos;]</div><div class="line">    l=[chr(int(i,16)) for i in l]</div><div class="line">    print l</div><div class="line">    rst=&apos;&apos;.join(l)</div><div class="line">    print rst</div><div class="line">    l=re.findall(&apos;&amp;#(.*?);&apos;,rst)</div><div class="line">    print l</div><div class="line">    l=[chr(int(i)) for i in l]</div><div class="line">    rst=&apos;&apos;.join(l)</div><div class="line">    print rst</div><div class="line"></div><div class="line">    a = rst.decode(&apos;unicode-escape&apos;).encode(&apos;utf-8&apos;)</div><div class="line">    print a</div><div class="line">    pass</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    foo()</div><div class="line">    print &apos;ok&apos;</div></pre></td></tr></table></figure>
+<p>getflag<code>flag{iscc is fun}</code></p>
+<p>提交<code>iscc is fun</code></p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Web1-比较数字大小"><a href="#Web1-比较数字大小" class="headerlink" title="Web1 比较数字大小"></a>Web1 比较数字大小</h2><p>右键输入框，审查元素，把maxlength改成300，输入n多个9，提交</p>
+<p>得到返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">key is 768HKyu678567&amp;*&amp;K</div></pre></td></tr></table></figure>
+<p>提交<code>768HKyu678567&amp;*&amp;K</code></p>
+<h2 id="Web2-你能跨过去吗？"><a href="#Web2-你能跨过去吗？" class="headerlink" title="Web2 你能跨过去吗？"></a>Web2 你能跨过去吗？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.test.com/NodeMore.jsp?id=672613&amp;page=2&amp;pageCounter=32&amp;undefined&amp;callback=+/v+ +ADwAcwBjAHIAaQBwAHQAPgBhAGwAZQByAHQAKAAiAGsAZQB5ADoALwAlAG4AcwBmAG8AYwB1AHMAWABTAFMAdABlAHMAdAAlAC8AIgApADwALwBzAGMAcgBpAHAAdAA+AC0-&amp;_=1302746925413</div></pre></td></tr></table></figure>
+<p><code>+/v+</code>明显的uft-7</p>
+<p><a href="http://web2hack.org/xssee/" target="_blank" rel="external">utf-7在线解码</a></p>
+<p>解码得：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+/v+ &lt;script&gt;alert(&quot;key:/%nsfocusXSStest%/&quot;)&lt;/script&gt;-</div></pre></td></tr></table></figure>
+<p>得到key:<code>/%nsfocusXSStest%/</code>，提交，得到flag:<code>Hell0World</code></p>
+<h2 id="Web3-一切都是套路"><a href="#Web3-一切都是套路" class="headerlink" title="Web3 一切都是套路"></a>Web3 一切都是套路</h2><p>题目中已经提示：</p>
+<blockquote>
+<p>好像有个文件忘记删了</p>
+</blockquote>
+<p>那么就不客气了，扫了一下常见源码泄露，发现<code>http://118.190.152.202:8009/index.php.txt</code></p>
+<p>得到源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">include &quot;flag.php&quot;;</div><div class="line"></div><div class="line">if ($_SERVER[&quot;REQUEST_METHOD&quot;] != &quot;POST&quot;)</div><div class="line">	die(&quot;flag is here&quot;);</div><div class="line"></div><div class="line">if (!isset($_POST[&quot;flag&quot;]) )</div><div class="line">	die($_403);</div><div class="line"></div><div class="line">foreach ($_GET as $k =&gt; $v)&#123;</div><div class="line">	$$k = $$v;</div><div class="line">&#125;</div><div class="line"></div><div class="line">foreach ($_POST as $k =&gt; $v)&#123;</div><div class="line">	$$k = $v;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if ( $_POST[&quot;flag&quot;] !== $flag )</div><div class="line">	die($_403);</div><div class="line"></div><div class="line">echo &quot;flag: &quot;. $flag . &quot;\n&quot;;</div><div class="line">die($_200);</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>变量覆盖，get过去<code>_200=flag</code>, 再post过去<code>flag=a</code>，即可getflag:<code>ISCC{taolu2333333....}</code></p>
+<h2 id="Web5-web02"><a href="#Web5-web02" class="headerlink" title="Web5 web02"></a>Web5 web02</h2><p>request header add <code>client-ip: 127.0.0.1</code></p>
+<p>getflag: <code>ISCC{iscc_059eeb8c0c33eb62}</code></p>
+<h2 id="Web6-SQL注入的艺术"><a href="#Web6-SQL注入的艺术" class="headerlink" title="Web6 SQL注入的艺术"></a>Web6 SQL注入的艺术</h2><p>宽字节/扫数据库文件</p>
+<p>数据库文件 <code>/admins</code></p>
+<p>getflag，flag忘了记是什么了orz</p>
+<h2 id="Web7-试试看"><a href="#Web7-试试看" class="headerlink" title="Web7 试试看"></a>Web7 试试看</h2><p>开局一张图，查看源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;show.php?img=1.jpg&quot;&gt;</div></pre></td></tr></table></figure>
+<p>跳到<code>show.php?img=1.jpg</code></p>
+<p>payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">view-source:http://118.190.152.202:8006/show.php?img=php://filter/resource=1.jpgresource=../flag.php</div></pre></td></tr></table></figure>
+<p>getflag:<code>flag{1ntere5ting_PHP_Regu1ar_express1onssssss}</code></p>
+<p>提交<code>flag{1ntere5ting_PHP_Regu1ar_express1onssssss}</code></p>
+<h2 id="Web-本地的诱惑"><a href="#Web-本地的诱惑" class="headerlink" title="Web 本地的诱惑"></a>Web 本地的诱惑</h2><p>右键查看源代码，getflag<code>ISCC{^&amp;*(UIHKJjkadshf}</code></p>
+<p>提交<code>ISCC{^&amp;*(UIHKJjkadshf}</code></p>
+<h2 id="Web-请ping我的ip-看你能Ping通吗？"><a href="#Web-请ping我的ip-看你能Ping通吗？" class="headerlink" title="Web 请ping我的ip 看你能Ping通吗？"></a>Web 请ping我的ip 看你能Ping通吗？</h2><blockquote>
+<p>我都过滤了，看你怎么绕。<br>题目地址：<a href="http://118.190.152.202:8018" target="_blank" rel="external">http://118.190.152.202:8018</a></p>
+</blockquote>
+<p>命令执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://118.190.152.202:8018/?ip=www.baidu.com%0Acat%20flag.txt</div></pre></td></tr></table></figure>
+<p>getflag<code>ISCC{8a8646c7a2fce16b166fbc68ca65f9e4}</code></p>
+<h2 id="Web-Please-give-me-username-and-password"><a href="#Web-Please-give-me-username-and-password" class="headerlink" title="Web Please give me username and password!"></a>Web Please give me username and password!</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">error_reporting(0);</div><div class="line">$flag = &quot;***********&quot;;	</div><div class="line">if(isset($_GET[&apos;username&apos;]))&#123;</div><div class="line">	if (0 == strcasecmp($flag,$_GET[&apos;username&apos;]))&#123;</div><div class="line">	$a = fla;</div><div class="line">	echo &quot;very good!Username is right&quot;;</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">	print &apos;Username is not right&lt;!--index.php.txt--&gt;&apos;;&#125;</div><div class="line">&#125;else</div><div class="line">print &apos;Please give me username or password!&apos;;</div><div class="line">if (isset($_GET[&apos;password&apos;]))&#123;</div><div class="line">	if (is_numeric($_GET[&apos;password&apos;]))&#123;</div><div class="line">		if (strlen($_GET[&apos;password&apos;]) &lt; 4)&#123;</div><div class="line">			if ($_GET[&apos;password&apos;] &gt; 999)&#123;</div><div class="line">			$b = g;</div><div class="line">			print &apos;&lt;p&gt;very good!Password is right&lt;/p&gt;&apos;;</div><div class="line">		&#125;else </div><div class="line">			print &apos;&lt;p&gt;Password too little&lt;/p&gt;&apos;;</div><div class="line">		&#125;else</div><div class="line">		print &apos;&lt;p&gt;Password too long&lt;/p&gt;&apos;;</div><div class="line">	&#125;else</div><div class="line">	print &apos;&lt;p&gt;Password is not numeric&lt;/p&gt;&apos;;</div><div class="line">&#125;</div><div class="line">if ($a.$b == &quot;flag&quot;)</div><div class="line">	print $flag;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>payload<code>?username[]=fla&amp;password=9e9</code></p>
+<p>getflag<code>flag{ISCC2018_Very_GOOD!}</code></p>
+<p>提交<code>flag{ISCC2018_Very_GOOD!}</code></p>
+<h1 id="Re"><a href="#Re" class="headerlink" title="Re"></a>Re</h1><h1 id="Re1-RSA256"><a href="#Re1-RSA256" class="headerlink" title="Re1 RSA256"></a>Re1 RSA256</h1><h3 id="用OpenSSL算出n和e"><a href="#用OpenSSL算出n和e" class="headerlink" title="用OpenSSL算出n和e:"></a>用OpenSSL算出n和e:</h3><p><a href="http://skysec.top/2017/07/25/RSA%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/#openssl" target="_blank" rel="external">http://skysec.top/2017/07/25/RSA%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/#openssl</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fujian cyto$ openssl rsa -in public.key  -pubin -noout -text -modulus</div><div class="line">Public-Key: (256 bit)</div><div class="line">Modulus:</div><div class="line">    00:d9:9e:95:22:96:a6:d9:60:df:c2:50:4a:ba:54:</div><div class="line">    5b:94:42:d6:0a:7b:9e:93:0a:ff:45:1c:78:ec:55:</div><div class="line">    d5:55:eb</div><div class="line">Exponent: 65537 (0x10001)</div><div class="line">Modulus=D99E952296A6D960DFC2504ABA545B9442D60A7B9E930AFF451C78EC55D555EB</div></pre></td></tr></table></figure>
+<p>上面是e，下面是n。</p>
+<h3 id="分解n得p和q"><a href="#分解n得p和q" class="headerlink" title="分解n得p和q"></a>分解n得p和q</h3><p><a href="http://factordb.com/index.php?query=98432079271513130981267919056149161631892822707167177858831841699521774310891" target="_blank" rel="external">http://factordb.com/index.php?query=98432079271513130981267919056149161631892822707167177858831841699521774310891</a></p>
+<p><img src="" alt=""></p>
+<p>前面是p，后面是q。</p>
+<h3 id="已知p、q、n、e求明文"><a href="#已知p、q、n、e求明文" class="headerlink" title="已知p、q、n、e求明文"></a>已知p、q、n、e求明文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python2</div><div class="line"># -*- coding:utf8 -*-</div><div class="line"></div><div class="line">import gmpy</div><div class="line">import rsa</div><div class="line"></div><div class="line">def foo():</div><div class="line">    p=302825536744096741518546212761194311477</div><div class="line">    q=325045504186436346209877301320131277983</div><div class="line">    n=98432079271513130981267919056149161631892822707167177858831841699521774310891</div><div class="line">    e=65537</div><div class="line">    d=int(gmpy.invert(e,(p-1)*(q-1)))</div><div class="line">    private_key=rsa.PrivateKey(n,e,d,p,q)</div><div class="line">    with open(&apos;fujian/encrypted.message1&apos;,&apos;rb&apos;) as f:</div><div class="line">        print rsa.decrypt(f.read(),private_key).decode()</div><div class="line">    with open(&apos;fujian/encrypted.message2&apos;,&apos;rb&apos;) as f:</div><div class="line">        print rsa.decrypt(f.read(),private_key).decode()</div><div class="line">    with open(&apos;fujian/encrypted.message3&apos;,&apos;rb&apos;) as f:</div><div class="line">        print rsa.decrypt(f.read(),private_key).decode()</div><div class="line">    pass</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    foo()</div><div class="line">    print &apos;ok&apos;</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">flag&#123;3b6d3806-4b2b</div><div class="line"></div><div class="line">-11e7-95a0-</div><div class="line"></div><div class="line">000c29d7e93d&#125;</div><div class="line"></div><div class="line">ok</div></pre></td></tr></table></figure>
+<p>getflag: <code>flag{3b6d3806-4b2b-11e7-95a0-000c29d7e93d}</code></p>
+<h2 id="Web-Collide"><a href="#Web-Collide" class="headerlink" title="Web Collide"></a>Web Collide</h2><p>题目源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">include &quot;secret.php&quot;;</div><div class="line">@$username=(string)$_POST[&apos;username&apos;];</div><div class="line">function enc($text)&#123;</div><div class="line">    global $key;</div><div class="line">    return md5($key.$text);</div><div class="line">&#125;</div><div class="line">if(enc($username) === $_COOKIE[&apos;verify&apos;])&#123;</div><div class="line">    if(is_numeric(strpos($username, &quot;admin&quot;)))&#123;</div><div class="line">        die($flag);</div><div class="line">    &#125;</div><div class="line">    else&#123;</div><div class="line">        die(&quot;you are not admin&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">    setcookie(&quot;verify&quot;, enc(&quot;guest&quot;), time()+60*60*24*7);</div><div class="line">    setcookie(&quot;len&quot;, strlen($key), time()+60*60*24*7);</div><div class="line">&#125;</div><div class="line">show_source(__FILE__);</div></pre></td></tr></table></figure>
+<p>看见<code>enc</code>里用<code>md5</code>，一看又用了cookie，又那么个判断方法，哈希长度扩展攻击无疑了。</p>
+<p>把cookie从 <code>guest</code> 扩展成 <code>guest</code>+一堆乱七八糟的东西+<code>admin</code>。</p>
+<p>轮子 <a href="https://github.com/iagox86/hash_extender" target="_blank" rel="external">https://github.com/iagox86/hash_extender</a></p>
+<p>命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./hash_extender -f md5 -l 46 -d &quot;guest&quot; -s 78cfc57d983b4a17e55828c001a3e781 -a &quot;admin&quot;</div></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>-f</code>: hash形式</li>
+<li><code>-l</code>: 长度</li>
+<li><code>-d</code>: 要扩展的原始字符串内容。</li>
+<li><code>-s</code>: 原始字符串的hash。</li>
+<li><code>-a</code>: 要扩展的字符串。</li>
+</ul>
+<p><img src="ISCC-Web-hash-0.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CytoMbp:hash_extender cyto$ ./hash_extender -f md5 -l 46 -d &quot;guest&quot; -s 78cfc57d983b4a17e55828c001a3e781 -a &quot;admin&quot;</div><div class="line">Type: md5</div><div class="line">Secret length: 46</div><div class="line">New signature: 5f585093a7fe86971766c3d25c43d0eb</div><div class="line">New string: 67756573748000000000980100000000000061646d696e</div></pre></td></tr></table></figure>
+<p>cookie中的<code>verify</code>改为New signature，post过去的username改为New string（用burp改hex哦）。</p>
+<p><img src="ISCC-Web-hash-1.png" alt=""></p>
+<p><img src="ISCC-Web-hash-2.png" alt=""></p>
+<p><img src="ISCC-Web-hash-3.png" alt=""></p>
+<p>getflag:<code>ISCC{MD5_1s_n0t_5afe}</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+            <a href="/tags/Sec/" rel="tag"># Sec</a>
+          
+            <a href="/tags/Web/" rel="tag"># Web</a>
+          
+            <a href="/tags/WriteUp/" rel="tag"># WriteUp</a>
+          
+            <a href="/tags/Misc/" rel="tag"># Misc</a>
+          
+            <a href="/tags/Crypto/" rel="tag"># Crypto</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/26/writeup-2018CSTC-AWD/" rel="next" title="CSTC2018 AWD一点儿小总结，非WriteUp">
+                <i class="fa fa-chevron-left"></i> CSTC2018 AWD一点儿小总结，非WriteUp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/30/translation-infected-pdf-extract-payload/" rel="prev" title="[翻译]如何从恶意PDF中提取payload?">
+                [翻译]如何从恶意PDF中提取payload? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.webp"
+                alt="Cytosine" />
+            
+              <p class="site-author-name" itemprop="name">Cytosine</p>
+              <p class="site-description motion-element" itemprop="description">悟已往之不谏，知来者之可追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lovegood" target="_blank" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/CytosineLovegood/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhuanlan.zhihu.com/dashijian" target="_blank" title="安全大事件">
+                    安全大事件</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://xuptsec.github.io/" target="_blank" title="XUPTSEC-blog">
+                    XUPTSEC-blog</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                from dalao import
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://exp101t.blogspot.com/" title="Murasaki" target="_blank">Murasaki</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pcat.cnblogs.com/" title="pcat" target="_blank">pcat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flygon.net/" title="飞龙" target="_blank">飞龙</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ju5tw4nty0u.top/" title="ju5tw4nty0u" target="_blank">ju5tw4nty0u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://darkwing.moe/" title="暗羽" target="_blank">暗羽</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://webdog.ml/" title="grt1st" target="_blank">grt1st</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.k0rz3n.com/" title="K0rz3n" target="_blank">K0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lovei.org/" title="腹黑" target="_blank">腹黑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sec2hack.com/" title="Wfox" target="_blank">Wfox</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codemonster.cn/" title="Xishir" target="_blank">Xishir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eternalsakura13.com/" title="Sakura" target="_blank">Sakura</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://math1as.com/" title="Math1as" target="_blank">Math1as</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.thecosmos.cn/" title="Cosmos" target="_blank">Cosmos</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/whklhhhh" title="奈沙夜影" target="_blank">奈沙夜影</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/PeterZ1997/" title="PeterZ" target="_blank">PeterZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.virzz.com/" title="Virink" target="_blank">Virink</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.changwei.me/" title="昌维" target="_blank">昌维</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://white.xmutsec.com" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cismon.net/" title="CismonX" target="_blank">CismonX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lsafe.org/" title="lixin" target="_blank">lixin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wzsite.cn/" title="Wz" target="_blank">Wz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.blogsir.com.cn/" title="江sir" target="_blank">江sir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greyd0g.github.io/" title="greyd0g" target="_blank">greyd0g</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://brucetg.github.io/" title="Brucetg" target="_blank">Brucetg</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.get1t.cn/" title="FraMeQ" target="_blank">FraMeQ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.smallflower.xin/" title="小花" target="_blank">小花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://iosmosis.github.io/" title="iosmosis" target="_blank">iosmosis</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://processor.pub/" title="Processor" target="_blank">Processor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lmxspace.com/" title="l1nk3r" target="_blank">l1nk3r</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.evi1s.com/index.php/links.html" title="Map1e" target="_blank">Map1e</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pvp.im/" title="清枫" target="_blank">清枫</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.itfire.cn/" title="仓鼠" target="_blank">仓鼠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.sk15.net/" title="一苇" target="_blank">一苇</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.t1h2ua.cn/" title="T1h2ua" target="_blank">T1h2ua</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qtfreet.com/" title="qtfreet00" target="_blank">qtfreet00</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tea9.xyz/" title="茶茶" target="_blank">茶茶</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Misc"><span class="nav-number">1.</span> <span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc1-What-is-that？"><span class="nav-number">1.1.</span> <span class="nav-text">Misc1 What is that？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc2-秘密电报"><span class="nav-number">1.2.</span> <span class="nav-text">Misc2 秘密电报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc3-Where-is-the-FLAG？"><span class="nav-number">1.3.</span> <span class="nav-text">Misc3 Where is the FLAG？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc4-一只猫的心思"><span class="nav-number">1.4.</span> <span class="nav-text">Misc4 一只猫的心思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc5-暴力XX不可取"><span class="nav-number">1.5.</span> <span class="nav-text">Misc5 暴力XX不可取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc-重重谍影"><span class="nav-number">1.6.</span> <span class="nav-text">Misc 重重谍影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc-凯撒十三世"><span class="nav-number">1.7.</span> <span class="nav-text">Misc 凯撒十三世</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc-有趣的ISCC"><span class="nav-number">1.8.</span> <span class="nav-text">Misc 有趣的ISCC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web"><span class="nav-number">2.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web1-比较数字大小"><span class="nav-number">2.1.</span> <span class="nav-text">Web1 比较数字大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web2-你能跨过去吗？"><span class="nav-number">2.2.</span> <span class="nav-text">Web2 你能跨过去吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web3-一切都是套路"><span class="nav-number">2.3.</span> <span class="nav-text">Web3 一切都是套路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web5-web02"><span class="nav-number">2.4.</span> <span class="nav-text">Web5 web02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web6-SQL注入的艺术"><span class="nav-number">2.5.</span> <span class="nav-text">Web6 SQL注入的艺术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web7-试试看"><span class="nav-number">2.6.</span> <span class="nav-text">Web7 试试看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-本地的诱惑"><span class="nav-number">2.7.</span> <span class="nav-text">Web 本地的诱惑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-请ping我的ip-看你能Ping通吗？"><span class="nav-number">2.8.</span> <span class="nav-text">Web 请ping我的ip 看你能Ping通吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Please-give-me-username-and-password"><span class="nav-number">2.9.</span> <span class="nav-text">Web Please give me username and password!</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Re"><span class="nav-number">3.</span> <span class="nav-text">Re</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Re1-RSA256"><span class="nav-number">4.</span> <span class="nav-text">Re1 RSA256</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用OpenSSL算出n和e"><span class="nav-number">4.0.1.</span> <span class="nav-text">用OpenSSL算出n和e:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分解n得p和q"><span class="nav-number">4.0.2.</span> <span class="nav-text">分解n得p和q</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#已知p、q、n、e求明文"><span class="nav-number">4.0.3.</span> <span class="nav-text">已知p、q、n、e求明文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Collide"><span class="nav-number">4.1.</span> <span class="nav-text">Web Collide</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cytosine</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

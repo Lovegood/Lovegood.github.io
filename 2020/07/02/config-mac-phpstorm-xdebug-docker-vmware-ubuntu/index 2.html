@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Installation,debug,php,Mac,phpstorm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cytosineの有被小窝~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="环境说明本机Mac，安装PHPstorm，借助xdebug，远程调试位于VMware虚拟机(Ubuntu 14.04)中的Docker容器。 为什么要写这么复杂呢，因为如果你不需要在docker外面套VMware的虚拟机，可以直接从 虚拟机与Docker Remote API的配置 开始阅读，不需要docker的话，可以直接从 (在docker中)安装xdebug 开始阅读（PHPstorm的配置">
+<meta name="keywords" content="Installation,debug,php,Mac,phpstorm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac下配置phpstorm+xdebug+docker(vmware虚拟机)进行断点调试">
+<meta property="og:url" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/index.html">
+<meta property="og:site_name" content="Cytosineの有被小窝~">
+<meta property="og:description" content="环境说明本机Mac，安装PHPstorm，借助xdebug，远程调试位于VMware虚拟机(Ubuntu 14.04)中的Docker容器。 为什么要写这么复杂呢，因为如果你不需要在docker外面套VMware的虚拟机，可以直接从 虚拟机与Docker Remote API的配置 开始阅读，不需要docker的话，可以直接从 (在docker中)安装xdebug 开始阅读（PHPstorm的配置">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/00.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/01.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/20.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/21.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/02.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/03.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/04.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/06.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/05.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/07.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/08.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/09.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/10.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/11.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/12.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/13.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/14.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/15.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/16.png">
+<meta property="og:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/17.png">
+<meta property="og:updated_time" content="2020-07-03T15:30:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac下配置phpstorm+xdebug+docker(vmware虚拟机)进行断点调试">
+<meta name="twitter:description" content="环境说明本机Mac，安装PHPstorm，借助xdebug，远程调试位于VMware虚拟机(Ubuntu 14.04)中的Docker容器。 为什么要写这么复杂呢，因为如果你不需要在docker外面套VMware的虚拟机，可以直接从 虚拟机与Docker Remote API的配置 开始阅读，不需要docker的话，可以直接从 (在docker中)安装xdebug 开始阅读（PHPstorm的配置">
+<meta name="twitter:image" content="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/00.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/"/>
+
+
+
+
+
+  <title>Mac下配置phpstorm+xdebug+docker(vmware虚拟机)进行断点调试 | Cytosineの有被小窝~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cytosineの有被小窝~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            cd ~
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            uname -a
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            ls -al post
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2020/07/02/config-mac-phpstorm-xdebug-docker-vmware-ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mac下配置phpstorm+xdebug+docker(vmware虚拟机)进行断点调试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-02T20:58:27+08:00">
+                2020-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>本机Mac，安装PHPstorm，借助xdebug，远程调试位于VMware虚拟机(Ubuntu 14.04)中的Docker容器。</p>
+<p>为什么要写这么复杂呢，因为如果你不需要在docker外面套VMware的虚拟机，可以直接从 <strong>虚拟机与Docker Remote API的配置</strong> 开始阅读，不需要docker的话，可以直接从 <strong>(在docker中)安装xdebug</strong> 开始阅读（PHPstorm的配置需要根据情况修改）~</p>
+<p>VMware通过桥接网络，使得Ubuntu虚拟机与Mac本机位于同一网段，互相能ping通。</p>
+<ul>
+<li>Mac IP: <code>192.168.0.105</code></li>
+<li>Ubuntu配置静态IP: <code>192.168.0.200</code></li>
+<li>将Docker容器内的80端口映射为容器外的12345端口</li>
+<li>Docker Remote API使用虚拟机的2375端口</li>
+</ul>
+<p>附 Ubuntu 16.04 配置静态IP的配置文件（ <code>/etc/network/interfaces</code> ）内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">auto ens33</div><div class="line">iface ens33 inet static</div><div class="line">address 192.168.0.200</div><div class="line">netmask 255.255.255.0</div><div class="line">gateway 192.168.0.1</div><div class="line">dns-nameserver 1.1.1.1 8.8.8.8 114.114.114.114</div></pre></td></tr></table></figure>
+<p>其中 <code>ens33</code> 可能会根据环境不同而不同，可以使用 <code>ifconfig</code> 查看，是 <code>ens33</code> 就填 <code>ens33</code> ，是 <code>en0</code> 就填 <code>en0</code> ：</p>
+<p><img src="00.png" alt=""></p>
+<h1 id="虚拟机与Docker-Remote-API的配置"><a href="#虚拟机与Docker-Remote-API的配置" class="headerlink" title="虚拟机与Docker Remote API的配置"></a>虚拟机与Docker Remote API的配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">vim /lib/systemd/system/docker.service</div><div class="line">// 修改 ExecStart=/usr/bin/dockerd -H fd:// 为下面的内容：</div><div class="line">ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375</div><div class="line"></div><div class="line">// 重新加载docker配置并重启</div><div class="line">systemctl daemon-reload</div><div class="line">service docker restart</div><div class="line"></div><div class="line">// 查看是否成功开启Docker Remote API</div><div class="line">root@master:~# ps -ef|grep docker</div><div class="line">root      11619      1  1 08:16 ?        00:00:00 /usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375</div><div class="line">root      11629  11619  0 08:16 ?        00:00:00 docker-containerd --config /var/run/docker/containerd/containerd.toml</div><div class="line">root      11752   1164  0 08:16 pts/0    00:00:00 grep --color=auto docker</div></pre></td></tr></table></figure>
+<p>测试是否成功开启Docker Remote API，在Mac本机的终端上测试（IP记得换成自己的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker -H tcp://192.168.0.200:2375 images</div></pre></td></tr></table></figure>
+<p><img src="01.png" alt=""></p>
+<h1 id="配置docker中的环境变量"><a href="#配置docker中的环境变量" class="headerlink" title="配置docker中的环境变量"></a>配置docker中的环境变量</h1><h3 id="需要配置两组环境变量："><a href="#需要配置两组环境变量：" class="headerlink" title="需要配置两组环境变量："></a>需要配置两组环境变量：</h3><ul>
+<li><code>PHP_IDE_CONFIG</code><ul>
+<li><code>serverName</code>：IDE的配置名，先起个名字，具体配置我们在下面说</li>
+</ul>
+</li>
+<li><code>XDEBUG_CONFIG</code><ul>
+<li><code>remote_host</code> 192.168.0.105</li>
+<li><code>remote_port</code> 9101</li>
+</ul>
+</li>
+</ul>
+<h3 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -di -p 12345:80 --env PHP_IDE_CONFIG=&quot;serverName=cytotest&quot; --env XDEBUG_CONFIG=&quot;remote_host=192.168.0.105 remote_port=9101&quot;</div></pre></td></tr></table></figure>
+<h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><p>docker-compose.yml:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">version: &quot;2&quot;</div><div class="line">services:</div><div class="line">  - web:</div><div class="line">      - image: xx</div><div class="line">      - ports:</div><div class="line">            - 12345:80</div><div class="line">      - environment: </div><div class="line">          - PHP_IDE_CONFIG: &quot;serverName=cytotest&quot;</div><div class="line">          - XDEBUG_CONFIG: &quot;remote_host=192.168.0.200 remote_port=9101&quot;</div></pre></td></tr></table></figure>
+<h1 id="在docker中-安装xdebug"><a href="#在docker中-安装xdebug" class="headerlink" title="(在docker中)安装xdebug"></a>(在docker中)安装xdebug</h1><p>（在docker容器中）依次执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 进入docker中的web根目录</div><div class="line">cd /var/www/html</div><div class="line"></div><div class="line">php -r &quot;phpinfo();&quot;&gt;1.txt</div><div class="line"></div><div class="line">// 浏览器访问</div><div class="line">http://192.168.0.200:12345/1.txt</div><div class="line"></div><div class="line">// 全选后粘贴到：</div><div class="line">https://xdebug.org/wizard</div><div class="line"></div><div class="line">// 根据分析结果，复制xdebug的链接，在docker中使用wget下载</div><div class="line">wget http://xdebug.org/files/xdebug-2.8.1.tgz</div></pre></td></tr></table></figure>
+<p>建议如下几步按xdebug官网的说明来进行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">tar -xvzf xdebug-2.8.1.tgz</div><div class="line">cd xdebug-2.8.1</div><div class="line">phpize</div><div class="line">./configure</div><div class="line">make</div><div class="line">cp modules/xdebug.so /usr/lib/php/20151012</div><div class="line"></div><div class="line">vim /usr/local/etc/php/php.ini</div></pre></td></tr></table></figure>
+<p>php.ini配置及说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[xdebug]</div><div class="line">zend_extension=... // 根据你的情况修改，上一步cp到哪里就是哪里</div><div class="line">xdebug.remote_enable=1 // 启用远程调试</div><div class="line">xdebug.remote_handler=dbgp</div><div class="line">xdebug.remote_mode=req</div><div class="line">xdebug.remote_host=192.168.0.105 // 远程调试机子的IP地址，这里就是Mac本机的IP地址，不清楚的可以在docker容器根目录中用 print_r($_SERVER[&apos;REMOTE_ADDR&apos;]); 打印出来</div><div class="line">xdebug.remote_port=9101 // 默认9000，为避免冲突，建议修改</div><div class="line">xdebug.idekey=PHPSTORM // idekey，要记住喔，后面会用到很多次</div><div class="line">xdebug.auto_trace=1</div><div class="line">xdebug.auto_exception_trace=1</div><div class="line">xdebug.remote_autostart=1</div><div class="line">xdebug.collect_vars=1</div><div class="line">xdebug.collect_return=1</div><div class="line">xdebug.collect_params=1</div><div class="line">xdebug.show_local_vars=1</div><div class="line">xdebug.profiler_enable=1</div><div class="line">xdebug.trace_enable_trigger=1</div><div class="line">xdebug.remote_log=&quot;/var/log/php.xdebug.log&quot; // 日志位置，出了错误可以通过日志来寻找原因</div></pre></td></tr></table></figure>
+<p>然后把xdebug.so和php.ini复制到docker容器外：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker cp container_id:/container/path/xx .</div></pre></td></tr></table></figure>
+<p>修改dockerfile，把xdebug.so和php.ini复制到相应位置，然后重新build和run。</p>
+<h1 id="PHPstorm中的配置"><a href="#PHPstorm中的配置" class="headerlink" title="PHPstorm中的配置"></a>PHPstorm中的配置</h1><p><img src="20.png" alt=""></p>
+<p><img src="21.png" alt=""></p>
+<p>PHPstorm借助Docker Remote API操作虚拟机中的Docker：</p>
+<p><img src="02.png" alt=""></p>
+<p><img src="03.png" alt=""></p>
+<p><img src="04.png" alt=""></p>
+<p>下面这个图的image name说明可以看下下个图：</p>
+<p><img src="06.png" alt=""></p>
+<p><img src="05.png" alt=""></p>
+<p><img src="07.png" alt=""></p>
+<p>这个server name填写上面Docker环境变量中<code>serverName</code>对应的值，我这里就是cytotest。</p>
+<p><img src="08.png" alt=""></p>
+<p>根据自己的情况配置路径映射：</p>
+<p><img src="09.png" alt=""></p>
+<p><img src="10.png" alt=""></p>
+<p><img src="11.png" alt=""></p>
+<p><img src="12.png" alt=""></p>
+<p>根据自己情况选：</p>
+<p><img src="13.png" alt=""></p>
+<p>至此PHPstorm的配置结束。</p>
+<h1 id="开始debug"><a href="#开始debug" class="headerlink" title="开始debug"></a>开始debug</h1><p>切到PHPstorm，在代码右侧行号左键单击，即可在该行下断点。下好断点后，选第二个小虫子这个：</p>
+<p><img src="14.png" alt=""></p>
+<p>这时候PHPstorm会自动用默认浏览器打开刚才配置的start url，我们先不管，先点一下第四个小电话：</p>
+<p><img src="15.png" alt=""></p>
+<p>让小电话变成这个样子：</p>
+<p><img src="16.png" alt=""></p>
+<p>这个时候再去浏览器刷新一下，如果配置成功，则会在断点出停下来，并跳回PHPstorm的页面：</p>
+<p><img src="17.png" alt=""></p>
+<p>开始你的调试之旅吧~</p>
+<p><strong>如有错误，敬请指正，感谢~</strong></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://segmentfault.com/a/1190000022269173" target="_blank" rel="external">https://segmentfault.com/a/1190000022269173</a></li>
+<li><a href="https://www.missshi.cn/api/view/blog/5a63285f0a745f6335000008" target="_blank" rel="external">https://www.missshi.cn/api/view/blog/5a63285f0a745f6335000008</a></li>
+<li><a href="https://blog.csdn.net/yuanlaijike/article/details/80913096" target="_blank" rel="external">https://blog.csdn.net/yuanlaijike/article/details/80913096</a></li>
+<li><a href="https://www.cnblogs.com/dee0912/p/10009545.html" target="_blank" rel="external">https://www.cnblogs.com/dee0912/p/10009545.html</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Installation/" rel="tag"># Installation</a>
+          
+            <a href="/tags/debug/" rel="tag"># debug</a>
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/Mac/" rel="tag"># Mac</a>
+          
+            <a href="/tags/phpstorm/" rel="tag"># phpstorm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/09/how-to-write-a-program-compatible-with-python2-and-python3/" rel="next" title="如何写一个基本兼容python2和python3的程序？">
+                <i class="fa fa-chevron-left"></i> 如何写一个基本兼容python2和python3的程序？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/24/mac-java-home-update/" rel="prev" title="Mac下配置JAVA_HOME(Java自动更新的目录)">
+                Mac下配置JAVA_HOME(Java自动更新的目录) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.webp"
+                alt="Cytosine" />
+            
+              <p class="site-author-name" itemprop="name">Cytosine</p>
+              <p class="site-description motion-element" itemprop="description">悟已往之不谏，知来者之可追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lovegood" target="_blank" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/CytosineLovegood/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhuanlan.zhihu.com/dashijian" target="_blank" title="安全大事件">
+                    安全大事件</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://xuptsec.github.io/" target="_blank" title="XUPTSEC-blog">
+                    XUPTSEC-blog</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                from dalao import
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://exp101t.blogspot.com/" title="Murasaki" target="_blank">Murasaki</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pcat.cnblogs.com/" title="pcat" target="_blank">pcat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flygon.net/" title="飞龙" target="_blank">飞龙</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ju5tw4nty0u.top/" title="ju5tw4nty0u" target="_blank">ju5tw4nty0u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://darkwing.moe/" title="暗羽" target="_blank">暗羽</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://webdog.ml/" title="grt1st" target="_blank">grt1st</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.k0rz3n.com/" title="K0rz3n" target="_blank">K0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lovei.org/" title="腹黑" target="_blank">腹黑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sec2hack.com/" title="Wfox" target="_blank">Wfox</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codemonster.cn/" title="Xishir" target="_blank">Xishir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eternalsakura13.com/" title="Sakura" target="_blank">Sakura</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://math1as.com/" title="Math1as" target="_blank">Math1as</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.thecosmos.cn/" title="Cosmos" target="_blank">Cosmos</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/whklhhhh" title="奈沙夜影" target="_blank">奈沙夜影</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/PeterZ1997/" title="PeterZ" target="_blank">PeterZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.virzz.com/" title="Virink" target="_blank">Virink</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.changwei.me/" title="昌维" target="_blank">昌维</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://white.xmutsec.com" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cismon.net/" title="CismonX" target="_blank">CismonX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lsafe.org/" title="lixin" target="_blank">lixin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wzsite.cn/" title="Wz" target="_blank">Wz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.blogsir.com.cn/" title="江sir" target="_blank">江sir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greyd0g.github.io/" title="greyd0g" target="_blank">greyd0g</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://brucetg.github.io/" title="Brucetg" target="_blank">Brucetg</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.get1t.cn/" title="FraMeQ" target="_blank">FraMeQ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.smallflower.xin/" title="小花" target="_blank">小花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://iosmosis.github.io/" title="iosmosis" target="_blank">iosmosis</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://processor.pub/" title="Processor" target="_blank">Processor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lmxspace.com/" title="l1nk3r" target="_blank">l1nk3r</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.evi1s.com/index.php/links.html" title="Map1e" target="_blank">Map1e</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pvp.im/" title="清枫" target="_blank">清枫</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.itfire.cn/" title="仓鼠" target="_blank">仓鼠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.sk15.net/" title="一苇" target="_blank">一苇</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.t1h2ua.cn/" title="T1h2ua" target="_blank">T1h2ua</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qtfreet.com/" title="qtfreet00" target="_blank">qtfreet00</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tea9.xyz/" title="茶茶" target="_blank">茶茶</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境说明"><span class="nav-number">1.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机与Docker-Remote-API的配置"><span class="nav-number">2.</span> <span class="nav-text">虚拟机与Docker Remote API的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置docker中的环境变量"><span class="nav-number">3.</span> <span class="nav-text">配置docker中的环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需要配置两组环境变量："><span class="nav-number">3.0.1.</span> <span class="nav-text">需要配置两组环境变量：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-run"><span class="nav-number">3.0.2.</span> <span class="nav-text">docker run</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-compose"><span class="nav-number">3.0.3.</span> <span class="nav-text">docker-compose</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在docker中-安装xdebug"><span class="nav-number">4.</span> <span class="nav-text">(在docker中)安装xdebug</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHPstorm中的配置"><span class="nav-number">5.</span> <span class="nav-text">PHPstorm中的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始debug"><span class="nav-number">6.</span> <span class="nav-text">开始debug</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cytosine</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

