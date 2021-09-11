@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovegood.github.io/"/>
-  <updated>2021-03-29T10:47:27.000Z</updated>
+  <updated>2020-11-12T15:51:51.000Z</updated>
   <id>https://lovegood.github.io/</id>
   
   <author>
@@ -15,35 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>[翻译]深入 .NET ViewState 反序列化及其利用</title>
-    <link href="https://lovegood.github.io/2021/03/29/translation-deep-dive-into-net-viewstate-deserialization-and-its-exploitation/"/>
-    <id>https://lovegood.github.io/2021/03/29/translation-deep-dive-into-net-viewstate-deserialization-and-its-exploitation/</id>
-    <published>2021-03-29T10:43:39.000Z</published>
-    <updated>2021-03-29T10:47:27.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;本文为翻译，收发于 ChaMD5安全团队 公众号。&lt;/p&gt;
-&lt;p&gt;以下为正文：&lt;/p&gt;
-&lt;p&gt;嗨，大家好：&lt;/p&gt;
-&lt;p&gt;欢迎访问这个有关.NET ViewState反序列化的新博客文章。我想感谢 &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
-    
-      <category term=".NET反序列化" scheme="https://lovegood.github.io/tags/NET%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
-    
-  </entry>
   
   <entry>
     <title>利用LD_PRELOAD bypass disable_function</title>
@@ -95,9 +66,9 @@
     </summary>
     
     
-      <category term="LD_PRELOAD" scheme="https://lovegood.github.io/tags/LD-PRELOAD/"/>
-    
       <category term="Translation" scheme="https://lovegood.github.io/tags/Translation/"/>
+    
+      <category term="LD_PRELOAD" scheme="https://lovegood.github.io/tags/LD-PRELOAD/"/>
     
   </entry>
   
@@ -559,6 +530,34 @@
       <category term="printf" scheme="https://lovegood.github.io/tags/printf/"/>
     
       <category term="Syntactic-Sugar" scheme="https://lovegood.github.io/tags/Syntactic-Sugar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《缓冲区溢出分析》课程笔记</title>
+    <link href="https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/"/>
+    <id>https://lovegood.github.io/2018/08/14/note-pwn-first-stackoverflow-analysis/</id>
+    <published>2018-08-14T04:48:03.000Z</published>
+    <updated>2019-03-30T06:13:05.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://www.ichunqiu.com/course/147&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.ichunqiu.com/course/147&lt;/a&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Notes" scheme="https://lovegood.github.io/tags/Notes/"/>
+    
+      <category term="Pwn" scheme="https://lovegood.github.io/tags/Pwn/"/>
+    
+      <category term="Stackoverflow" scheme="https://lovegood.github.io/tags/Stackoverflow/"/>
     
   </entry>
   
